@@ -14,7 +14,7 @@ for (i = 0; i < 10000; i++) {
   if (expectPrime) {
     k++;
   }
-  test(`mprime(${i}) = ${expectPrime}`, t => t.is(expectPrime, mprime(n)));
+  test(`mprime(${i}) = ${expectPrime}`, (t) => t.is(expectPrime, mprime(n)));
 }
 
 //endif

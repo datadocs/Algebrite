@@ -1,5 +1,18 @@
 import { countsize } from './count.js';
-import { BaseAtom, car, cdr, Cons, iscons, issymbol, istensor, NIL, Str, Sym, SYM, U } from './defs.js';
+import {
+  BaseAtom,
+  car,
+  cdr,
+  Cons,
+  iscons,
+  issymbol,
+  istensor,
+  NIL,
+  Str,
+  Sym,
+  SYM,
+  U
+} from './defs.js';
 import { stop } from './run.js';
 
 // The symbol table is a simple array of struct U.
@@ -20,12 +33,12 @@ function symbolsinfo() {
 }
 
 class Scope {
-  private symbols = new Map<string, Sym>()
+  private symbols = new Map<string, Sym>();
   private bindings = new Map<string, U>();
 
-  constructor(private parent?:Scope) {}
+  constructor(private parent?: Scope) {}
 
-  getOrCreate(name:string):Sym {
+  getOrCreate(name: string): Sym {
     const existing = this.getExisting(name);
     if (existing) return existing;
     const sym = new Sym(name);
@@ -33,23 +46,25 @@ class Scope {
     return sym;
   }
 
-  private getExisting(name:string):Sym|undefined {
+  private getExisting(name: string): Sym | undefined {
     return this.parent?.getExisting(name) || this.symbols.get(name);
   }
 
-  mustGet(name:string):Sym {
-    return this.symbols.get(name) || this.parent?.mustGet(name) || stop(`${name} not defined`);
+  mustGet(name: string): Sym {
+    return (
+      this.symbols.get(name) || this.parent?.mustGet(name) || stop(`${name} not defined`)
+    );
   }
 
-  has(s:Sym):boolean {
+  has(s: Sym): boolean {
     return this.symbols.has(s.printname);
   }
 
-  binding(sym:Sym):U {
+  binding(sym: Sym): U {
     return this.bindings.get(sym.printname) || this.parent?.binding(sym) || sym;
   }
 
-  set(sym:Sym, value:U) {
+  set(sym: Sym, value: U) {
     this.bindings.set(sym.printname, value);
   }
 
@@ -57,19 +72,19 @@ class Scope {
     this.bindings.clear();
   }
 
-  delete(s:Sym) {
+  delete(s: Sym) {
     this.symbols.delete(s.printname);
     this.bindings.delete(s.printname);
     this.parent?.delete(s);
   }
 
-  *symbolinfo():Generator<string> {
+  *symbolinfo(): Generator<string> {
     if (this.parent) {
-      yield *this.parent.symbolinfo();
+      yield* this.parent.symbolinfo();
     }
     for (const [name, sym] of this.symbols.entries()) {
       const binding = this.bindings.get(name) || sym;
-      const bindingi = (binding + '').substring(0, 4)
+      const bindingi = (binding + '').substring(0, 4);
       yield `symbol: ${sym} size: ${countsize(binding)} value: ${bindingi}...`;
     }
   }
@@ -92,7 +107,7 @@ class Scope {
 let keywordScope = new Scope();
 let userScope = new Scope(keywordScope);
 
-export function inChildScope<T>(f:()=>T):T{
+export function inChildScope<T>(f: () => T): T {
   let savedScope = userScope;
   try {
     userScope = new Scope(userScope);
@@ -102,7 +117,7 @@ export function inChildScope<T>(f:()=>T):T{
   }
 }
 
-export function std_symbol(s: string, keyword?:(p1:Cons)=>U) {
+export function std_symbol(s: string, keyword?: (p1: Cons) => U) {
   // TODO: can we delete latexPrint?
   const sym = keywordScope.getOrCreate(s);
   sym.latexPrint = s;
@@ -210,7 +225,7 @@ export function collectUserSymbols(p: U, accumulator: U[]) {
   }
 }
 
-export function symbol(name:string): Sym {
+export function symbol(name: string): Sym {
   // Should this just in the keywordScope?
   return userScope.mustGet(name);
 }
@@ -224,6 +239,6 @@ export function clearRenamedVariablesToAvoidBindingToExternalScope() {
   userScope.clearRenamedVariablesToAvoidBindingToExternalScope();
 }
 
-export function clear_symbol(s:Sym) {
+export function clear_symbol(s: Sym) {
   userScope.delete(s);
 }

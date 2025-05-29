@@ -32,5 +32,5 @@ run_test([
   '0',
 
   'laguerre(a-b,10)-eval(subst(a-b,x,laguerre(x,10)))',
-  '0',
+  '0'
 ]);

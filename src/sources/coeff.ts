@@ -8,7 +8,7 @@ import {
   SYMBOL_X,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { equal } from '../sources/misc.js';
 import { subtract } from './add.js';
 import { Eval } from './eval.js';

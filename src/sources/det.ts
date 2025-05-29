@@ -1,18 +1,11 @@
-import {
-  Constants,
-  DET,
-  isNumericAtom,
-  Sign,
-  Tensor,
-  U,
-} from '../runtime/defs.js';
+import { Constants, DET, isNumericAtom, Sign, Tensor, U } from '../runtime/defs.js';
 import { equal } from '../sources/misc.js';
 import { add } from './add.js';
 import { integer } from './bignum.js';
 import { makeList } from './list.js';
 import { divide, multiply, negate } from './multiply.js';
 import { is_square_matrix } from './tensor.js';
-import {symbol} from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 
 /* det =====================================================================
 
@@ -132,7 +125,7 @@ export function determinant(elements: readonly U[], n: number): U {
 //  out the columns below it.
 //
 //-----------------------------------------------------------------------------
-function detg(p1:Tensor) {
+function detg(p1: Tensor) {
   if (!is_square_matrix(p1)) {
     return makeList(symbol(DET), p1);
   }
@@ -195,18 +188,13 @@ function lu_decomp(elements: U[], n: number): U {
 
     // update lower diagonal matrix
     for (let i = d + 1; i < n; i++) {
-      const p2 = negate(
-        divide(getM(elements, n, i, d), getM(elements, n, d, d))
-      );
+      const p2 = negate(divide(getM(elements, n, i, d), getM(elements, n, d, d)));
 
       // update one row
       setM(elements, n, i, d, Constants.zero); // clear column below pivot d
 
       for (let j = d + 1; j < n; j++) {
-        const added = add(
-          multiply(getM(elements, n, d, j), p2),
-          getM(elements, n, i, j)
-        );
+        const added = add(multiply(getM(elements, n, d, j), p2), getM(elements, n, i, j));
         setM(elements, n, i, j, added);
       }
     }

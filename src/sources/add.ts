@@ -17,7 +17,7 @@ import {
   U
 } from '../runtime/defs.js';
 import { check_esc_flag } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { add_numbers } from './bignum.js';
 import { Eval } from './eval.js';
 import { isZeroAtom, isZeroAtomOrTensor } from './is.js';

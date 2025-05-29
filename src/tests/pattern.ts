@@ -337,5 +337,5 @@ run_test([
   // ------------------------------------------------------------------
 
   'pattern(f(a_,b_), f(a_,b_))',
-  'Stop: recursive pattern',
+  'Stop: recursive pattern'
 ]);

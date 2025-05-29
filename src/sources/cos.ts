@@ -10,7 +10,7 @@ import {
   isdouble,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { add, subtract } from './add.js';
 import { double, integer, nativeInt, rational } from './bignum.js';
 import { Eval } from './eval.js';
@@ -52,10 +52,7 @@ function cosine_of_angle_sum(p1: U): U {
     for (const B of p1.tail()) {
       if (isnpi(B)) {
         const A = subtract(p1, B);
-        return subtract(
-          multiply(cosine(A), cosine(B)),
-          multiply(sine(A), sine(B))
-        );
+        return subtract(multiply(cosine(A), cosine(B)), multiply(sine(A), sine(B)));
       }
     }
   }

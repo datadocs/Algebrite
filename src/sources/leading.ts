@@ -1,5 +1,5 @@
 import { caddr, cadr, NIL, U } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { degree } from './degree.js';
 import { Eval } from './eval.js';
 import { filter } from './filter.js';

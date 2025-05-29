@@ -13,7 +13,7 @@ import {
   isNumericAtomOrTensor,
   Sym,
   Tensor,
-  U,
+  U
 } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
 import { equal } from '../sources/misc.js';
@@ -25,7 +25,7 @@ import { isZeroAtomOrTensor } from './is.js';
 import { makeList } from './list.js';
 import { divide, multiply } from './multiply.js';
 import { is_square_matrix } from './tensor.js';
-import {symbol} from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 
 //-----------------------------------------------------------------------------
 //
@@ -179,10 +179,7 @@ function INV_decomp(units: U[], elements: U[], n: number): U[] {
             multiply(elements[n * d + j], p2)
           );
         }
-        units[n * i + j] = subtract(
-          units[n * i + j],
-          multiply(units[n * d + j], p2)
-        );
+        units[n * i + j] = subtract(units[n * i + j], multiply(units[n * d + j], p2));
       }
     }
   }

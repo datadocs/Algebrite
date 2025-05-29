@@ -33,9 +33,24 @@ import { stop } from '../runtime/run.js';
 import { symbol } from '../runtime/symbol.js';
 import { cmp_expr } from '../sources/misc.js';
 import { add, subtract } from './add.js';
-import { divide_numbers, invert_number, mp_denominator, mp_numerator, multiply_numbers, negate_number } from './bignum.js';
+import {
+  divide_numbers,
+  invert_number,
+  mp_denominator,
+  mp_numerator,
+  multiply_numbers,
+  negate_number
+} from './bignum.js';
 import { Eval } from './eval.js';
-import { equaln, isfraction, isinteger, isminusone, isnegativenumber, isplusone, isZeroAtom } from './is.js';
+import {
+  equaln,
+  isfraction,
+  isinteger,
+  isminusone,
+  isnegativenumber,
+  isplusone,
+  isZeroAtom
+} from './is.js';
 import { makeList } from './list.js';
 import { power } from './power.js';
 import { scalar_times_tensor, tensor_times_scalar } from './tensor.js';
@@ -83,15 +98,11 @@ function yymultiply(p1: U, p2: U): U {
   // is either operand a sum?
   //console.log("yymultiply: expanding: " + expanding)
   if (defs.expanding && isadd(p1)) {
-    return p1
-      .tail()
-      .reduce((a: U, b: U) => add(a, multiply(b, p2)), Constants.Zero());
+    return p1.tail().reduce((a: U, b: U) => add(a, multiply(b, p2)), Constants.Zero());
   }
 
   if (defs.expanding && isadd(p2)) {
-    return p2
-      .tail()
-      .reduce((a: U, b: U) => add(a, multiply(p1, b)), Constants.Zero());
+    return p2.tail().reduce((a: U, b: U) => add(a, multiply(p1, b)), Constants.Zero());
   }
 
   // scalar times tensor?
@@ -109,7 +120,7 @@ function yymultiply(p1: U, p2: U): U {
 
   p2 = ismultiply(p2) ? cdr(p2) : makeList(p2);
 
-  const factors:U[] = [];
+  const factors: U[] = [];
 
   // handle numerical coefficients
   if (isNumericAtom(car(p1)) && isNumericAtom(car(p2))) {
@@ -282,7 +293,7 @@ const gp = [
   [0, 0, 9, -16, 8, -7, -12, 5, -4, -2, -15, 14, 6, -1, -11, 10, 3],
   [0, 0, 10, -8, -16, 6, -5, -12, 3, 15, -2, -13, 7, 11, -1, -9, 4],
   [0, 0, 11, 7, -6, -16, 4, -3, -12, -14, 13, -2, 8, -10, 9, -1, 5],
-  [0, 0, 12, 13, 14, 15, 9, 10, 11, -6, -7, -8, -2, -3, -4, -5, -1],
+  [0, 0, 12, 13, 14, 15, 9, 10, 11, -6, -7, -8, -2, -3, -4, -5, -1]
 ];
 
 // this is useful for example when you are just adding/removing
@@ -381,14 +392,10 @@ export function negate_noexpand(p1: U): U {
 //
 //-----------------------------------------------------------------------------
 
-function __normalize_radical_factors(factors:U[]) {
+function __normalize_radical_factors(factors: U[]) {
   let i = 0;
   // if coeff is 1 or floating then don't bother
-  if (
-    isplusone(factors[0]) ||
-    isminusone(factors[0]) ||
-    isdouble(factors[0])
-  ) {
+  if (isplusone(factors[0]) || isminusone(factors[0]) || isdouble(factors[0])) {
     return;
   }
 
@@ -476,11 +483,7 @@ function __normalize_radical_factors(factors:U[]) {
     const subtracted = subtract(EXPO, Constants.one);
 
     if (dontCreateNewRadicalsInDenominatorWhenEvalingMultiplication) {
-      if (
-        isinteger(BASE) &&
-        !isinteger(subtracted) &&
-        isnegativenumber(subtracted)
-      ) {
+      if (isinteger(BASE) && !isinteger(subtracted) && isnegativenumber(subtracted)) {
         // bail out,
         // we want to avoid going ahead with the subtraction of
         // the exponents, because that would turn a perfectly good
@@ -507,10 +510,7 @@ function __normalize_radical_factors(factors:U[]) {
 function __is_radical_number(p: U): boolean {
   // don't use i
   return (
-    ispower(p) &&
-    isNumericAtom(cadr(p)) &&
-    isfraction(caddr(p)) &&
-    !isminusone(cadr(p))
+    ispower(p) && isNumericAtom(cadr(p)) && isfraction(caddr(p)) && !isminusone(cadr(p))
   );
 }
 

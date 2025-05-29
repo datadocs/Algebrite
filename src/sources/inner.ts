@@ -19,7 +19,7 @@ import {
   U
 } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { add, subtract } from './add.js';
 import { Eval } from './eval.js';
 import { inv } from './inv.js';
@@ -123,11 +123,7 @@ export function Eval_inner(p1: U): U {
 
   // make it so e.g. inner(a,b,c) becomes inner(a,inner(b,c))
   if (args.length > 2) {
-    let temp = makeList(
-      symbol(INNER),
-      args[args.length - 2],
-      args[args.length - 1]
-    );
+    let temp = makeList(symbol(INNER), args[args.length - 2], args[args.length - 1]);
     for (let i = 2; i < args.length; i++) {
       temp = makeList(symbol(INNER), args[args.length - i - 1], temp);
     }
@@ -253,15 +249,11 @@ export function inner(p1: U, p2: U): U {
 
     // if either operand is a sum then distribute (if we are in expanding mode)
     if (defs.expanding && isadd(p1)) {
-      return p1
-        .tail()
-        .reduce((a: U, b: U) => add(a, inner(b, p2)), Constants.zero);
+      return p1.tail().reduce((a: U, b: U) => add(a, inner(b, p2)), Constants.zero);
     }
 
     if (defs.expanding && isadd(p2)) {
-      return p2
-        .tail()
-        .reduce((a: U, b: U) => add(a, inner(p1, b)), Constants.zero);
+      return p2.tail().reduce((a: U, b: U) => add(a, inner(p1, b)), Constants.zero);
     }
 
     // there are 8 remaining cases here, since each of the two arguments can only be a
@@ -324,9 +316,7 @@ function inner_f(p1: Tensor, p2: Tensor): U {
   //    4  3        bk = 4 * 3 = 12
   //
   //---------------------------------------------------------------------
-  const ak = p1.tensor.dim
-    .slice(0, p1.tensor.dim.length - 1)
-    .reduce((a, b) => a * b, 1);
+  const ak = p1.tensor.dim.slice(0, p1.tensor.dim.length - 1).reduce((a, b) => a * b, 1);
   const bk = p2.tensor.dim.slice(1).reduce((a, b) => a * b, 1);
 
   const p3 = alloc_tensor(ak * bk);
@@ -340,10 +330,7 @@ function inner_f(p1: Tensor, p2: Tensor): U {
         continue;
       }
       for (let k = 0; k < bk; k++) {
-        c[i * bk + k] = add(
-          multiply(a[i * n + j], b[j * bk + k]),
-          c[i * bk + k]
-        );
+        c[i * bk + k] = add(multiply(a[i * n + j], b[j * bk + k]), c[i * bk + k]);
       }
     }
   }
@@ -380,7 +367,7 @@ function inner_f(p1: Tensor, p2: Tensor): U {
     p3.tensor.ndim = ndim;
     p3.tensor.dim = [
       ...p1.tensor.dim.slice(0, p1.tensor.ndim - 1),
-      ...p2.tensor.dim.slice(1, p2.tensor.ndim),
+      ...p2.tensor.dim.slice(1, p2.tensor.ndim)
     ];
     return p3;
   }

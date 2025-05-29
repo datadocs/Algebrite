@@ -109,7 +109,7 @@ function test<T extends unknown[]>(
     console.log(filterTrace(ex.stack));
   }
 }
-test.beforeEach = function(hook: () => void) {
+test.beforeEach = function (hook: () => void) {
   const head = beforeEach;
   beforeEach = () => {
     head();
@@ -159,7 +159,7 @@ export function setup_test(f: () => void) {
 export function run_shardable_test(s: string[], prefix = '') {
   setup_test(() => {
     for (let i = 0; i < s.length; i += 2) {
-      test((prefix || `${testIndex}: `) + s[i], t => {
+      test((prefix || `${testIndex}: `) + s[i], (t) => {
         defs.out_count = 0;
 
         t.is(s[i + 1], run(s[i]));
@@ -170,7 +170,7 @@ export function run_shardable_test(s: string[], prefix = '') {
 
 export function run_test(s: string[], name?: string) {
   setup_test(() => {
-    test(name || `${testIndex}`, t => {
+    test(name || `${testIndex}`, (t) => {
       for (let i = 0; i < s.length; i += 2) {
         defs.out_count = 0;
 

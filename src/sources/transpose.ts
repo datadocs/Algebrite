@@ -23,7 +23,7 @@ import {
   U
 } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { equal } from '../sources/misc.js';
 import { add } from './add.js';
 import { integer, nativeInt } from './bignum.js';
@@ -87,9 +87,7 @@ export function transpose(p1: U, p2: U, p3: U): U {
   // if operand is a sum then distribute (if we are in expanding mode)
   if (defs.expanding && isadd(p1)) {
     // add the dimensions to switch but only if they are not the default ones.
-    return p1
-      .tail()
-      .reduce((a: U, b: U) => add(a, transpose(b, p2, p3)), Constants.zero);
+    return p1.tail().reduce((a: U, b: U) => add(a, transpose(b, p2, p3)), Constants.zero);
   }
 
   // if operand is a multiplication then distribute (if we are in expanding mode)
@@ -121,10 +119,7 @@ export function transpose(p1: U, p2: U, p3: U): U {
       //stop("transpose: tensor expected, 1st arg is not a tensor")
       // remove the default "dimensions to be switched"
       // parameters
-      if (
-        (!isplusone(p2) || !isplustwo(p3)) &&
-        (!isplusone(p3) || !isplustwo(p2))
-      ) {
+      if ((!isplusone(p2) || !isplustwo(p3)) && (!isplusone(p3) || !isplustwo(p2))) {
         return makeList(symbol(TRANSPOSE), p1, p2, p3);
       }
       return makeList(symbol(TRANSPOSE), p1);

@@ -39,7 +39,9 @@ import {
   compare_numbers,
   double,
   integer,
-  nativeDouble, nativeInt, rational
+  nativeDouble,
+  nativeInt,
+  rational
 } from './bignum.js';
 import { conjugate } from './conj.js';
 import { cosine } from './cos.js';
@@ -207,9 +209,7 @@ function yypower(base: U, exponent: U): U {
   if (isNumericAtom(base) && isNumericAtom(exponent)) {
     const result = dpow(nativeDouble(base), nativeDouble(exponent));
     if (DEBUG_POWER) {
-      console.log(
-        '   power: both base and exponent are either rational or double '
-      );
+      console.log('   power: both base and exponent are either rational or double ');
       console.log('POWER - isNumericAtom(base) && isNumericAtom(exponent)');
       console.log(`   power of ${inputBase} ^ ${inputExp}: ${result}`);
     }
@@ -339,9 +339,7 @@ function yypower(base: U, exponent: U): U {
   if (ispower(base) && b_isEven_and_c_isItsInverse) {
     const result = abs(cadr(base));
     if (DEBUG_POWER) {
-      console.log(
-        '   power: car(base) == symbol(POWER) && b_isEven_and_c_isItsInverse '
-      );
+      console.log('   power: car(base) == symbol(POWER) && b_isEven_and_c_isItsInverse ');
       console.log(`   power of ${inputBase} ^ ${inputExp}: ${result}`);
     }
     return result;
@@ -353,9 +351,7 @@ function yypower(base: U, exponent: U): U {
     const n = nativeInt(exponent);
     if (n > 1 && !isNaN(n)) {
       if (DEBUG_POWER) {
-        console.log(
-          '   power: expanding && isadd(base) && isNumericAtom(exponent) '
-        );
+        console.log('   power: expanding && isadd(base) && isNumericAtom(exponent) ');
       }
       let result = power_sum(n, base);
       if (DEBUG_POWER) {
@@ -366,11 +362,7 @@ function yypower(base: U, exponent: U): U {
   }
 
   //  sin(x) ^ 2n -> (1 - cos(x) ^ 2) ^ n
-  if (
-    defs.trigmode === 1 &&
-    car(base) === symbol(SIN) &&
-    iseveninteger(exponent)
-  ) {
+  if (defs.trigmode === 1 && car(base) === symbol(SIN) && iseveninteger(exponent)) {
     const result = power(
       subtract(Constants.one, power(cosine(cadr(base)), integer(2))),
       multiply(exponent, rational(1, 2))
@@ -385,11 +377,7 @@ function yypower(base: U, exponent: U): U {
   }
 
   //  cos(x) ^ 2n -> (1 - sin(x) ^ 2) ^ n
-  if (
-    defs.trigmode === 2 &&
-    car(base) === symbol(COS) &&
-    iseveninteger(exponent)
-  ) {
+  if (defs.trigmode === 2 && car(base) === symbol(COS) && iseveninteger(exponent)) {
     const result = power(
       subtract(Constants.one, power(sine(cadr(base)), integer(2))),
       multiply(exponent, rational(1, 2))
@@ -440,8 +428,7 @@ function yypower(base: U, exponent: U): U {
 
       //console.log("power pushing PI when base is: " + base + " and exponent is:" + exponent)
       const pi =
-        defs.evaluatingAsFloats ||
-          (iscomplexnumberdouble(base) && isdouble(exponent))
+        defs.evaluatingAsFloats || (iscomplexnumberdouble(base) && isdouble(exponent))
           ? double(Math.PI)
           : symbol(PI);
       let tmp = multiply(

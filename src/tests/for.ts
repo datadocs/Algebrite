@@ -5,5 +5,5 @@ run_test([
   '3.141588...',
 
   'for(do(x=sqrt(2+x),y=2*y/x),k,1,iterations)',
-  'for(do(x=sqrt(2+x),y=2*y/x),k,1,iterations)',
+  'for(do(x=sqrt(2+x),y=2*y/x),k,1,iterations)'
 ]);

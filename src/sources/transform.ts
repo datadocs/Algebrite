@@ -19,7 +19,7 @@ import {
   SYMBOL_B_UNDERSCORE,
   SYMBOL_X_UNDERSCORE,
   U,
-  noexpand,
+  noexpand
 } from '../runtime/defs.js';
 import { get_binding, set_binding, symbol } from '../runtime/symbol.js';
 import { subtract } from './add.js';
@@ -125,11 +125,7 @@ export function transform(
       // use scan_meta because the pattern is not a string
       // that we have to parse, it's a tree already.
       // replace a_ with METAA in the passed transformation
-      let expr = subst(
-        theTransform,
-        symbol(SYMBOL_A_UNDERSCORE),
-        symbol(METAA)
-      );
+      let expr = subst(theTransform, symbol(SYMBOL_A_UNDERSCORE), symbol(METAA));
 
       // replace b_ with METAB in the passed transformation
       expr = subst(expr, symbol(SYMBOL_B_UNDERSCORE), symbol(METAB));
@@ -172,12 +168,7 @@ export function transform(
             console.log(`testing: ${secondTerm}`);
             console.log(`about to try to simplify other term: ${secondTerm}`);
           }
-          const [t, success] = transform(
-            secondTerm,
-            symbol(NIL),
-            s,
-            generalTransform
-          );
+          const [t, success] = transform(secondTerm, symbol(NIL), s, generalTransform);
           transformationSuccessful = transformationSuccessful || success;
 
           transformedTerms.push(t);
@@ -204,9 +195,8 @@ export function transform(
       if (DEBUG) {
         console.log(`scanning table entry ${eachTransformEntry}`);
         if (
-          (eachTransformEntry + '').indexOf(
-            'f(sqrt(a+b*x),2/3*1/b*sqrt((a+b*x)^3))'
-          ) !== -1
+          (eachTransformEntry + '').indexOf('f(sqrt(a+b*x),2/3*1/b*sqrt((a+b*x)^3))') !==
+          -1
         ) {
           breakpoint;
         }
@@ -218,9 +208,7 @@ export function transform(
         B = caddr(temp);
         const p7 = cdddr(temp);
 
-        if (
-          f_equals_a([Constants.one, ...result], generalTransform, F, p5, p7)
-        ) {
+        if (f_equals_a([Constants.one, ...result], generalTransform, F, p5, p7)) {
           // there is a successful transformation, transformed result is in p6
           transformationSuccessful = true;
           break;
@@ -229,11 +217,7 @@ export function transform(
     }
   }
 
-  const temp = transformationSuccessful
-    ? Eval(B)
-    : generalTransform
-    ? F
-    : symbol(NIL);
+  const temp = transformationSuccessful ? Eval(B) : generalTransform ? F : symbol(NIL);
 
   restoreMetaBindings(state);
 
@@ -250,7 +234,7 @@ function saveMetaBindings(): TransformState {
   return {
     METAA: get_binding(symbol(METAA)),
     METAB: get_binding(symbol(METAB)),
-    METAX: get_binding(symbol(METAX)),
+    METAX: get_binding(symbol(METAX))
   };
 }
 
@@ -261,13 +245,7 @@ function restoreMetaBindings(state: TransformState) {
 }
 
 // search for a METAA and METAB such that F = A
-function f_equals_a(
-  stack: U[],
-  generalTransform: boolean,
-  F: U,
-  A: U,
-  C: U
-): boolean {
+function f_equals_a(stack: U[], generalTransform: boolean, F: U, A: U, C: U): boolean {
   for (const fea_i of stack) {
     set_binding(symbol(METAA), fea_i);
     if (DEBUG) {

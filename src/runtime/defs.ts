@@ -1,11 +1,10 @@
 import bigInt from 'big-integer';
-import {collectLatexStringFromReturnValue, print_expr,} from '../sources/print.js';
-import {symbol} from './symbol.js';
+import { collectLatexStringFromReturnValue, print_expr } from '../sources/print.js';
+import { symbol } from './symbol.js';
 
 export function breakpoint() {}
 
-// also change the version in the package.json file
-export const version = '2.0.1';
+export { version } from './version.js';
 
 const SELFTEST = 1;
 
@@ -194,7 +193,7 @@ export class Sym extends BaseAtom {
     super();
   }
 
-  public keyword:(p1:Cons)=>U;
+  public keyword: (p1: Cons) => U;
 }
 
 export type U = Cons | Num | Double | Str | Tensor | Sym;
@@ -288,7 +287,7 @@ export const INVG = 'invg';
 export const ISINTEGER = 'isinteger';
 export const ISPRIME = 'isprime';
 export const LAGUERRE = 'laguerre';
-//  LAPLACE = 
+//  LAPLACE =
 export const LCM = 'lcm';
 export const LEADING = 'leading';
 export const LEGENDRE = 'legendre';
@@ -441,7 +440,7 @@ export const predefinedSymbolsInGlobalScope_doNotTrackInDependencies = [
   'round',
   'sum',
   'test',
-  'unit',
+  'unit'
 ];
 
 // you can do some little simplifications
@@ -704,7 +703,7 @@ export function MEQUAL(p: bigInt.BigInteger, n: number): boolean {
 }
 
 export function reset_after_error() {
-    defs.esc_flag = false;
+  defs.esc_flag = false;
   draw_flag = false;
   defs.evaluatingAsFloats = false;
   defs.evaluatingPolar = false;
@@ -729,9 +728,7 @@ export class Constants {
   }
 
   public static NegOne(): Num | Double {
-    return defs.evaluatingAsFloats
-      ? Constants.negOneAsDouble
-      : Constants.negOne;
+    return defs.evaluatingAsFloats ? Constants.negOneAsDouble : Constants.negOne;
   }
 
   public static Zero(): Num | Double {
@@ -744,10 +741,7 @@ export class Constants {
 }
 
 // Call a function temporarily setting "expanding" to false
-export function noexpand<T extends any[], V>(
-  func: (...args: T) => V,
-  ...args: T
-): V {
+export function noexpand<T extends any[], V>(func: (...args: T) => V, ...args: T): V {
   const prev_expanding = defs.expanding;
   defs.expanding = false;
   try {
@@ -758,10 +752,7 @@ export function noexpand<T extends any[], V>(
 }
 
 // Call a function temporarily setting "expanding" to true
-export function doexpand<T extends any[], V>(
-  func: (...args: T) => V,
-  ...args: T
-): V {
+export function doexpand<T extends any[], V>(func: (...args: T) => V, ...args: T): V {
   const prev_expanding = defs.expanding;
   defs.expanding = true;
   try {
@@ -772,10 +763,7 @@ export function doexpand<T extends any[], V>(
 }
 
 // Call a function temporarily setting "evaluatingPolar" to true
-export function evalPolar<T extends any[], V>(
-  func: (...args: T) => V,
-  ...args: T
-): V {
+export function evalPolar<T extends any[], V>(func: (...args: T) => V, ...args: T): V {
   const prev_evaluatingPolar = defs.evaluatingPolar;
   defs.evaluatingPolar = true;
   try {
@@ -786,10 +774,7 @@ export function evalPolar<T extends any[], V>(
 }
 
 // Call a function temporarily setting "evaluatingAsFloats" to true
-export function evalFloats<T extends any[], V>(
-  func: (...args: T) => V,
-  ...args: T
-): V {
+export function evalFloats<T extends any[], V>(func: (...args: T) => V, ...args: T): V {
   const prev_evaluatingAsFloats = defs.evaluatingAsFloats;
   defs.evaluatingAsFloats = true;
   try {

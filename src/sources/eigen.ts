@@ -177,9 +177,7 @@ export function Eval_eigenvec(p1: U) {
 
 function EIG_check_arg(
   p1: U
-):
-  | { arg: Tensor<Double>; invalid?: undefined }
-  | { arg?: undefined; invalid: U } {
+): { arg: Tensor<Double>; invalid?: undefined } | { arg?: undefined; invalid: U } {
   p1 = Eval(yyfloat(Eval(cadr(p1))));
 
   if (!istensor(p1)) {
@@ -521,8 +519,7 @@ function step2(p: number, q: number) {
   // compute c and s
   // from Numerical Recipes (except they have a_qq - a_pp)
   const theta =
-    (0.5 * (EIG_yydd[EIG_N * p + p] - EIG_yydd[EIG_N * q + q])) /
-    EIG_yydd[EIG_N * p + q];
+    (0.5 * (EIG_yydd[EIG_N * p + p] - EIG_yydd[EIG_N * q + q])) / EIG_yydd[EIG_N * p + q];
   let t = 1.0 / (Math.abs(theta) + Math.sqrt(theta * theta + 1.0));
   if (theta < 0.0) {
     t = -t;

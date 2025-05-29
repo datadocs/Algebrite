@@ -12,7 +12,7 @@ import {
   U
 } from '../runtime/defs.js';
 import { jn } from '../runtime/otherCFunctions.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { subtract } from './add.js';
 import { double, integer, nativeInt, rational } from './bignum.js';
 import { cosine } from './cos.js';
@@ -127,10 +127,7 @@ function yybesselj(X: U, N: U): U {
   }
 
   if (isnegativeterm(N)) {
-    return multiply(
-      power(Constants.negOne, N),
-      makeList(symbol(BESSELJ), X, negate(N))
-    );
+    return multiply(power(Constants.negOne, N), makeList(symbol(BESSELJ), X, negate(N)));
   }
 
   return makeList(symbol(BESSELJ), X, N);

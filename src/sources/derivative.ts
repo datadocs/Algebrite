@@ -40,7 +40,7 @@ import {
 } from '../runtime/defs.js';
 import { Find } from '../runtime/find.js';
 import { stop } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { equal, exponential, length, lessp } from '../sources/misc.js';
 import { add, add_all, subtract } from './add.js';
 import { besselj } from './besselj.js';
@@ -407,10 +407,7 @@ function darccos(p1: U, p2: Sym): U {
   return negate(
     multiply(
       deriv,
-      power(
-        subtract(Constants.one, power(cadr(p1), integer(2))),
-        rational(-1, 2)
-      )
+      power(subtract(Constants.one, power(cadr(p1), integer(2))), rational(-1, 2))
     )
   );
 }
@@ -460,10 +457,7 @@ function darccosh(p1: U, p2: Sym): U {
 
 function darctanh(p1: U, p2: Sym): U {
   const deriv = derivative(cadr(p1), p2);
-  return multiply(
-    deriv,
-    inverse(subtract(Constants.one, power(cadr(p1), integer(2))))
-  );
+  return multiply(deriv, inverse(subtract(Constants.one, power(cadr(p1), integer(2)))));
 }
 
 function dabs(p1: U, p2: Sym): U {
@@ -521,10 +515,7 @@ function dbesselj(p1: U, p2: Sym): U {
 
 function dbesselj0(p1: U, p2: Sym): U {
   const deriv = derivative(cadr(p1), p2);
-  return multiply(
-    multiply(deriv, besselj(cadr(p1), Constants.one)),
-    Constants.negOne
-  );
+  return multiply(multiply(deriv, besselj(cadr(p1), Constants.one)), Constants.negOne);
 }
 
 function dbesseljn(p1: U, p2: Sym): U {
@@ -550,10 +541,7 @@ function dbessely(p1: U, p2: Sym): U {
 
 function dbessely0(p1: U, p2: Sym): U {
   const deriv = derivative(cadr(p1), p2);
-  return multiply(
-    multiply(deriv, besselj(cadr(p1), Constants.one)),
-    Constants.negOne
-  );
+  return multiply(multiply(deriv, besselj(cadr(p1), Constants.one)), Constants.negOne);
 }
 
 function dbesselyn(p1: U, p2: Sym): U {

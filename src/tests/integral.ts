@@ -736,7 +736,6 @@ run_test([
   'integral(x^2*(1-x^2)^(5/2))-(x*sqrt(1-x^2)*(48*x^6-136*x^4+118*x^2-15)+15*arcsin(x))/384',
   '0',
 
-
-  "integral(((((x)^(2))^(1/(3))))+(sqrt((x)^(3))),x)",
-  "Stop: integral: sorry, could not find a solution",
+  'integral(((((x)^(2))^(1/(3))))+(sqrt((x)^(3))),x)',
+  'Stop: integral: sorry, could not find a solution'
 ]);

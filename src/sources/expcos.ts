@@ -12,13 +12,7 @@ export function Eval_expcos(p1: U) {
 
 export function expcos(p1: U): U {
   return add(
-    multiply(
-      exponential(multiply(Constants.imaginaryunit, p1)),
-      rational(1, 2)
-    ),
-    multiply(
-      exponential(multiply(negate(Constants.imaginaryunit), p1)),
-      rational(1, 2)
-    )
+    multiply(exponential(multiply(Constants.imaginaryunit, p1)), rational(1, 2)),
+    multiply(exponential(multiply(negate(Constants.imaginaryunit), p1)), rational(1, 2))
   );
 }

@@ -11,7 +11,7 @@ import {
   ismultiply,
   ispower,
   isNumericAtom,
-  U,
+  U
 } from '../runtime/defs.js';
 import { cmp_expr, sign } from '../sources/misc.js';
 import { add } from './add.js';

@@ -27,5 +27,5 @@ run_test([
   // --- cleanup
 
   'f = quote(f)',
-  '',
+  ''
 ]);

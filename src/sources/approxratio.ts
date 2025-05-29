@@ -10,7 +10,7 @@ import {
   istensor,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { integer, rational } from './bignum.js';
 import { zzfloat } from './float.js';
 import { makeList } from './list.js';
@@ -39,10 +39,7 @@ function approxratioRecursive(expr: U): U {
     return approxOneRatioOnly(expr);
   }
   if (iscons(expr)) {
-    return new Cons(
-      approxratioRecursive(car(expr)),
-      approxratioRecursive(cdr(expr))
-    );
+    return new Cons(approxratioRecursive(car(expr)), approxratioRecursive(cdr(expr)));
   }
   return expr;
 }
@@ -76,10 +73,7 @@ function approxOneRatioOnly(p1: U): U {
 //   http://www.homeschoolmath.net/teaching/rational_numbers.php
 //   http://stackoverflow.com/questions/95727/how-to-convert-floats-to-human-readable-fractions
 
-function floatToRatioRoutine(
-  decimal: number,
-  AccuracyFactor: number
-): [number, number] {
+function floatToRatioRoutine(decimal: number, AccuracyFactor: number): [number, number] {
   if (isNaN(decimal)) {
     return [0, 0];
   }
@@ -118,16 +112,12 @@ function floatToRatioRoutine(
   while (true) {
     Z = 1.0 / (Z - Math.floor(Z));
     const temp = FractionDenominator;
-    FractionDenominator =
-      FractionDenominator * Math.floor(Z) + PreviousDenominator;
+    FractionDenominator = FractionDenominator * Math.floor(Z) + PreviousDenominator;
     PreviousDenominator = temp;
     FractionNumerator = Math.floor(decimal * FractionDenominator + 0.5);
     // Rounding Function
     if (
-      !(
-        Math.abs(decimal - FractionNumerator / FractionDenominator) >
-        AccuracyFactor
-      ) ||
+      !(Math.abs(decimal - FractionNumerator / FractionDenominator) > AccuracyFactor) ||
       Z === Math.floor(Z)
     ) {
       break;
@@ -163,7 +153,7 @@ function approxRationalsOfRadicals(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -198,13 +188,7 @@ function approxRationalsOfRadicals(theFloat: number): ApproxResult {
           minimumComplexity = complexity;
           const result = `${likelyMultiplier} * sqrt( ${i} ) / ${j}`;
           //console.log result + " error: " + error
-          bestResultSoFar = [
-            result,
-            approx_ratioOfRadical,
-            likelyMultiplier,
-            i,
-            j,
-          ];
+          bestResultSoFar = [result, approx_ratioOfRadical, likelyMultiplier, i, j];
         }
       }
     }
@@ -226,7 +210,7 @@ function approxRadicalsOfRationals(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -263,13 +247,7 @@ function approxRadicalsOfRationals(theFloat: number): ApproxResult {
           minimumComplexity = complexity;
           const result = `${likelyMultiplier} * (sqrt( ${i} / ${j} )`;
           //console.log result + " error: " + error
-          bestResultSoFar = [
-            result,
-            approx_radicalOfRatio,
-            likelyMultiplier,
-            i,
-            j,
-          ];
+          bestResultSoFar = [result, approx_radicalOfRatio, likelyMultiplier, i, j];
         }
       }
     }
@@ -291,7 +269,7 @@ export function approxRadicals(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -328,7 +306,7 @@ function approxLogs(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -362,7 +340,7 @@ export function approxRationalsOfLogs(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -399,8 +377,7 @@ export function approxRationalsOfLogs(theFloat: number): ApproxResult {
       // of the divisor.
       if (
         likelyMultiplier !== 1 &&
-        Math.abs(Math.floor(likelyMultiplier / j)) ===
-          Math.abs(likelyMultiplier / j)
+        Math.abs(Math.floor(likelyMultiplier / j)) === Math.abs(likelyMultiplier / j)
       ) {
         continue;
       }
@@ -417,7 +394,7 @@ export function approxRationalsOfLogs(theFloat: number): ApproxResult {
             approx_rationalsOfLogarithms,
             likelyMultiplier,
             i,
-            j,
+            j
           ];
         }
       }
@@ -440,7 +417,7 @@ function approxLogsOfRationals(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -479,7 +456,7 @@ function approxLogsOfRationals(theFloat: number): ApproxResult {
             approx_logarithmsOfRationals,
             likelyMultiplier,
             i,
-            j,
+            j
           ];
         }
       }
@@ -502,7 +479,7 @@ function approxRationalsOfPowersOfE(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -536,13 +513,7 @@ function approxRationalsOfPowersOfE(theFloat: number): ApproxResult {
           minimumComplexity = complexity;
           const result = `${likelyMultiplier} * (e ^ ${i} ) / ${j}`;
           //console.log result + " error: " + error
-          bestResultSoFar = [
-            result,
-            approx_rationalOfE,
-            likelyMultiplier,
-            i,
-            j,
-          ];
+          bestResultSoFar = [result, approx_rationalOfE, likelyMultiplier, i, j];
         }
       }
     }
@@ -564,7 +535,7 @@ function approxRationalsOfPowersOfPI(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -606,13 +577,7 @@ function approxRationalsOfPowersOfPI(theFloat: number): ApproxResult {
           minimumComplexity = complexity;
           const result = `${likelyMultiplier} * (pi ^ ${i} ) / ${j} )`;
           //console.log result + " error: " + error
-          bestResultSoFar = [
-            result,
-            approx_rationalOfPi,
-            likelyMultiplier,
-            i,
-            j,
-          ];
+          bestResultSoFar = [result, approx_rationalOfPi, likelyMultiplier, i, j];
         }
       }
     }
@@ -635,7 +600,7 @@ function approxTrigonometric(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -647,9 +612,8 @@ function approxTrigonometric(theFloat: number): ApproxResult {
     return approxSineOfRationalsResult;
   }
 
-  const approxSineOfRationalMultiplesOfPIResult = approxSineOfRationalMultiplesOfPI(
-    theFloat
-  );
+  const approxSineOfRationalMultiplesOfPIResult =
+    approxSineOfRationalMultiplesOfPI(theFloat);
   if (approxSineOfRationalMultiplesOfPIResult != null) {
     return approxSineOfRationalMultiplesOfPIResult;
   }
@@ -670,7 +634,7 @@ function approxSineOfRationals(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -709,13 +673,7 @@ function approxSineOfRationals(theFloat: number): ApproxResult {
           minimumComplexity = complexity;
           const result = `${likelyMultiplier} * sin( ${i}/${j} )`;
           //console.log result + " error: " + error
-          bestResultSoFar = [
-            result,
-            approx_sine_of_rational,
-            likelyMultiplier,
-            i,
-            j,
-          ];
+          bestResultSoFar = [result, approx_sine_of_rational, likelyMultiplier, i, j];
         }
       }
     }
@@ -737,7 +695,7 @@ function approxSineOfRationalMultiplesOfPI(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -778,7 +736,7 @@ function approxSineOfRationalMultiplesOfPI(theFloat: number): ApproxResult {
             approx_sine_of_pi_times_rational,
             likelyMultiplier,
             i,
-            j,
+            j
           ];
         }
       }
@@ -801,7 +759,7 @@ export function approxAll(theFloat: number): ApproxResult {
       approx_just_an_integer,
       Math.floor(theFloat),
       1,
-      2,
+      2
     ];
   }
 
@@ -873,9 +831,7 @@ export function approxAll(theFloat: number): ApproxResult {
     }
   }
 
-  const approxRationalsOfPowersOfPIResult = approxRationalsOfPowersOfPI(
-    theFloat
-  );
+  const approxRationalsOfPowersOfPIResult = approxRationalsOfPowersOfPI(theFloat);
   if (approxRationalsOfPowersOfPIResult != null) {
     constantsSum = simpleComplexityMeasure(approxRationalsOfPowersOfPIResult);
     if (constantsSum < constantsSumMin) {
@@ -920,11 +876,7 @@ export function approxAll(theFloat: number): ApproxResult {
 
 function simpleComplexityMeasure(arr: ApproxResult): number;
 function simpleComplexityMeasure(a: number, b: number, c: number): number;
-function simpleComplexityMeasure(
-  aResult: number | ApproxResult,
-  b?: number,
-  c?: number
-) {
+function simpleComplexityMeasure(aResult: number | ApproxResult, b?: number, c?: number) {
   let theSum = 0;
 
   if (aResult instanceof Array) {
@@ -949,8 +901,7 @@ function simpleComplexityMeasure(
         theSum = 0;
     }
 
-    theSum +=
-      Math.abs(aResult[2]) * (Math.abs(aResult[3]) + Math.abs(aResult[4]));
+    theSum += Math.abs(aResult[2]) * (Math.abs(aResult[3]) + Math.abs(aResult[4]));
   } else {
     theSum += Math.abs(aResult) * (Math.abs(b) + Math.abs(c));
   }
@@ -992,8 +943,7 @@ export function testApprox() {
       const fraction = i / j;
       const value = Math.sqrt(i) / j;
       const returned = approxRadicals(value);
-      const returnedValue =
-        (returned[2] * Math.sqrt(returned[3])) / returned[4];
+      const returnedValue = (returned[2] * Math.sqrt(returned[3])) / returned[4];
       if (Math.abs(value - returnedValue) > 1e-15) {
         console.log(
           `fail testapproxRadicals: 1 * sqrt( ${i} ) / ${j} . obtained: ${returned}`
@@ -1007,15 +957,12 @@ export function testApprox() {
       if (i === j) {
         continue;
       } // this is just 1
-      console.log(
-        `testapproxRadicals testing with 4 digits: 1 * sqrt( ${i} ) / ${j}`
-      );
+      console.log(`testapproxRadicals testing with 4 digits: 1 * sqrt( ${i} ) / ${j}`);
       const fraction = i / j;
       const originalValue = Math.sqrt(i) / j;
       const value = originalValue.toFixed(4);
       const returned = approxRadicals(Number(value));
-      const returnedValue =
-        (returned[2] * Math.sqrt(returned[3])) / returned[4];
+      const returnedValue = (returned[2] * Math.sqrt(returned[3])) / returned[4];
       if (Math.abs(originalValue - returnedValue) > 1e-15) {
         console.log(
           `fail testapproxRadicals with 4 digits: 1 * sqrt( ${i} ) / ${j} . obtained: ${returned}`
@@ -1034,8 +981,7 @@ export function testApprox() {
       const value = Math.sqrt(i / j);
       const returned = approxRadicals(value);
       if (returned != null) {
-        const returnedValue =
-          returned[2] * Math.sqrt(returned[3] / returned[4]);
+        const returnedValue = returned[2] * Math.sqrt(returned[3] / returned[4]);
         if (
           returned[1] === approx_radicalOfRatio &&
           Math.abs(value - returnedValue) > 1e-15
@@ -1053,9 +999,7 @@ export function testApprox() {
       if (i === 1 && j === 1) {
         continue;
       }
-      console.log(
-        `testapproxRadicals testing with 4 digits:: 1 * sqrt( ${i} / ${j} )`
-      );
+      console.log(`testapproxRadicals testing with 4 digits:: 1 * sqrt( ${i} / ${j} )`);
       const fraction = i / j;
       const originalValue = Math.sqrt(i / j);
       const value = originalValue.toFixed(4);
@@ -1080,9 +1024,7 @@ export function testApprox() {
       const returned = approxAll(value);
       const returnedValue = (returned[2] * Math.log(returned[3])) / returned[4];
       if (Math.abs(value - returnedValue) > 1e-15) {
-        console.log(
-          `fail testApproxAll: 1 * log(${i} ) / ${j} . obtained: ${returned}`
-        );
+        console.log(`fail testApproxAll: 1 * log(${i} ) / ${j} . obtained: ${returned}`);
       }
     }
   }
@@ -1111,9 +1053,7 @@ export function testApprox() {
       const returned = approxAll(value);
       const returnedValue = returned[2] * Math.log(returned[3] / returned[4]);
       if (Math.abs(value - returnedValue) > 1e-15) {
-        console.log(
-          `fail testApproxAll: 1 * log(${i} / ${j} ) . obtained: ${returned}`
-        );
+        console.log(`fail testApproxAll: 1 * log(${i} / ${j} ) . obtained: ${returned}`);
       }
     }
   }
@@ -1140,12 +1080,9 @@ export function testApprox() {
       const fraction = i / j;
       const value = Math.pow(Math.E, i) / j;
       const returned = approxAll(value);
-      const returnedValue =
-        (returned[2] * Math.pow(Math.E, returned[3])) / returned[4];
+      const returnedValue = (returned[2] * Math.pow(Math.E, returned[3])) / returned[4];
       if (Math.abs(value - returnedValue) > 1e-15) {
-        console.log(
-          `fail testApproxAll: 1 * (e ^ ${i} ) / ${j} . obtained: ${returned}`
-        );
+        console.log(`fail testApproxAll: 1 * (e ^ ${i} ) / ${j} . obtained: ${returned}`);
       }
     }
   }
@@ -1159,8 +1096,7 @@ export function testApprox() {
       const originalValue = Math.pow(Math.E, i) / j;
       const value = originalValue.toFixed(4);
       const returned = approxRationalsOfPowersOfE(Number(value));
-      const returnedValue =
-        (returned[2] * Math.pow(Math.E, returned[3])) / returned[4];
+      const returnedValue = (returned[2] * Math.pow(Math.E, returned[3])) / returned[4];
       if (Math.abs(originalValue - returnedValue) > 1e-15) {
         console.log(
           `fail approxRationalsOfPowersOfE with 4 digits: 1 * (e ^ ${i} ) / ${j} . obtained: ${returned}`
@@ -1175,12 +1111,9 @@ export function testApprox() {
       const fraction = i / j;
       const value = Math.pow(Math.PI, i) / j;
       const returned = approxAll(value);
-      const returnedValue =
-        (returned[2] * Math.pow(Math.PI, returned[3])) / returned[4];
+      const returnedValue = (returned[2] * Math.pow(Math.PI, returned[3])) / returned[4];
       if (Math.abs(value - returnedValue) > 1e-15) {
-        console.log(
-          `fail testApproxAll: 1 * pi ^ ${i} / ${j} ) . obtained: ${returned}`
-        );
+        console.log(`fail testApproxAll: 1 * pi ^ ${i} / ${j} ) . obtained: ${returned}`);
       }
     }
   }
@@ -1194,8 +1127,7 @@ export function testApprox() {
       const originalValue = Math.pow(Math.PI, i) / j;
       const value = originalValue.toFixed(4);
       const returned = approxRationalsOfPowersOfPI(Number(value));
-      const returnedValue =
-        (returned[2] * Math.pow(Math.PI, returned[3])) / returned[4];
+      const returnedValue = (returned[2] * Math.pow(Math.PI, returned[3])) / returned[4];
       if (Math.abs(originalValue - returnedValue) > 1e-15) {
         console.log(
           `fail approxRationalsOfPowersOfPI with 4 digits: 1 * pi ^ ${i} / ${j} ) . obtained: ${returned}`
@@ -1213,9 +1145,7 @@ export function testApprox() {
       const returnedFraction = returned[3] / returned[4];
       const returnedValue = returned[2] * Math.sin(returnedFraction);
       if (Math.abs(value - returnedValue) > 1e-15) {
-        console.log(
-          `fail testApproxAll: 1 * sin( ${i}/${j} ) . obtained: ${returned}`
-        );
+        console.log(`fail testApproxAll: 1 * sin( ${i}/${j} ) . obtained: ${returned}`);
       }
     }
   }
@@ -1497,9 +1427,7 @@ export function testApprox() {
         continue;
       }
 
-      console.log(
-        `approxTrigonometric testing with 4 digits: 1 * sin( ${i}/${j} * pi )`
-      );
+      console.log(`approxTrigonometric testing with 4 digits: 1 * sin( ${i}/${j} * pi )`);
       const fraction = i / j;
       const originalValue = Math.sin(Math.PI * fraction);
       const value = originalValue.toFixed(4);

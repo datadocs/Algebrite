@@ -14,7 +14,7 @@ import {
   isfloating,
   isnegativeterm,
   ispolyexpandedform,
-  isZeroAtomOrTensor,
+  isZeroAtomOrTensor
 } from './is.js';
 import {
   divide,
@@ -22,7 +22,7 @@ import {
   multiply_noexpand,
   negate,
   negate_noexpand,
-  reciprocate,
+  reciprocate
 } from './multiply.js';
 import { power } from './power.js';
 import { print_list } from './print.js';

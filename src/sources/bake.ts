@@ -14,13 +14,13 @@ import {
   SYMBOL_X,
   SYMBOL_Y,
   SYMBOL_Z,
-  U,
+  U
 } from '../runtime/defs.js';
 import { integer } from './bignum.js';
 import { coeff } from './coeff.js';
 import { equaln, ispolyexpandedform, isZeroAtomOrTensor } from './is.js';
 import { makeList } from './list.js';
-import {symbol} from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 
 export function bake(p1: U): U {
   return doexpand(_bake, p1);

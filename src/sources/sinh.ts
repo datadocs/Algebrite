@@ -1,13 +1,5 @@
-import {
-  ARCSINH,
-  cadr,
-  car,
-  Constants,
-  isdouble,
-  SINH,
-  U
-} from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { ARCSINH, cadr, car, Constants, isdouble, SINH, U } from '../runtime/defs.js';
+import { symbol } from '../runtime/symbol.js';
 import { double } from './bignum.js';
 import { Eval } from './eval.js';
 import { isZeroAtomOrTensor } from './is.js';

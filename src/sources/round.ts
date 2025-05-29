@@ -1,12 +1,5 @@
-import {
-  cadr,
-  Double,
-  isdouble,
-  isNumericAtom,
-  ROUND,
-  U
-} from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { cadr, Double, isdouble, isNumericAtom, ROUND, U } from '../runtime/defs.js';
+import { symbol } from '../runtime/symbol.js';
 import { double, integer } from './bignum.js';
 import { Eval } from './eval.js';
 import { yyfloat } from './float.js';

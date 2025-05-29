@@ -2,14 +2,16 @@ import {
   caadr,
   cadadr,
   caddr,
-  cadr, Constants,
+  cadr,
+  Constants,
   FACTORIAL,
   isadd,
   isfactorial,
   ismultiply,
-  ispower, U
+  ispower,
+  U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { equal } from '../sources/misc.js';
 import { add, add_all, subtract } from './add.js';
 import { Eval } from './eval.js';

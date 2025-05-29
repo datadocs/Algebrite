@@ -124,13 +124,13 @@ run_test([
   '(x^2+x+1)*(x^2-2*x+5)',
 
   // https://github.com/davidedc/Algebrite/issues/113
-  "factor((x^3+x^2+x)*(y^3+y^2),x,y)",
-  "x*y^2*(x^2+x+1)*(y+1)",
+  'factor((x^3+x^2+x)*(y^3+y^2),x,y)',
+  'x*y^2*(x^2+x+1)*(y+1)',
 
   // clean up
   'a = quote(a)',
   '',
 
   'f = quote(f)',
-  '',
+  ''
 ]);

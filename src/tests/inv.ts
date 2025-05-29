@@ -17,5 +17,5 @@ run_test([
   'inner(inv(c),inner(inv(b),inv(a)))',
 
   'inv(I)',
-  'I',
+  'I'
 ]);

@@ -23,9 +23,6 @@ export function polar(p1: U): U {
   // here to avoid that, so we don't undo the
   // work that we are trying to do.
   return evalPolar(() => {
-    return multiply(
-      abs(p1),
-      exponential(multiply(Constants.imaginaryunit, arg(p1)))
-    );
+    return multiply(abs(p1), exponential(multiply(Constants.imaginaryunit, arg(p1))));
   });
 }

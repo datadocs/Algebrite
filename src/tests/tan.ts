@@ -165,5 +165,5 @@ run_test([
   // check the default case
 
   'tan(1/12*pi)',
-  'tan(1/12*pi)',
+  'tan(1/12*pi)'
 ]);

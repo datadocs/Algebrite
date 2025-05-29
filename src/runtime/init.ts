@@ -36,7 +36,8 @@ import { Eval_eigen, Eval_eigenval, Eval_eigenvec } from '../sources/eigen.js';
 import { Eval_erf } from '../sources/erf.js';
 import { Eval_erfc } from '../sources/erfc.js';
 import {
-  Eval, Eval_binding,
+  Eval,
+  Eval_binding,
   Eval_check,
   Eval_det,
   Eval_dim,
@@ -88,11 +89,24 @@ import { Eval_multiply } from '../sources/multiply.js';
 import { Eval_nroots } from '../sources/nroots.js';
 import { Eval_numerator } from '../sources/numerator.js';
 import { Eval_outer } from '../sources/outer.js';
-import { Eval_clearpatterns, Eval_pattern, Eval_patternsinfo, Eval_silentpattern } from '../sources/pattern.js';
+import {
+  Eval_clearpatterns,
+  Eval_pattern,
+  Eval_patternsinfo,
+  Eval_silentpattern
+} from '../sources/pattern.js';
 import { Eval_polar } from '../sources/polar.js';
 import { Eval_power } from '../sources/power.js';
 import { Eval_prime } from '../sources/prime.js';
-import { Eval_print, Eval_print2dascii, Eval_printcomputer, Eval_printhuman, Eval_printlatex, Eval_printlist, print_list } from '../sources/print.js';
+import {
+  Eval_print,
+  Eval_print2dascii,
+  Eval_printcomputer,
+  Eval_printhuman,
+  Eval_printlatex,
+  Eval_printlist,
+  print_list
+} from '../sources/print.js';
 import { Eval_product } from '../sources/product.js';
 import { Eval_quotient } from '../sources/quotient.js';
 import { Eval_rationalize } from '../sources/rationalize.js';
@@ -110,7 +124,17 @@ import { Eval_sum } from '../sources/sum.js';
 import { Eval_tan } from '../sources/tan.js';
 import { Eval_tanh } from '../sources/tanh.js';
 import { Eval_taylor } from '../sources/taylor.js';
-import { Eval_and, Eval_not, Eval_or, Eval_test, Eval_testeq, Eval_testge, Eval_testgt, Eval_testle, Eval_testlt } from '../sources/test.js';
+import {
+  Eval_and,
+  Eval_not,
+  Eval_or,
+  Eval_test,
+  Eval_testeq,
+  Eval_testge,
+  Eval_testgt,
+  Eval_testle,
+  Eval_testlt
+} from '../sources/test.js';
 import { Eval_transpose } from '../sources/transpose.js';
 import { Eval_zero } from '../sources/zero.js';
 import {
@@ -295,13 +319,13 @@ import {
   TRACE,
   TRANSPOSE,
   UNIT,
-  version,
   VERSION,
   YYE,
   YYRECT,
   ZERO
 } from './defs.js';
 import { Eval_symbolsinfo, reset_symbols, std_symbol, symbol } from './symbol.js';
+import { version } from './version.js';
 
 let init_flag = 0;
 
@@ -380,7 +404,7 @@ const defn_str = [
   // In engineering, biology, astronomy, "log" can stand instead
   // for the "common" logarithm i.e. base 10. Also note that Google
   // calculations use log for the common logarithm.
-  'ln(x)=log(x)',
+  'ln(x)=log(x)'
 ];
 
 export function defn() {

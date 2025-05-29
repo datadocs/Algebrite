@@ -17,5 +17,5 @@ run_test([
   '"hey"^2',
 
   '"aaaaaaaaaa\nbbbbbbbbbb"',
-  '"aaaaaaaaaa\nbbbbbbbbbb"',
+  '"aaaaaaaaaa\nbbbbbbbbbb"'
 ]);

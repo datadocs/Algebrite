@@ -3,7 +3,7 @@ import { zero_matrix } from '../sources/misc.js';
 import { integer, nativeInt } from './bignum.js';
 import { makeList } from './list.js';
 import { inverse } from './multiply.js';
-import {symbol} from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 
 //-----------------------------------------------------------------------------
 //

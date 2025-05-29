@@ -1,13 +1,6 @@
-import {
-  BESSELY,
-  caddr,
-  cadr,
-  Constants,
-  isdouble,
-  U
-} from '../runtime/defs.js';
+import { BESSELY, caddr, cadr, Constants, isdouble, U } from '../runtime/defs.js';
 import { yn } from '../runtime/otherCFunctions.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { double, nativeInt } from './bignum.js';
 import { Eval } from './eval.js';
 import { isnegativeterm } from './is.js';
@@ -48,10 +41,7 @@ function yybessely(X: U, N: U): U {
   }
 
   if (isnegativeterm(N)) {
-    return multiply(
-      power(Constants.negOne, N),
-      makeList(symbol(BESSELY), X, negate(N))
-    );
+    return multiply(power(Constants.negOne, N), makeList(symbol(BESSELY), X, negate(N)));
   }
 
   return makeList(symbol(BESSELY), X, N);

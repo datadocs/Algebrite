@@ -8,7 +8,7 @@ import { check_tensor_dimensions } from './tensor.js';
 // is the object to be indexed, followed by the indices themselves.
 
 // called by Eval_index
-export function index_function(p1: Tensor, indices:U[]):U {
+export function index_function(p1: Tensor, indices: U[]): U {
   const { ndim } = p1.tensor;
 
   const m = indices.length;
@@ -50,17 +50,14 @@ export function index_function(p1: Tensor, indices:U[]):U {
   return p2;
 }
 
-
-export function set_component(RVALUE:U, ...args:U[]):U {
+export function set_component(RVALUE: U, ...args: U[]): U {
   if (args.length < 2) {
     stop('error in indexed assign');
   }
-  let[LVALUE, ...indices] = args;
+  let [LVALUE, ...indices] = args;
 
   if (!istensor(LVALUE)) {
-    stop(
-      'error in indexed assign: assigning to something that is not a tensor'
-    );
+    stop('error in indexed assign: assigning to something that is not a tensor');
   }
 
   const { ndim } = LVALUE.tensor;

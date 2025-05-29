@@ -1,5 +1,5 @@
 import { cadr, Constants, POWER, U } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { abs } from './abs.js';
 import { arg } from './arg.js';
 import { Eval } from './eval.js';
@@ -39,11 +39,7 @@ export function clockform(p1: U): U {
   // that we can't use "power", as "power" evaluates
   // clock forms into rectangular form (see "-1 ^ rational"
   // section in power)
-  const l = makeList(
-    symbol(POWER),
-    Constants.negOne,
-    divide(arg(p1), Constants.Pi())
-  );
+  const l = makeList(symbol(POWER), Constants.negOne, divide(arg(p1), Constants.Pi()));
   const multiplied = multiply(abs(p1), l);
 
   if (DEBUG_CLOCKFORM) {

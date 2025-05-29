@@ -5,5 +5,5 @@ run_test([
   '0',
 
   'quotient(a*x^2+b*x+c,d*x+e)-(-a*e/(d^2)+a*x/d+b/d)',
-  '0',
+  '0'
 ]);

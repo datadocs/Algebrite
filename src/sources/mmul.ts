@@ -1,15 +1,9 @@
 // Bignum multiplication and division
-export function mmul(
-  a: bigInt.BigInteger,
-  b: bigInt.BigInteger
-): bigInt.BigInteger {
+export function mmul(a: bigInt.BigInteger, b: bigInt.BigInteger): bigInt.BigInteger {
   return a.multiply(b);
 }
 
-export function mdiv(
-  a: bigInt.BigInteger,
-  b: bigInt.BigInteger
-): bigInt.BigInteger {
+export function mdiv(a: bigInt.BigInteger, b: bigInt.BigInteger): bigInt.BigInteger {
   return a.divide(b);
 }
 
@@ -59,10 +53,7 @@ mulf(unsigned int *a, unsigned int *b, int len, unsigned int c)
   a[i] = (unsigned int) t
 }
 */
-export function mmod(
-  a: bigInt.BigInteger,
-  b: bigInt.BigInteger
-): bigInt.BigInteger {
+export function mmod(a: bigInt.BigInteger, b: bigInt.BigInteger): bigInt.BigInteger {
   return a.mod(b);
 }
 

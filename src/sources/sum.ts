@@ -1,12 +1,4 @@
-import {
-  caddddr,
-  cadddr,
-  caddr,
-  cadr,
-  Constants,
-  issymbol,
-  U
-} from '../runtime/defs.js';
+import { caddddr, cadddr, caddr, cadr, Constants, issymbol, U } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
 import { get_binding, set_binding } from '../runtime/symbol.js';
 import { add } from './add.js';

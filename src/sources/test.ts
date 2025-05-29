@@ -13,14 +13,11 @@ import {
   Sign,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { subtract } from './add.js';
 import { Eval } from './eval.js';
 import { yyfloat } from './float.js';
-import {
-  isZeroAtomOrTensor,
-  isZeroLikeOrNonZeroLikeOrUndetermined
-} from './is.js';
+import { isZeroAtomOrTensor, isZeroLikeOrNonZeroLikeOrUndetermined } from './is.js';
 import { simplify } from './simplify.js';
 
 // If the number of args is odd then the last arg is the default result.
@@ -204,9 +201,7 @@ export function Eval_and(p1: U) {
   let somePredicateUnknown = false;
   while (iscons(andPredicates)) {
     // eval each predicate
-    const checkResult = isZeroLikeOrNonZeroLikeOrUndetermined(
-      car(andPredicates)
-    );
+    const checkResult = isZeroLikeOrNonZeroLikeOrUndetermined(car(andPredicates));
 
     if (checkResult == null) {
       // here we have stuff that is not reconducible to any
@@ -249,9 +244,7 @@ export function Eval_or(p1: U) {
   let somePredicateUnknown = false;
   while (iscons(orPredicates)) {
     // eval each predicate
-    const checkResult = isZeroLikeOrNonZeroLikeOrUndetermined(
-      car(orPredicates)
-    );
+    const checkResult = isZeroLikeOrNonZeroLikeOrUndetermined(car(orPredicates));
 
     if (checkResult == null) {
       // here we have stuff that is not reconducible to any

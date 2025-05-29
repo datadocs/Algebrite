@@ -10,7 +10,7 @@ import {
   Num,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { add } from './add.js';
 import { rational } from './bignum.js';
 import { Eval } from './eval.js';
@@ -53,10 +53,7 @@ function gammaf(p1: U): U {
   if (isnegativeterm(p1)) {
     return divide(
       multiply(Constants.Pi(), Constants.negOne),
-      multiply(
-        multiply(sine(multiply(Constants.Pi(), p1)), p1),
-        gamma(negate(p1))
-      )
+      multiply(multiply(sine(multiply(Constants.Pi(), p1)), p1), gamma(negate(p1)))
     );
   }
 

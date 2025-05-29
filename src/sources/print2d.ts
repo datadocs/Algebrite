@@ -32,10 +32,10 @@ import {
   Str,
   Sym,
   Tensor,
-  U,
+  U
 } from '../runtime/defs.js';
 import { doubleToReasonableString } from '../runtime/otherCFunctions.js';
-import {get_printname, symbol} from '../runtime/symbol.js';
+import { get_printname, symbol } from '../runtime/symbol.js';
 import { absval } from './abs.js';
 import { mp_denominator, mp_numerator } from './bignum.js';
 import { isfraction, isminusone, isnegativenumber, isplusone } from './is.js';
@@ -738,13 +738,7 @@ function emit_index_function(p: U) {
 
 function emit_factorial_function(p: U) {
   p = cadr(p);
-  if (
-    isfraction(p) ||
-    isadd(p) ||
-    ismultiply(p) ||
-    ispower(p) ||
-    isfactorial(p)
-  ) {
+  if (isfraction(p) || isadd(p) || ismultiply(p) || ispower(p) || isfactorial(p)) {
     emit_subexpr(p);
   } else {
     emit_expr(p);
@@ -1047,9 +1041,7 @@ function emit_tensor(p: Tensor<U>) {
     elem[i].x = emit_x;
     emit_expr(p.tensor.elem[i]);
     elem[i].count = yindex - elem[i].index;
-    [elem[i].h, elem[i].w, elem[i].y] = Array.from(
-      get_size(elem[i].index, yindex)
-    );
+    [elem[i].h, elem[i].w, elem[i].y] = Array.from(get_size(elem[i].index, yindex));
   }
 
   // find element height and width

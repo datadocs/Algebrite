@@ -11,7 +11,7 @@ import {
   SIN,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { add, subtract } from './add.js';
 import { double, integer, nativeInt, rational } from './bignum.js';
 import { cosine } from './cos.js';

@@ -32,10 +32,7 @@ export function qadd(qadd_frac1: Num, qadd_frac2: Num): Num | Double {
 
   const qadd_denominator = mmul(qadd_frac1.q.b, qadd_frac2.q.b);
 
-  let gcdBetweenNumeratorAndDenominator = mgcd(
-    qadd_numerator,
-    qadd_denominator
-  );
+  let gcdBetweenNumeratorAndDenominator = mgcd(qadd_numerator, qadd_denominator);
   //console.log "gcd("+qadd_numerator+","+qadd_denominator+"): " + gcdBetweenNumeratorAndDenominator
 
   gcdBetweenNumeratorAndDenominator = makeSignSameAs(

@@ -9,7 +9,7 @@ import {
   MZERO,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { Eval } from './eval.js';
 import { isnegativeterm } from './is.js';
 import { makeList } from './list.js';

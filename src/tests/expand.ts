@@ -87,5 +87,5 @@ run_test([
   // multiplications, expand does something
   // different.
   'expand(expand((sin(x)+1)^2))',
-  '1+sin(x)^2+2*sin(x)',
+  '1+sin(x)^2+2*sin(x)'
 ]);

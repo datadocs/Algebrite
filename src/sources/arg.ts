@@ -120,9 +120,7 @@ function yyarg(p1: U): U {
 
   if (isnegativenumber(p1)) {
     const pi =
-      isdouble(p1) || defs.evaluatingAsFloats
-        ? Constants.piAsDouble
-        : symbol(PI);
+      isdouble(p1) || defs.evaluatingAsFloats ? Constants.piAsDouble : symbol(PI);
     return negate(pi);
   }
 

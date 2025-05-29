@@ -1,12 +1,4 @@
-import {
-  caddddr,
-  cadddr,
-  caddr,
-  cadr,
-  issymbol,
-  NIL,
-  U
-} from '../runtime/defs.js';
+import { caddddr, cadddr, caddr, cadr, issymbol, NIL, U } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
 import { get_binding, set_binding, symbol } from '../runtime/symbol.js';
 import { integer, nativeInt } from './bignum.js';

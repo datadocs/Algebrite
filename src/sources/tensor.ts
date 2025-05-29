@@ -13,7 +13,7 @@ import {
   U
 } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { equal, lessp } from '../sources/misc.js';
 import { add } from './add.js';
 import { nativeInt } from './bignum.js';
@@ -178,12 +178,8 @@ export function check_tensor_dimensions(p: Tensor) {
   }
 }
 
-export function is_square_matrix(
-  p: U
-): p is Tensor & { ndim: 2; square: true } {
-  return (
-    istensor(p) && p.tensor.ndim === 2 && p.tensor.dim[0] === p.tensor.dim[1]
-  );
+export function is_square_matrix(p: U): p is Tensor & { ndim: 2; square: true } {
+  return istensor(p) && p.tensor.ndim === 2 && p.tensor.dim[0] === p.tensor.dim[1];
 }
 
 //-----------------------------------------------------------------------------
@@ -370,9 +366,7 @@ function promote_tensor(p1: U): U {
   const p3 = alloc_tensor(nelem);
   p3.tensor.ndim = ndim;
   p3.tensor.dim = [...p1.tensor.dim, ...p2.tensor.dim];
-  p3.tensor.elem = [].concat(
-    ...p1.tensor.elem.map((el: Tensor) => el.tensor.elem)
-  );
+  p3.tensor.elem = [].concat(...p1.tensor.elem.map((el: Tensor) => el.tensor.elem));
 
   check_tensor_dimensions(p2);
   check_tensor_dimensions(p3);

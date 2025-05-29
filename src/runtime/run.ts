@@ -1,13 +1,8 @@
 import { bake } from '../sources/bake.js';
-import {
-  do_clearall,
-} from '../sources/clear.js';
+import { do_clearall } from '../sources/clear.js';
 import { Eval } from '../sources/eval.js';
 import { isimaginaryunit, isZeroAtomOrTensor } from '../sources/is.js';
-import {
-  collectLatexStringFromReturnValue,
-  print_expr,
-} from '../sources/print.js';
+import { collectLatexStringFromReturnValue, print_expr } from '../sources/print.js';
 import { print2dascii } from '../sources/print2d.js';
 import { scan } from '../sources/scan.js';
 import { simplifyForCodeGeneration } from '../sources/simplify.js';
@@ -33,15 +28,16 @@ import {
   SYMBOL_I,
   SYMBOL_J,
   transpose_unicode,
-  U,
+  U
 } from './defs.js';
 import { init } from './init.js';
 import {
   clearRenamedVariablesToAvoidBindingToExternalScope,
   collectUserSymbols,
   get_binding,
-  set_binding, symbol,
-  usr_symbol,
+  set_binding,
+  symbol,
+  usr_symbol
 } from './symbol.js';
 
 //jmp_buf stop_return, draw_stop_return
@@ -128,7 +124,7 @@ export function findDependenciesInScript(
   // lump them all together.
   const dependencyInfo = {
     affectsVariables: [],
-    affectedBy: [],
+    affectedBy: []
   };
 
   const stringToBeRun = stringToBeParsed;
@@ -259,10 +255,7 @@ export function findDependenciesInScript(
         defs.codeGen = true;
         if (DEBUG) {
           console.log(
-            '  variable ' +
-              key +
-              ' is: ' +
-              get_binding(usr_symbol(key)).toString()
+            '  variable ' + key + ' is: ' + get_binding(usr_symbol(key)).toString()
           );
         }
         defs.codeGen = false;
@@ -303,9 +296,7 @@ export function findDependenciesInScript(
         }
 
         if (DEBUG) {
-          console.log(
-            `  code generation:${key} is: ${get_binding(usr_symbol(key))}`
-          );
+          console.log(`  code generation:${key} is: ${get_binding(usr_symbol(key))}`);
         }
 
         // we really want to make an extra effort
@@ -402,9 +393,7 @@ export function findDependenciesInScript(
 
           if (variablesWithCycles.indexOf(key) !== -1) {
             generatedCode +=
-              '// ' +
-              key +
-              ' is part of a cyclic dependency, no code generated.';
+              '// ' + key + ' is part of a cyclic dependency, no code generated.';
             readableSummaryOfGeneratedCode +=
               '#' + key + ' is part of a cyclic dependency, no code generated.';
           } else {
@@ -465,10 +454,7 @@ export function findDependenciesInScript(
                 generatedBody +
                 ' ); }';
               readableSummaryOfGeneratedCode +=
-                key +
-                parameters +
-                ' = ' +
-                bodyForReadableSummaryOfGeneratedCode;
+                key + parameters + ' = ' + bodyForReadableSummaryOfGeneratedCode;
             } else {
               generatedCode += key + ' = ' + generatedBody + ';';
               readableSummaryOfGeneratedCode +=
@@ -489,10 +475,7 @@ export function findDependenciesInScript(
 
   // eliminate the last new line
   generatedCode = generatedCode.replace(/\n$/gm, '');
-  readableSummaryOfGeneratedCode = readableSummaryOfGeneratedCode.replace(
-    /\n$/gm,
-    ''
-  );
+  readableSummaryOfGeneratedCode = readableSummaryOfGeneratedCode.replace(/\n$/gm, '');
 
   // cleanup
   defs.symbolsDependencies = {};
@@ -519,7 +502,7 @@ export function findDependenciesInScript(
     readableSummaryOfGeneratedCode,
     scriptEvaluation[1],
     defs.errorMessage,
-    dependencyInfo,
+    dependencyInfo
   ];
 }
 
@@ -534,14 +517,11 @@ function recursiveDependencies(
   variablesAlreadyFleshedOut.push(variableToBeChecked);
 
   // recursive dependencies can only be descended if the variable is not bound to a parameter
-  if (
-    defs.symbolsDependencies[chainBeingChecked[chainBeingChecked.length - 1]] !=
-    null
-  ) {
+  if (defs.symbolsDependencies[chainBeingChecked[chainBeingChecked.length - 1]] != null) {
     if (
-      defs.symbolsDependencies[
-        chainBeingChecked[chainBeingChecked.length - 1]
-      ].indexOf("'" + variableToBeChecked) !== -1
+      defs.symbolsDependencies[chainBeingChecked[chainBeingChecked.length - 1]].indexOf(
+        "'" + variableToBeChecked
+      ) !== -1
     ) {
       if (DEBUG) {
         console.log(
@@ -551,8 +531,7 @@ function recursiveDependencies(
         );
       }
       if (
-        arrayWhereDependenciesWillBeAdded.indexOf("'" + variableToBeChecked) ===
-          -1 &&
+        arrayWhereDependenciesWillBeAdded.indexOf("'" + variableToBeChecked) === -1 &&
         arrayWhereDependenciesWillBeAdded.indexOf(variableToBeChecked) === -1
       ) {
         arrayWhereDependenciesWillBeAdded.push(variableToBeChecked);
@@ -679,10 +658,7 @@ function normaliseDots(stringToNormalise: string): string {
 
 var TIMING_DEBUGS = false;
 
-export function run(
-  stringToBeRun: string,
-  generateLatex = false
-): string | string[] {
+export function run(stringToBeRun: string, generateLatex = false): string | string[] {
   let p1: U, p2: U;
 
   let stringToBeReturned: string | string[];
@@ -778,8 +754,7 @@ export function run(
         //collectedPlainResult = stringsEmittedByUserPrintouts
         collectedPlainResult = defs.stringsEmittedByUserPrintouts;
         if (generateLatex) {
-          collectedLatexResult =
-            '$$' + defs.stringsEmittedByUserPrintouts + '$$';
+          collectedLatexResult = '$$' + defs.stringsEmittedByUserPrintouts + '$$';
         }
       } else {
         //console.log "emitted string before collectPlainStringFromReturnValue: >" + stringsEmittedByUserPrintouts + "<"
@@ -788,8 +763,7 @@ export function run(
         collectedPlainResult += '\n';
         //console.log "collectedPlainResult: >" + collectedPlainResult + "<"
         if (generateLatex) {
-          collectedLatexResult =
-            '$$' + collectLatexStringFromReturnValue(p2) + '$$';
+          collectedLatexResult = '$$' + collectLatexStringFromReturnValue(p2) + '$$';
           if (DEBUG) {
             console.log(`collectedLatexResult: ${collectedLatexResult}`);
           }
@@ -872,11 +846,7 @@ export function run(
 
   if (TIMING_DEBUGS) {
     const timingDebugWrite =
-      'run time on: ' +
-      stringToBeRun +
-      ' : ' +
-      (new Date().getTime() - timeStart) +
-      'ms';
+      'run time on: ' + stringToBeRun + ' : ' + (new Date().getTime() - timeStart) + 'ms';
     console.log(timingDebugWrite);
   }
 
@@ -904,7 +874,7 @@ export function check_stack() {
 
 // returns nil if no result to print
 
-export function top_level_eval(expr:U) {
+export function top_level_eval(expr: U) {
   if (DEBUG) {
     console.log('#### top level eval');
   }
@@ -935,8 +905,7 @@ export function top_level_eval(expr:U) {
   // they represent the imaginary unit (-1)^(1/2), then
   // show (-1)^(1/2).
   if (
-    (originalArgument === symbol(SYMBOL_I) ||
-      originalArgument === symbol(SYMBOL_J)) &&
+    (originalArgument === symbol(SYMBOL_I) || originalArgument === symbol(SYMBOL_J)) &&
     isimaginaryunit(evalledArgument)
   ) {
     return evalledArgument;
@@ -994,29 +963,18 @@ export function computeDependenciesFromAlgebra(codeFromAlgebraBlock) {
     for (const i of Array.from(defs.userSimplificationsInListForm) as U[]) {
       //console.log "silentpattern(" + car(i) + ","+cdr(i)+")"
       userSimplificationsInProgramForm +=
-        'silentpattern(' +
-        car(i) +
-        ',' +
-        car(cdr(i)) +
-        ',' +
-        car(cdr(cdr(i))) +
-        ')\n';
+        'silentpattern(' + car(i) + ',' + car(cdr(i)) + ',' + car(cdr(cdr(i))) + ')\n';
     }
 
     do_clearall();
-    codeFromAlgebraBlock =
-      userSimplificationsInProgramForm + codeFromAlgebraBlock;
+    codeFromAlgebraBlock = userSimplificationsInProgramForm + codeFromAlgebraBlock;
     if (DEBUG) {
-      console.log(
-        'codeFromAlgebraBlock including patterns: ' + codeFromAlgebraBlock
-      );
+      console.log('codeFromAlgebraBlock including patterns: ' + codeFromAlgebraBlock);
     }
   }
 
   if (DEBUG) {
-    console.log(
-      'computeDependenciesFromAlgebra: patterns in the list --------------- '
-    );
+    console.log('computeDependenciesFromAlgebra: patterns in the list --------------- ');
     for (const i of Array.from(defs.userSimplificationsInListForm) as U[]) {
       console.log(car(i) + ',' + cdr(i) + ')');
     }
@@ -1079,22 +1037,13 @@ export function computeResultsAndJavaScriptFromAlgebra(codeFromAlgebraBlock) {
     for (i of Array.from(defs.userSimplificationsInListForm)) {
       //console.log "silentpattern(" + car(i) + ","+cdr(i)+")"
       userSimplificationsInProgramForm +=
-        'silentpattern(' +
-        car(i) +
-        ',' +
-        car(cdr(i)) +
-        ',' +
-        car(cdr(cdr(i))) +
-        ')\n';
+        'silentpattern(' + car(i) + ',' + car(cdr(i)) + ',' + car(cdr(cdr(i))) + ')\n';
     }
 
     do_clearall();
-    codeFromAlgebraBlock =
-      userSimplificationsInProgramForm + codeFromAlgebraBlock;
+    codeFromAlgebraBlock = userSimplificationsInProgramForm + codeFromAlgebraBlock;
     if (DEBUG) {
-      console.log(
-        'codeFromAlgebraBlock including patterns: ' + codeFromAlgebraBlock
-      );
+      console.log('codeFromAlgebraBlock including patterns: ' + codeFromAlgebraBlock);
     }
   }
 
@@ -1106,7 +1055,7 @@ export function computeResultsAndJavaScriptFromAlgebra(codeFromAlgebraBlock) {
     readableSummaryOfCode,
     latexResult,
     defs.errorMessage,
-    dependencyInfo,
+    dependencyInfo
   ] = findDependenciesInScript(codeFromAlgebraBlock);
 
   defs.called_from_Algebra_block = false;
@@ -1156,6 +1105,6 @@ export function computeResultsAndJavaScriptFromAlgebra(codeFromAlgebraBlock) {
     // TODO temporarily pass latex in place of standard result too
     result: latexResult,
     latexResult,
-    dependencyInfo,
+    dependencyInfo
   };
 }

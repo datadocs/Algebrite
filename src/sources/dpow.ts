@@ -31,8 +31,5 @@ export function dpow(base: number, expo: number) {
     b = Math.sin(theta);
   }
 
-  return add(
-    double(a * result),
-    multiply(double(b * result), Constants.imaginaryunit)
-  );
+  return add(double(a * result), multiply(double(b * result), Constants.imaginaryunit));
 }

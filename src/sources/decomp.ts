@@ -4,9 +4,12 @@ import {
   car,
   cdr,
   Cons,
-  DEBUG, isadd,
+  DEBUG,
+  isadd,
   iscons,
-  ismultiply, NIL, U
+  ismultiply,
+  NIL,
+  U
 } from '../runtime/defs.js';
 import { Find } from '../runtime/find.js';
 import { symbol } from '../runtime/symbol.js';
@@ -156,7 +159,7 @@ function decomp_product(generalTransform: boolean, p1: U, p2: U): U[] {
 
   const constantFactors: U[] = [];
   while (iscons(p3)) {
-      const item = car(p3);
+    const item = car(p3);
     if (!Find(item, p2)) {
       if (
         constantFactors.length < 1 ||

@@ -1,13 +1,5 @@
-import {
-  ARCCOSH,
-  cadr,
-  car,
-  Constants,
-  COSH,
-  isdouble,
-  U
-} from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { ARCCOSH, cadr, car, Constants, COSH, isdouble, U } from '../runtime/defs.js';
+import { symbol } from '../runtime/symbol.js';
 import { double } from './bignum.js';
 import { Eval } from './eval.js';
 import { isZeroAtomOrTensor } from './is.js';

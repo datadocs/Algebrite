@@ -42,7 +42,7 @@ run_shardable_test([
   '[-1,1]',
 
   'roots(3 x + 12 == 24)',
-  '4',
+  '4'
 ]);
 
 run_test([
@@ -76,23 +76,23 @@ run_test([
   // --------------------------------------------
   // examples covering https://github.com/davidedc/Algebrite/issues/130
 
-  "roots(-2*z+x^2+y^2,z)",
-  "1/2*x^2+1/2*y^2",
+  'roots(-2*z+x^2+y^2,z)',
+  '1/2*x^2+1/2*y^2',
 
-  "roots(-2*z+x^2+y^2,z)",
-  "1/2*x^2+1/2*y^2",
+  'roots(-2*z+x^2+y^2,z)',
+  '1/2*x^2+1/2*y^2',
 
-  "roots(x+y+z)",
-  "-y-z",
+  'roots(x+y+z)',
+  '-y-z',
 
-  "roots(x+y+z,z)",
-  "-x-y",
+  'roots(x+y+z,z)',
+  '-x-y',
 
-  "roots(x+y+a,z)",
-  "Stop: roots: 1st argument is not a polynomial in the variable z",
+  'roots(x+y+a,z)',
+  'Stop: roots: 1st argument is not a polynomial in the variable z',
 
-  "clearall",
-  "",
+  'clearall',
+  ''
 ]);
 
 run_shardable_test([
@@ -118,7 +118,7 @@ run_shardable_test([
   // also: "[-1,-(-1)^(2/3),(-1)^(1/3))",
 
   'roots(x^3 - 1)',
-  '[1,-1/2-1/2*i*3^(1/2),-1/2+1/2*i*3^(1/2)]',
+  '[1,-1/2-1/2*i*3^(1/2),-1/2+1/2*i*3^(1/2)]'
   // also: "[1,-(-1)^(1/3),(-1)^(2/3))",
 ]);
 
@@ -134,7 +134,7 @@ run_test([
   '[1/2*d^(1/3)-1/2*i*3^(1/2)*d^(1/3),1/2*d^(1/3)+1/2*i*3^(1/2)*d^(1/3),-d^(1/3)]',
 
   'and((simplify(subst(last[1],x,thePoly)) == 0),(simplify(subst(last[2],x,thePoly)) == 0),(simplify(subst(last[3],x,thePoly)) == 0))',
-  '1',
+  '1'
 ]);
 
 run_shardable_test([
@@ -154,7 +154,7 @@ run_shardable_test([
   '[3,-3/2-1/2*5^(1/2),-3/2+1/2*5^(1/2)]',
 
   'roots(x^3 - 18x + 35)',
-  '[-5,5/2-1/2*i*3^(1/2),5/2+1/2*i*3^(1/2)]',
+  '[-5,5/2-1/2*i*3^(1/2),5/2+1/2*i*3^(1/2)]'
 ]);
 
 run_test([
@@ -167,7 +167,7 @@ run_test([
   // also: "[(3+1/3*(27/2+27/2*i*3^(1/2))^(2/3)-3*i*3^(1/2)+1/3*i*3^(1/2)*(27/2+27/2*i*3^(1/2))^(2/3))/(2*(27/2+27/2*i*3^(1/2))^(1/3)),(3+1/3*(27/2+27/2*i*3^(1/2))^(2/3)+3*i*3^(1/2)-1/3*i*3^(1/2)*(27/2+27/2*i*3^(1/2))^(2/3))/(2*(27/2+27/2*i*3^(1/2))^(1/3)),(-3-1/3*(27/2+27/2*i*3^(1/2))^(2/3))/((27/2+27/2*i*3^(1/2))^(1/3)))",
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-15))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-15))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-15))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -180,7 +180,7 @@ run_test([
   // also: "[(3+1/3*(-27/2+27/2*i*3^(1/2))^(2/3)-3*i*3^(1/2)+1/3*i*3^(1/2)*(-27/2+27/2*i*3^(1/2))^(2/3))/(2*(-27/2+27/2*i*3^(1/2))^(1/3)),(3+1/3*(-27/2+27/2*i*3^(1/2))^(2/3)+3*i*3^(1/2)-1/3*i*3^(1/2)*(-27/2+27/2*i*3^(1/2))^(2/3))/(2*(-27/2+27/2*i*3^(1/2))^(1/3)),(-3-1/3*(-27/2+27/2*i*3^(1/2))^(2/3))/((-27/2+27/2*i*3^(1/2))^(1/3)))",
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-15))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-15))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-15))))',
-  '1',
+  '1'
 ]);
 
 run_shardable_test([
@@ -188,7 +188,7 @@ run_shardable_test([
   '[4,-2-3^(1/2),-2+3^(1/2)]',
 
   'roots(2*x^3 - 4x^2 - 22*x + 24)',
-  '[-3,1,4]',
+  '[-3,1,4]'
 ]);
 
 run_test([
@@ -200,7 +200,7 @@ run_test([
   '[-2+2^(1/3)+2^(2/3)-i*2^(1/3)*3^(1/2)+i*2^(2/3)*3^(1/2),-2+2^(1/3)+2^(2/3)+i*2^(1/3)*3^(1/2)-i*2^(2/3)*3^(1/2),-2*(1+2^(1/3)+2^(2/3))]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-14))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-14))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-14))))',
-  '1',
+  '1'
 ]);
 
 run_shardable_test([
@@ -214,7 +214,7 @@ run_shardable_test([
   '[7,4-3*i,4+3*i]',
 
   'roots(1*x^3 - 4*x^2 - 6*x + 5)',
-  '[5,-1/2-1/2*5^(1/2),-1/2+1/2*5^(1/2)]',
+  '[5,-1/2-1/2*5^(1/2),-1/2+1/2*5^(1/2)]'
 ]);
 
 run_test([
@@ -226,7 +226,7 @@ run_test([
   '[1/3*(-2-73^(1/3)),1/3*(-2+1/2*73^(1/3)-1/2*i*3^(1/2)*73^(1/3)),1/3*(-2+1/2*73^(1/3)+1/2*i*3^(1/2)*73^(1/3))]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-14))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-14))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-14))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -242,7 +242,7 @@ run_test([
   '[2/3-1/3*(-1)^(1/3)*37^(1/3),1/3*(2-1/2*37^(1/3)+1/2*i*3^(1/2)*37^(1/3)),1/3*(2+37^(1/3))]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-14))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-14))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-14))))',
-  '1',
+  '1'
 ]);
 
 run_shardable_test([
@@ -250,7 +250,7 @@ run_shardable_test([
   '3/2',
 
   'roots(3*x^3 - 5*x^2 - 1*x - 2)',
-  '[2,-1/6-1/6*i*11^(1/2),-1/6+1/6*i*11^(1/2)]',
+  '[2,-1/6-1/6*i*11^(1/2),-1/6+1/6*i*11^(1/2)]'
 ]);
 
 run_test([
@@ -266,7 +266,7 @@ run_test([
   '[-1/2*i-1/2*3^(1/2),-1/2*i+1/2*3^(1/2),i]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-15))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-15))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-15))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -280,7 +280,7 @@ run_test([
   '[-3/4*i-1/2*(-1)^(5/6)-1/4*3^(1/2),3/4*i-1/2*(-1)^(5/6)+1/4*3^(1/2),(-1)^(5/6)]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-15))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-15))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-15))))',
-  '1',
+  '1'
 ]);
 
 // some quartics
@@ -296,7 +296,7 @@ run_test([
   '[-1/2*2^(1/2)-1/2*i*2^(1/2),-1/2*2^(1/2)+1/2*i*2^(1/2),1/2*2^(1/2)-1/2*i*2^(1/2),1/2*2^(1/2)+1/2*i*2^(1/2)]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-15))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-15))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-15))), (abs(float(subst(float(last[4]),x,thePoly))) < float(2*10^(-15))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -311,7 +311,7 @@ run_test([
   '[-1,cos(1/5*pi)+i*sin(1/5*pi),cos(3/5*pi)+i*sin(3/5*pi),-cos(2/5*pi)-i*sin(2/5*pi),-cos(4/5*pi)-i*sin(4/5*pi)]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[4]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[5]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -349,7 +349,7 @@ run_test([
   '',
 
   'theRoots[5]',
-  '-(k/a)^(1/5)',
+  '-(k/a)^(1/5)'
 
   // unfortunately the comparison here doesn't work,
   // due to rounding errors float() produces expressions that still hve
@@ -373,7 +373,7 @@ run_test([
   '[3,2-5*i,2+5*i]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -387,7 +387,7 @@ run_test([
   '[-1/2-1/2*i*3^(1/2),-1/2+1/2*i*3^(1/2),1-2*i,1+2*i]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[4]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -401,7 +401,7 @@ run_test([
   '[-2,-1,2,3]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[4]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -415,7 +415,7 @@ run_test([
   '[-(-4-13^(1/2))^(1/2),-(-4+13^(1/2))^(1/2),(-4-13^(1/2))^(1/2),(-4+13^(1/2))^(1/2)]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[4]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -429,7 +429,7 @@ run_test([
   '[-4,1,2]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -451,7 +451,7 @@ run_test([
   '[-1+cos(1/9*pi)-cos(8/9*pi)+i*sin(1/9*pi)-i*sin(8/9*pi)-2*3^(1/2)*cos(11/18*pi),-1+cos(1/9*pi)-cos(8/9*pi)+i*sin(1/9*pi)-i*sin(8/9*pi)+2*3^(1/2)*cos(11/18*pi),-1-2*cos(1/9*pi)+2*cos(8/9*pi)-2*i*sin(1/9*pi)+2*i*sin(8/9*pi)]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -465,7 +465,7 @@ run_test([
   '[1,-1/2-1/2*i*7^(1/2),-1/2+1/2*i*7^(1/2)]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 // some quartics
@@ -480,7 +480,7 @@ run_test([
   '[-(-4-13^(1/2))^(1/2),-(-4+13^(1/2))^(1/2),(-4-13^(1/2))^(1/2),(-4+13^(1/2))^(1/2)]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(8*10^(-15))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-15))), (abs(float(subst(float(last[3]),x,thePoly))) < float(8*10^(-15))), (abs(float(subst(float(last[4]),x,thePoly))) < float(2*10^(-15))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -494,15 +494,14 @@ run_test([
   '[-2,2,5]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 run_test([
   'thePoly = 2*x^4 - 8*x^3 + 2*x^2 + 24*x - 14',
   '',
-
   'theRoots = roots(thePoly)',
-  '',
+  ''
 ]);
 
 run_test([
@@ -516,7 +515,7 @@ run_test([
   '[-1/2-1/2*5^(1/2),-1/2+1/2*5^(1/2),5/2-1/2*i*3^(1/2),5/2+1/2*i*3^(1/2)]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[4]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -530,7 +529,7 @@ run_test([
   '[-1/2-1/2*5^(1/2),-1/2+1/2*5^(1/2),5/2-1/2*i*3^(1/2),5/2+1/2*i*3^(1/2)]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[4]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 ]);
 
 run_test([
@@ -544,7 +543,7 @@ run_test([
   '[-2,3,4-2*i,4+2*i]',
 
   'and((abs(float(subst(float(last[1]),x,thePoly))) < float(2*10^(-12))),(abs(float(subst(float(last[2]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[3]),x,thePoly))) < float(2*10^(-12))), (abs(float(subst(float(last[4]),x,thePoly))) < float(2*10^(-12))))',
-  '1',
+  '1'
 
   //"thePoly = 4* x^4 - 9*x^3 + 22*x^2 + 28*x - 120",
   //"",
@@ -586,5 +585,5 @@ run_test([
   '',
 
   'theRoots = quote(theRoots)',
-  '',
+  ''
 ]);

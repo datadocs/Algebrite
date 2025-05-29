@@ -8,7 +8,7 @@ import { test } from '../test-harness.js';
 for (let i = 1; i < 100; i++) {
   const a = mint(i);
   for (let j = 1; j < 100; j++) {
-    test(`gcd(${i}, ${j})`, t => {
+    test(`gcd(${i}, ${j})`, (t) => {
       const b = mint(j);
       const c = mgcd(a, b);
       const d = egcd(a, b);

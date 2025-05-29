@@ -62,5 +62,5 @@ run_test([
   // nothing to do for polar since we end
   // up with a real
   'polar((-1)^(1/6) - (-1)^(5/6))',
-  '3^(1/2)',
+  '3^(1/2)'
 ]);

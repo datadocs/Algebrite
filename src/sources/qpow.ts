@@ -10,7 +10,7 @@ import {
   makeSignSameAs,
   mp_denominator,
   mp_numerator,
-  nativeInt,
+  nativeInt
 } from './bignum.js';
 import {
   isinteger,
@@ -18,14 +18,14 @@ import {
   isnegativenumber,
   isoneovertwo,
   isplusone,
-  isZeroAtomOrTensor,
+  isZeroAtomOrTensor
 } from './is.js';
 import { makeList } from './list.js';
 import { mpow } from './mpow.js';
 import { mroot } from './mroot.js';
 import { multiply, negate } from './multiply.js';
 import { quickfactor } from './quickfactor.js';
-import {symbol} from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 
 // Rational power function
 export function qpow(base: Num, expo: Num): U {
@@ -91,10 +91,7 @@ function qpowf(BASE: Num, EXPO: Num): U {
 
   // if base is negative then (-N)^M -> N^M * (-1)^M
   if (isnegativenumber(BASE)) {
-    return multiply(
-      qpow(negate(BASE) as Num, EXPO),
-      qpow(Constants.negOne, EXPO)
-    );
+    return multiply(qpow(negate(BASE) as Num, EXPO), qpow(Constants.negOne, EXPO));
   }
 
   // if BASE is not an integer then power numerator and denominator

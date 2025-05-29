@@ -13,7 +13,7 @@ import {
   POWER,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { double, integer, nativeInt, rational } from './bignum.js';
 import { Eval } from './eval.js';
 import {

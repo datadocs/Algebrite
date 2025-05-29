@@ -32,7 +32,8 @@ import {
   FLOOR,
   FOR,
   FUNCTION,
-  INDEX, isadd,
+  INDEX,
+  isadd,
   iscons,
   isfactorial,
   isinnerordot,
@@ -43,7 +44,8 @@ import {
   isrational,
   isstr,
   issymbol,
-  istensor, LAST_2DASCII_PRINT,
+  istensor,
+  LAST_2DASCII_PRINT,
   LAST_FULL_PRINT,
   LAST_LATEX_PRINT,
   LAST_LIST_PRINT,
@@ -79,7 +81,8 @@ import {
   TESTGE,
   TESTGT,
   TESTLE,
-  TESTLT, U,
+  TESTLT,
+  U,
   UNIT
 } from '../runtime/defs.js';
 import { get_binding, get_printname, set_binding, symbol } from '../runtime/symbol.js';
@@ -196,23 +199,19 @@ function _print(p: U, passedPrintMode: string): string {
   }
 
   if (DEBUG) {
-    console.log(
-      `emttedString from display: ${defs.stringsEmittedByUserPrintouts}`
-    );
+    console.log(`emttedString from display: ${defs.stringsEmittedByUserPrintouts}`);
   }
   return accumulator;
 }
 
 function rememberPrint(theString: string, theTypeOfPrint: string) {
-  const [,parsedString] = scan('"' + theString + '"');
+  const [, parsedString] = scan('"' + theString + '"');
   set_binding(symbol(theTypeOfPrint), parsedString);
 }
 
 export function print_str(s: string): string {
   if (DEBUG) {
-    console.log(
-      `emttedString from print_str: ${defs.stringsEmittedByUserPrintouts}`
-    );
+    console.log(`emttedString from print_str: ${defs.stringsEmittedByUserPrintouts}`);
   }
   return s;
 }
@@ -459,11 +458,7 @@ export function print_expr(p: BaseAtom): string {
 
 function sign_of_term(p: BaseAtom): string {
   let accumulator = '';
-  if (
-    ismultiply(p) &&
-    isNumericAtom(cadr(p)) &&
-    lessp(cadr(p), Constants.zero)
-  ) {
+  if (ismultiply(p) && isNumericAtom(cadr(p)) && lessp(cadr(p), Constants.zero)) {
     accumulator += '-';
   } else if (isNumericAtom(p) && lessp(p, Constants.zero)) {
     accumulator += '-';
@@ -566,8 +561,7 @@ function print_term(p: BaseAtom): string {
     }
 
     if (numberOneOverSomething) {
-      accumulator =
-        origAccumulator + '\\frac{' + accumulator + '}{' + denom + '}';
+      accumulator = origAccumulator + '\\frac{' + accumulator + '}{' + denom + '}';
     }
   } else {
     accumulator += print_factor(p);
@@ -586,13 +580,7 @@ function print_subexpr(p: BaseAtom): string {
 function print_factorial_function(p: BaseAtom): string {
   let accumulator = '';
   p = cadr(p);
-  if (
-    isfraction(p) ||
-    isadd(p) ||
-    ismultiply(p) ||
-    ispower(p) ||
-    isfactorial(p)
-  ) {
+  if (isfraction(p) || isadd(p) || ismultiply(p) || ispower(p) || isfactorial(p)) {
     accumulator += print_subexpr(p);
   } else {
     accumulator += print_expr(p);
@@ -786,11 +774,7 @@ function print_tensor(p: Tensor<U>): string {
 // j scans the dimensions
 // k is an increment for all the printed elements
 //   since they are all together in sequence in one array
-function print_tensor_inner(
-  p: Tensor<U>,
-  j: number,
-  k: number
-): [number, string] {
+function print_tensor_inner(p: Tensor<U>, j: number, k: number): [number, string] {
   let accumulator = '';
 
   accumulator += print_str('[');
@@ -805,10 +789,7 @@ function print_tensor_inner(
   if (j < p.tensor.ndim - 1) {
     for (let i = 0; i < p.tensor.dim[j]; i++) {
       let retString: string;
-      [k, retString] = Array.from(print_tensor_inner(p, j + 1, k)) as [
-        number,
-        string
-      ];
+      [k, retString] = Array.from(print_tensor_inner(p, j + 1, k)) as [number, string];
       accumulator += retString;
       // add separator between elements dimensions
       // "above" the inner-most dimension
@@ -874,9 +855,10 @@ function print_tensor_inner_latex(
   if (j < p.tensor.ndim - 1) {
     for (let i = 0; i < p.tensor.dim[j]; i++) {
       let retString: string;
-      [k, retString] = Array.from(
-        print_tensor_inner_latex(false, p, j + 1, k)
-      ) as [number, string];
+      [k, retString] = Array.from(print_tensor_inner_latex(false, p, j + 1, k)) as [
+        number,
+        string
+      ];
       accumulator += retString;
       if (i !== p.tensor.dim[j] - 1) {
         // add separator between rows
@@ -1198,10 +1180,7 @@ function print_power(base: BaseAtom, exponent: BaseAtom) {
     }
   }
 
-  if (
-    equaln(get_binding(symbol(PRINT_LEAVE_E_ALONE)), 1) &&
-    base === symbol(E)
-  ) {
+  if (equaln(get_binding(symbol(PRINT_LEAVE_E_ALONE)), 1) && base === symbol(E)) {
     if (defs.codeGen) {
       accumulator += print_str('Math.exp(');
       accumulator += print_expo_of_denom(exponent);
@@ -1334,10 +1313,7 @@ function print_power(base: BaseAtom, exponent: BaseAtom) {
       if (defs.printMode !== PRINTMODE_LATEX) {
         accumulator += print_str(')');
       }
-    } else if (
-      isNumericAtom(base) &&
-      (lessp(base, Constants.zero) || isfraction(base))
-    ) {
+    } else if (isNumericAtom(base) && (lessp(base, Constants.zero) || isfraction(base))) {
       accumulator += print_str('(');
       accumulator += print_factor(base);
       accumulator += print_str(')');
@@ -1409,11 +1385,7 @@ function print_index_function(p: BaseAtom): string {
   return accumulator;
 }
 
-function print_factor(
-  p: BaseAtom,
-  omitParens = false,
-  pastFirstFactor = false
-): string {
+function print_factor(p: BaseAtom, omitParens = false, pastFirstFactor = false): string {
   // breakpoint
   let accumulator = '';
   if (isNumericAtom(p)) {
@@ -1579,10 +1551,7 @@ function print_factor(
       accumulator += print_INV_codegen(p);
       return accumulator;
     }
-  } else if (
-    car(p) === symbol(BINOMIAL) &&
-    defs.printMode === PRINTMODE_LATEX
-  ) {
+  } else if (car(p) === symbol(BINOMIAL) && defs.printMode === PRINTMODE_LATEX) {
     accumulator += print_BINOMIAL_latex(p);
     return accumulator;
   } else if (car(p) === symbol(DEFINT) && defs.printMode === PRINTMODE_LATEX) {
@@ -1667,8 +1636,7 @@ function print_factor(
     }
   } else if (car(p) === symbol(TESTLT)) {
     if (defs.codeGen) {
-      accumulator +=
-        '((' + print_expr(cadr(p)) + ') < (' + print_expr(caddr(p)) + '))';
+      accumulator += '((' + print_expr(cadr(p)) + ') < (' + print_expr(caddr(p)) + '))';
       return accumulator;
     }
     if (defs.printMode === PRINTMODE_LATEX) {
@@ -1677,8 +1645,7 @@ function print_factor(
     }
   } else if (car(p) === symbol(TESTLE)) {
     if (defs.codeGen) {
-      accumulator +=
-        '((' + print_expr(cadr(p)) + ') <= (' + print_expr(caddr(p)) + '))';
+      accumulator += '((' + print_expr(cadr(p)) + ') <= (' + print_expr(caddr(p)) + '))';
       return accumulator;
     }
     if (defs.printMode === PRINTMODE_LATEX) {
@@ -1687,8 +1654,7 @@ function print_factor(
     }
   } else if (car(p) === symbol(TESTGT)) {
     if (defs.codeGen) {
-      accumulator +=
-        '((' + print_expr(cadr(p)) + ') > (' + print_expr(caddr(p)) + '))';
+      accumulator += '((' + print_expr(cadr(p)) + ') > (' + print_expr(caddr(p)) + '))';
       return accumulator;
     }
     if (defs.printMode === PRINTMODE_LATEX) {
@@ -1697,8 +1663,7 @@ function print_factor(
     }
   } else if (car(p) === symbol(TESTGE)) {
     if (defs.codeGen) {
-      accumulator +=
-        '((' + print_expr(cadr(p)) + ') >= (' + print_expr(caddr(p)) + '))';
+      accumulator += '((' + print_expr(cadr(p)) + ') >= (' + print_expr(caddr(p)) + '))';
       return accumulator;
     }
     if (defs.printMode === PRINTMODE_LATEX) {
@@ -1707,8 +1672,7 @@ function print_factor(
     }
   } else if (car(p) === symbol(TESTEQ)) {
     if (defs.codeGen) {
-      accumulator +=
-        '((' + print_expr(cadr(p)) + ') === (' + print_expr(caddr(p)) + '))';
+      accumulator += '((' + print_expr(cadr(p)) + ') === (' + print_expr(caddr(p)) + '))';
       return accumulator;
     }
     if (defs.printMode === PRINTMODE_LATEX) {

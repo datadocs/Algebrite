@@ -29,6 +29,5 @@ run_test([
   '-arctan(a-b)',
 
   'arctan(tan(x))',
-  'x',
-
+  'x'
 ]);

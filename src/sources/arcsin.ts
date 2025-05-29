@@ -13,7 +13,7 @@ import {
   SIN,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { double, integer, nativeInt, rational } from './bignum.js';
 import { Eval } from './eval.js';
 import {
@@ -43,7 +43,7 @@ Returns the inverse sine of x.
 
 */
 export function Eval_arcsin(x: U) {
-    return arcsin(Eval(cadr(x)));
+  return arcsin(Eval(cadr(x)));
 }
 
 function arcsin(x: U): U {

@@ -107,5 +107,5 @@ run_test([
   '0',
 
   'legendre(a-b,10)-eval(subst(a-b,x,legendre(x,10)))',
-  '0',
+  '0'
 ]);

@@ -17,5 +17,5 @@ run_test([
   '0',
 
   'Gamma(-x)',
-  '-pi/(x*Gamma(x)*sin(pi*x))',
+  '-pi/(x*Gamma(x)*sin(pi*x))'
 ]);

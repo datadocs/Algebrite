@@ -1,7 +1,15 @@
 import { nativeInt } from '../sources/bignum.js';
 import { isZeroAtomOrTensor } from '../sources/is.js';
 import { makeList } from '../sources/list.js';
-import { defs, FORCE_FIXED_PRINTOUT, iscons, MAX_FIXED_PRINTOUT_DIGITS, PRINTMODE_LATEX, Sign, U } from './defs.js';
+import {
+  defs,
+  FORCE_FIXED_PRINTOUT,
+  iscons,
+  MAX_FIXED_PRINTOUT_DIGITS,
+  PRINTMODE_LATEX,
+  Sign,
+  U
+} from './defs.js';
 import { stop } from './run.js';
 import { get_binding, symbol } from './symbol.js';
 
@@ -32,10 +40,7 @@ export function doubleToReasonableString(d: number) {
     if (defs.printMode === PRINTMODE_LATEX) {
       // 1.0\mathrm{e}{-10} looks much better than the plain 1.0e-10
       if (/\d*\.\d*e.*/gm.test(stringRepresentation)) {
-        stringRepresentation = stringRepresentation.replace(
-          /e(.*)/gm,
-          '\\mathrm{e}{$1}'
-        );
+        stringRepresentation = stringRepresentation.replace(/e(.*)/gm, '\\mathrm{e}{$1}');
       } else {
         // if there is no dot in the mantissa, add it so we see it's
         // a double and not a perfect number
@@ -47,10 +52,7 @@ export function doubleToReasonableString(d: number) {
       }
     } else {
       if (/\d*\.\d*e.*/gm.test(stringRepresentation)) {
-        stringRepresentation = stringRepresentation.replace(
-          /e(.*)/gm,
-          '*10^($1)'
-        );
+        stringRepresentation = stringRepresentation.replace(/e(.*)/gm, '*10^($1)');
       } else {
         // if there is no dot in the mantissa, add it so we see it's
         // a double and not a perfect number
@@ -73,10 +75,7 @@ export function doubleToReasonableString(d: number) {
 
     // remove any trailing zeroes after the dot
     // see https://stackoverflow.com/questions/26299160/using-regex-how-do-i-remove-the-trailing-zeros-from-a-decimal-number
-    stringRepresentation = stringRepresentation.replace(
-      /(\.\d*?[1-9])0+$/gm,
-      '$1'
-    );
+    stringRepresentation = stringRepresentation.replace(/(\.\d*?[1-9])0+$/gm, '$1');
     // in case there are only zeroes after the dot, removes the dot too
     stringRepresentation = stringRepresentation.replace(/\.0+$/gm, '');
 
@@ -103,14 +102,7 @@ export function isspace(s: string): boolean {
   if (s == null) {
     return false;
   }
-  return (
-    s === ' ' ||
-    s === '\t' ||
-    s === '\n' ||
-    s === '\v' ||
-    s === '\f' ||
-    s === '\r'
-  );
+  return s === ' ' || s === '\t' || s === '\n' || s === '\v' || s === '\f' || s === '\r';
 }
 
 export function isdigit(str: string): boolean {

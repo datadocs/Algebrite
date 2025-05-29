@@ -14,5 +14,5 @@ run_test([
   'a+b',
 
   'numerator(1/a+1/b)',
-  'a+b',
+  'a+b'
 ]);

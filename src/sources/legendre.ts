@@ -12,7 +12,7 @@ import {
   SIN,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { square } from '../sources/misc.js';
 import { subtract } from './add.js';
 import { integer, nativeInt, rational } from './bignum.js';
@@ -79,8 +79,8 @@ function __legendre(X: U, N: U, M: U): U {
   if (issymbol(X)) {
     result = __legendre2(n, m, X);
   } else {
-      const expr = __legendre2(n, m, symbol(SECRETX));
-      result = Eval(subst(expr, symbol(SECRETX), X));
+    const expr = __legendre2(n, m, symbol(SECRETX));
+    result = Eval(subst(expr, symbol(SECRETX), X));
   }
   result = __legendre3(result, m, X) || result;
   return result;
@@ -103,10 +103,7 @@ function __legendre2(n: number, m: number, X: U): U {
   //    ((2*i+1)*x*Y1 - i*Y0) / i = -3/2*x + 5/2*x^3
   for (let i = 0; i < n; i++) {
     const divided = divide(
-      subtract(
-        multiply(multiply(integer(2 * i + 1), X), Y1),
-        multiply(integer(i), Y0)
-      ),
+      subtract(multiply(multiply(integer(2 * i + 1), X), Y1), multiply(integer(i), Y0)),
       integer(i + 1)
     );
     Y0 = Y1;

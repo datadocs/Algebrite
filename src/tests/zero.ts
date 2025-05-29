@@ -35,5 +35,5 @@ run_test([
   // before some adjustments this used to crash.
   // And it happened to me, so it can happen.
   'zero([2,3])',
-  '0',
+  '0'
 ]);

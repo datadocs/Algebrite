@@ -1,19 +1,19 @@
-import {check_stack, top_level_eval} from './run.js';
-import {double, integer} from '../sources/bignum.js';
-import {makeList} from '../sources/list.js';
-import {scan} from '../sources/scan.js';
-import {defs, NIL, reset_after_error, U} from './defs.js';
-import {init} from './init.js';
-import {get_binding, symbol, usr_symbol} from './symbol.js';
+import { check_stack, top_level_eval } from './run.js';
+import { double, integer } from '../sources/bignum.js';
+import { makeList } from '../sources/list.js';
+import { scan } from '../sources/scan.js';
+import { defs, NIL, reset_after_error, U } from './defs.js';
+import { init } from './init.js';
+import { get_binding, symbol, usr_symbol } from './symbol.js';
 
 if (!defs.inited) {
   defs.inited = true;
   init();
 }
 
-function parse_internal(argu: string | number | U):U {
+function parse_internal(argu: string | number | U): U {
   if (typeof argu === 'string') {
-    const [,u] = scan(argu);
+    const [, u] = scan(argu);
     return u;
   } else if (typeof argu === 'number') {
     if (argu % 1 === 0) {

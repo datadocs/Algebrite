@@ -20,7 +20,7 @@ import {
   findPossibleExponentialForm
 } from '../runtime/find.js';
 import { stop } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { exponential } from '../sources/misc.js';
 import { add } from './add.js';
 import { integer, rational } from './bignum.js';
@@ -96,7 +96,7 @@ Notes
 const DEBUG_ABS = false;
 
 export function Eval_abs(p1: U) {
-    return abs(Eval(cadr(p1)));
+  return abs(Eval(cadr(p1)));
 }
 
 export function absValFloat(p1: U): U {

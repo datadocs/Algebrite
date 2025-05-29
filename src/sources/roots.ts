@@ -16,7 +16,7 @@ import {
   U
 } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { cmp_expr, sort } from '../sources/misc.js';
 import { absValFloat } from './abs.js';
 import { add, add_all, subtract } from './add.js';
@@ -25,7 +25,12 @@ import { coeff } from './coeff.js';
 import { Eval } from './eval.js';
 import { factorpoly } from './factorpoly.js';
 import { guess } from './guess.js';
-import { iscomplexnumber, ispolyexpandedform, isposint, isZeroAtomOrTensor } from './is.js';
+import {
+  iscomplexnumber,
+  ispolyexpandedform,
+  isposint,
+  isZeroAtomOrTensor
+} from './is.js';
 import { divide, multiply, negate } from './multiply.js';
 import { power } from './power.js';
 import { simplify } from './simplify.js';
@@ -35,7 +40,7 @@ const log = {
     if (DEBUG) {
       console.log(str);
     }
-  },
+  }
 };
 
 const flatten = (arr: any[]) => [].concat(...arr);
@@ -84,7 +89,7 @@ function isSimpleRoot(k: U[]): boolean {
   if (k.length <= 2) {
     return false;
   }
-    if (isZeroAtomOrTensor(k[0])) {
+  if (isZeroAtomOrTensor(k[0])) {
     return false;
   }
   return k.slice(1, k.length - 1).every((el) => isZeroAtomOrTensor(el));
@@ -148,7 +153,7 @@ export function roots(POLY: U, X: U): U {
 // http://www.wolframalpha.com/input/?i=roots+a*x%5E15+%2B+b
 // leadingCoeff    Coefficient of x^0
 // lastCoeff       Coefficient of x^(n-1)
-function getSimpleRoots(n: number, leadingCoeff: U, lastCoeff: U):U[] {
+function getSimpleRoots(n: number, leadingCoeff: U, lastCoeff: U): U[] {
   log.debug('getSimpleRoots');
 
   n = n - 1;
@@ -161,10 +166,7 @@ function getSimpleRoots(n: number, leadingCoeff: U, lastCoeff: U):U[] {
 
   if (n % 2 === 0) {
     for (let i = 1; i <= n; i += 2) {
-      const aSol = multiply(
-        commonPart,
-        power(Constants.negOne, rational(i, n))
-      );
+      const aSol = multiply(commonPart, power(Constants.negOne, rational(i, n)));
       results.push(aSol);
       results.push(negate(aSol));
     }
@@ -195,11 +197,7 @@ function roots2(POLY: U, X: U): U[] {
 }
 
 function roots3(POLY: U, X: U): U[] {
-  if (
-    ispower(POLY) &&
-    ispolyexpandedform(cadr(POLY), X) &&
-    isposint(caddr(POLY))
-  ) {
+  if (ispower(POLY) && ispolyexpandedform(cadr(POLY), X) && isposint(caddr(POLY))) {
     const n = normalisedCoeff(cadr(POLY), X);
     return mini_solve(n);
   }
@@ -214,7 +212,7 @@ function roots3(POLY: U, X: U): U[] {
 // actually end up using the quadratic/cubic/quartic formulas in here,
 // since there is a chance we factored the polynomial and in so
 // doing we found some solutions and lowered the degree.
-function mini_solve(coefficients: U[]):U[] {
+function mini_solve(coefficients: U[]): U[] {
   const n = coefficients.length;
 
   // AX + B, X = -B/A
@@ -259,7 +257,7 @@ function _solveDegree1(A: U, B: U): U[] {
 }
 
 function _solveDegree2(A: U, B: U, C: U): U[] {
-    //(B^2 - 4AC)^(1/2)
+  //(B^2 - 4AC)^(1/2)
   const p6 = power(
     // prettier-ignore
     subtract(
@@ -275,38 +273,38 @@ function _solveDegree2(A: U, B: U, C: U): U[] {
   // 1/2 * -(B + (B^2 - 4AC)^(1/2)) / A
   const result2 = multiply(divide(negate(add(p6, B)), A), rational(1, 2));
   return [result1, result2];
-  }
+}
 
 function _solveDegree3(A: U, B: U, C: U, D: U): U[] {
-    // C - only related calculations
+  // C - only related calculations
   const R_c3 = multiply(multiply(C, C), C);
 
-    // B - only related calculations
+  // B - only related calculations
   const R_b2 = multiply(B, B);
 
   const R_b3 = multiply(R_b2, B);
 
   const R_m4_b3_d = multiply(multiply(R_b3, D), integer(-4));
 
-    const R_2_b3 = multiply(R_b3, integer(2));
+  const R_2_b3 = multiply(R_b3, integer(2));
 
-    // A - only related calculations
+  // A - only related calculations
   const R_3_a = multiply(integer(3), A);
 
   const R_a2_d = multiply(multiply(A, A), D);
 
-    const R_27_a2_d = multiply(R_a2_d, integer(27));
+  const R_27_a2_d = multiply(R_a2_d, integer(27));
 
   const R_m27_a2_d2 = multiply(multiply(R_a2_d, D), integer(-27));
 
-    // mixed calculations
+  // mixed calculations
   const R_a_b_c = multiply(multiply(A, C), B);
 
   const R_3_a_c = multiply(multiply(A, C), integer(3));
 
   const R_m4_a_c3 = multiply(integer(-4), multiply(A, R_c3));
 
-    const R_m9_a_b_c = negate(multiply(R_a_b_c, integer(9)));
+  const R_m9_a_b_c = negate(multiply(R_a_b_c, integer(9)));
 
   const R_18_a_b_c_d = multiply(multiply(R_a_b_c, D), integer(18));
 
@@ -316,19 +314,17 @@ function _solveDegree3(A: U, B: U, C: U, D: U): U[] {
 
   const R_m_b_over_3a = divide(negate(B), R_3_a);
 
-      const R_4_DELTA03 = multiply(power(R_DELTA0, integer(3)), integer(4));
+  const R_4_DELTA03 = multiply(power(R_DELTA0, integer(3)), integer(4));
 
-      const R_DELTA0_toBeCheckedIfZero = absValFloat(simplify(R_DELTA0));
+  const R_DELTA0_toBeCheckedIfZero = absValFloat(simplify(R_DELTA0));
 
   const R_determinant = absValFloat(
-        simplify(
-          add_all([R_18_a_b_c_d, R_m4_b3_d, R_b2_c2, R_m4_a_c3, R_m27_a2_d2])
-        )
-      );
+    simplify(add_all([R_18_a_b_c_d, R_m4_b3_d, R_b2_c2, R_m4_a_c3, R_m27_a2_d2]))
+  );
   const R_DELTA1 = add_all([R_2_b3, R_m9_a_b_c, R_27_a2_d]);
   const R_Q = simplify(
     power(subtract(power(R_DELTA1, integer(2)), R_4_DELTA03), rational(1, 2))
-      );
+  );
 
   log.debug('>>>>>>>>>>>>>>>> actually using cubic formula <<<<<<<<<<<<<<< ');
   log.debug(`cubic: D0: ${R_DELTA0}`);
@@ -336,80 +332,65 @@ function _solveDegree3(A: U, B: U, C: U, D: U): U[] {
   log.debug(`cubic: DETERMINANT: ${R_determinant}`);
   log.debug(`cubic: D1: ${R_DELTA1}`);
 
-      if (isZeroAtomOrTensor(R_determinant)) {
+  if (isZeroAtomOrTensor(R_determinant)) {
     const data = {
       R_DELTA0_toBeCheckedIfZero,
       R_m_b_over_3a,
       R_DELTA0,
       R_b3,
-      R_a_b_c,
+      R_a_b_c
     };
     return _solveDegree3ZeroRDeterminant(A, B, C, D, data);
-      }
+  }
 
-      let C_CHECKED_AS_NOT_ZERO = false;
-      let flipSignOFQSoCIsNotZero = false;
+  let C_CHECKED_AS_NOT_ZERO = false;
+  let flipSignOFQSoCIsNotZero = false;
 
   let R_C: U;
   // C will go as denominator, we have to check that is not zero
-      while (!C_CHECKED_AS_NOT_ZERO) {
+  while (!C_CHECKED_AS_NOT_ZERO) {
     const arg1 = flipSignOFQSoCIsNotZero ? negate(R_Q) : R_Q;
-        R_C = simplify(
-          power(multiply(add(arg1, R_DELTA1), rational(1, 2)), rational(1, 3))
-        );
-        const R_C_simplified_toCheckIfZero = absValFloat(simplify(R_C));
+    R_C = simplify(power(multiply(add(arg1, R_DELTA1), rational(1, 2)), rational(1, 3)));
+    const R_C_simplified_toCheckIfZero = absValFloat(simplify(R_C));
 
     log.debug(`cubic: C: ${R_C}`);
     log.debug(`cubic: C as absval and float: ${R_C_simplified_toCheckIfZero}`);
 
-        if (isZeroAtomOrTensor(R_C_simplified_toCheckIfZero)) {
+    if (isZeroAtomOrTensor(R_C_simplified_toCheckIfZero)) {
       log.debug(' cubic: C IS ZERO flipping the sign');
-          flipSignOFQSoCIsNotZero = true;
-        } else {
-          C_CHECKED_AS_NOT_ZERO = true;
-        }
-      }
+      flipSignOFQSoCIsNotZero = true;
+    } else {
+      C_CHECKED_AS_NOT_ZERO = true;
+    }
+  }
 
   const R_6_a_C = multiply(multiply(R_C, R_3_a), integer(2));
 
-      // imaginary parts calculations
-      const i_sqrt3 = multiply(
-        Constants.imaginaryunit,
-        power(integer(3), rational(1, 2))
-      );
-      const one_plus_i_sqrt3 = add(Constants.one, i_sqrt3);
-      const one_minus_i_sqrt3 = subtract(Constants.one, i_sqrt3);
-      const R_C_over_3a = divide(R_C, R_3_a);
+  // imaginary parts calculations
+  const i_sqrt3 = multiply(Constants.imaginaryunit, power(integer(3), rational(1, 2)));
+  const one_plus_i_sqrt3 = add(Constants.one, i_sqrt3);
+  const one_minus_i_sqrt3 = subtract(Constants.one, i_sqrt3);
+  const R_C_over_3a = divide(R_C, R_3_a);
 
-      // first solution
+  // first solution
   const firstSolTerm1 = R_m_b_over_3a;
   const firstSolTerm2 = negate(R_C_over_3a);
   const firstSolTerm3 = negate(divide(R_DELTA0, multiply(R_C, R_3_a)));
-  const firstSolution = simplify(
-    add_all([firstSolTerm1, firstSolTerm2, firstSolTerm3])
-  );
+  const firstSolution = simplify(add_all([firstSolTerm1, firstSolTerm2, firstSolTerm3]));
 
-      // second solution
+  // second solution
   const secondSolTerm1 = R_m_b_over_3a;
-      const secondSolTerm2 = divide(
-        multiply(R_C_over_3a, one_plus_i_sqrt3),
-        integer(2)
-  );
+  const secondSolTerm2 = divide(multiply(R_C_over_3a, one_plus_i_sqrt3), integer(2));
   const secondSolTerm3 = divide(multiply(one_minus_i_sqrt3, R_DELTA0), R_6_a_C);
   const secondSolution = simplify(
     add_all([secondSolTerm1, secondSolTerm2, secondSolTerm3])
   );
 
-      // third solution
+  // third solution
   const thirdSolTerm1 = R_m_b_over_3a;
-      const thirdSolTerm2 = divide(
-        multiply(R_C_over_3a, one_minus_i_sqrt3),
-        integer(2)
-  );
+  const thirdSolTerm2 = divide(multiply(R_C_over_3a, one_minus_i_sqrt3), integer(2));
   const thirdSolTerm3 = divide(multiply(one_plus_i_sqrt3, R_DELTA0), R_6_a_C);
-  const thirdSolution = simplify(
-    add_all([thirdSolTerm1, thirdSolTerm2, thirdSolTerm3])
-  );
+  const thirdSolution = simplify(add_all([thirdSolTerm1, thirdSolTerm2, thirdSolTerm3]));
 
   return [firstSolution, secondSolution, thirdSolution];
 }
@@ -429,13 +410,7 @@ function _solveDegree3ZeroRDeterminant(
   D: U,
   common: CommonArgs4ZeroRDeterminant
 ): U[] {
-  const {
-    R_DELTA0_toBeCheckedIfZero,
-    R_m_b_over_3a,
-    R_DELTA0,
-    R_b3,
-    R_a_b_c,
-  } = common;
+  const { R_DELTA0_toBeCheckedIfZero, R_m_b_over_3a, R_DELTA0, R_b3, R_a_b_c } = common;
   if (isZeroAtomOrTensor(R_DELTA0_toBeCheckedIfZero)) {
     log.debug(' cubic: DETERMINANT IS ZERO and delta0 is zero');
     return [R_m_b_over_3a]; // just same solution three times
@@ -470,18 +445,18 @@ function _solveDegree3ZeroRDeterminant(
 function _solveDegree4(A: U, B: U, C: U, D: U, E: U): U[] {
   log.debug('>>>>>>>>>>>>>>>> actually using quartic formula <<<<<<<<<<<<<<< ');
 
-      if (
+  if (
     isZeroAtomOrTensor(B) &&
     isZeroAtomOrTensor(D) &&
     !isZeroAtomOrTensor(C) &&
     !isZeroAtomOrTensor(E)
-      ) {
+  ) {
     return _solveDegree4Biquadratic(A, B, C, D, E);
-        }
+  }
 
   if (!isZeroAtomOrTensor(B)) {
     return _solveDegree4NonzeroB(A, B, C, D, E);
-      } else {
+  } else {
     return _solveDegree4ZeroB(A, B, C, D, E);
   }
 }
@@ -511,34 +486,34 @@ function _solveDegree4ZeroB(A: U, B: U, C: U, D: U, E: U): U[] {
   const R_q = D;
   const R_r = E;
 
-        // Ferrari's solution
-        // https://en.wikipedia.org/wiki/Quartic_function#Ferrari.27s_solution
-        // finding the "m" in the depressed equation
-        const coeff2 = multiply(rational(5, 2), R_p);
+  // Ferrari's solution
+  // https://en.wikipedia.org/wiki/Quartic_function#Ferrari.27s_solution
+  // finding the "m" in the depressed equation
+  const coeff2 = multiply(rational(5, 2), R_p);
   const coeff3 = subtract(multiply(integer(2), power(R_p, integer(2))), R_r);
-        const coeff4 = add(
-          multiply(rational(-1, 2), multiply(R_p, R_r)),
-          add(
-            divide(power(R_p, integer(3)), integer(2)),
-            multiply(rational(-1, 8), power(R_q, integer(2)))
-          )
-        );
+  const coeff4 = add(
+    multiply(rational(-1, 2), multiply(R_p, R_r)),
+    add(
+      divide(power(R_p, integer(3)), integer(2)),
+      multiply(rational(-1, 8), power(R_q, integer(2)))
+    )
+  );
 
   const arg1 = add(
-            power(symbol(SECRETX), integer(3)),
-            add(
-              multiply(coeff2, power(symbol(SECRETX), integer(2))),
-              add(multiply(coeff3, symbol(SECRETX)), coeff4)
-            )
-          );
+    power(symbol(SECRETX), integer(3)),
+    add(
+      multiply(coeff2, power(symbol(SECRETX), integer(2))),
+      add(multiply(coeff3, symbol(SECRETX)), coeff4)
+    )
+  );
 
   log.debug(`resolventCubic: ${arg1}`);
 
   const resolventCubicSolutions = roots(arg1, symbol(SECRETX)) as Tensor;
   log.debug(`resolventCubicSolutions: ${resolventCubicSolutions}`);
 
-        let R_m = null;
-        //R_m = resolventCubicSolutions.tensor.elem[1]
+  let R_m = null;
+  //R_m = resolventCubicSolutions.tensor.elem[1]
   for (const sol of resolventCubicSolutions.tensor.elem) {
     log.debug(`examining solution: ${sol}`);
 
@@ -547,51 +522,46 @@ function _solveDegree4ZeroB(A: U, B: U, C: U, D: U, E: U): U[] {
 
     if (!isZeroAtomOrTensor(toBeCheckedIfZero)) {
       R_m = sol;
-            break;
-          }
-        }
+      break;
+    }
+  }
 
   log.debug(`chosen solution: ${R_m}`);
 
-        const sqrtPPlus2M = simplify(
-          power(add(multiply(R_m, integer(2)), R_p), rational(1, 2))
-        );
+  const sqrtPPlus2M = simplify(
+    power(add(multiply(R_m, integer(2)), R_p), rational(1, 2))
+  );
 
-  const twoQOversqrtPPlus2M = simplify(
-          divide(multiply(R_q, integer(2)), sqrtPPlus2M)
-        );
+  const twoQOversqrtPPlus2M = simplify(divide(multiply(R_q, integer(2)), sqrtPPlus2M));
 
-  const threePPlus2M = add(
-          multiply(R_p, integer(3)),
-          multiply(R_m, integer(2))
-        );
+  const threePPlus2M = add(multiply(R_p, integer(3)), multiply(R_m, integer(2)));
 
-        // solution1
+  // solution1
   const sol1Arg = simplify(
     power(negate(add(threePPlus2M, twoQOversqrtPPlus2M)), rational(1, 2))
-        );
+  );
   const solution1 = divide(add(sqrtPPlus2M, sol1Arg), integer(2));
 
-        // solution2
+  // solution2
   const sol2Arg = simplify(
     power(negate(add(threePPlus2M, twoQOversqrtPPlus2M)), rational(1, 2))
-        );
+  );
   const solution2 = divide(subtract(sqrtPPlus2M, sol2Arg), integer(2));
 
-        // solution3
+  // solution3
   const sol3Arg = simplify(
     power(negate(subtract(threePPlus2M, twoQOversqrtPPlus2M)), rational(1, 2))
-        );
+  );
   const solution3 = divide(add(negate(sqrtPPlus2M), sol3Arg), integer(2));
 
-        // solution4
+  // solution4
   const sol4Arg = simplify(
     power(negate(subtract(threePPlus2M, twoQOversqrtPPlus2M)), rational(1, 2))
-        );
+  );
   const solution4 = divide(subtract(negate(sqrtPPlus2M), sol4Arg), integer(2));
 
   return [solution1, solution2, solution3, solution4];
-  }
+}
 
 function _solveDegree4NonzeroB(A: U, B: U, C: U, D: U, E: U): U[] {
   const R_p = divide(

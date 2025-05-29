@@ -13,10 +13,7 @@ export function Eval_expsin(p1: U) {
 export function expsin(p1: U): U {
   return subtract(
     multiply(
-      divide(
-        exponential(multiply(Constants.imaginaryunit, p1)),
-        Constants.imaginaryunit
-      ),
+      divide(exponential(multiply(Constants.imaginaryunit, p1)), Constants.imaginaryunit),
       rational(1, 2)
     ),
     multiply(

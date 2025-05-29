@@ -362,5 +362,5 @@ run_test([
   '',
 
   'factor(y)',
-  'x^2+exp(x)',
+  'x^2+exp(x)'
 ]);

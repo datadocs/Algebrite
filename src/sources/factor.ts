@@ -12,7 +12,7 @@ import {
   U
 } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { integer } from './bignum.js';
 import { Eval } from './eval.js';
 import { factorpoly } from './factorpoly.js';

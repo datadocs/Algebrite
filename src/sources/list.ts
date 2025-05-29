@@ -1,5 +1,5 @@
 import { Cons, NIL, U } from '../runtime/defs.js';
-import {symbol} from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 
 // Convert an array into a CONS list.
 // TODO: rename this to just list

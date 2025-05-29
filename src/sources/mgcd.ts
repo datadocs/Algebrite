@@ -17,10 +17,7 @@ import bigInt from 'big-integer';
 //  mgcd(0, v) = |v|
 //
 //-----------------------------------------------------------------------------
-export function mgcd(
-  u: bigInt.BigNumber,
-  v: bigInt.BigNumber
-): bigInt.BigInteger {
+export function mgcd(u: bigInt.BigNumber, v: bigInt.BigNumber): bigInt.BigInteger {
   return bigInt.gcd(u, v);
 }
 

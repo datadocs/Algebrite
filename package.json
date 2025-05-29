@@ -11,7 +11,9 @@
   },
   "scripts": {
     "build": "tsc",
-    "min": "esbuild dist/index.js --minify --bundle --outfile=dist/algebrite.bundle-for-browser-min.js"
+    "gen": "node scripts/gen-version-ts.mjs",
+    "min": "esbuild dist/index.js --minify --bundle --outfile=dist/algebrite.bundle-for-browser-min.js",
+    "format": "prettier --write src"
   },
   "repository": {
     "type": "git",
@@ -39,6 +41,7 @@
   },
   "devDependencies": {
     "esbuild": "^0.25.5",
+    "prettier": "^3.5.3",
     "typescript": "^5.8.3"
   },
   "packageManager": "yarn@4.9.1"

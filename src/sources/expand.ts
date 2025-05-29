@@ -13,7 +13,7 @@ import {
   U
 } from '../runtime/defs.js';
 import { Find } from '../runtime/find.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { equal } from '../sources/misc.js';
 import { add, subtract } from './add.js';
 import { integer, nativeInt } from './bignum.js';
@@ -66,10 +66,7 @@ function expand(F: U, X: U): U {
 
   // if sum of terms then sum over the expansion of each term
   if (isadd(F)) {
-    return F.tail().reduce(
-      (a: U, b: U) => add(a, expand(b, X)),
-      Constants.zero
-    );
+    return F.tail().reduce((a: U, b: U) => add(a, expand(b, X)), Constants.zero);
   }
 
   let B = numerator(F);
@@ -408,9 +405,7 @@ function expand_get_AF(p5: U, p9: U): U[] {
   const d = nativeInt(degree(p5, p9));
   for (let i = n; i > 0; i--) {
     for (let j = 0; j < d; j++) {
-      results.push(
-        multiply(reciprocate(power(p5, integer(i))), power(p9, integer(j)))
-      );
+      results.push(multiply(reciprocate(power(p5, integer(i))), power(p9, integer(j))));
     }
   }
   return results;

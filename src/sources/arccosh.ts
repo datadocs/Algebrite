@@ -1,14 +1,6 @@
-import {
-  ARCCOSH,
-  cadr,
-  car,
-  Constants,
-  COSH,
-  isdouble,
-  U
-} from '../runtime/defs.js';
+import { ARCCOSH, cadr, car, Constants, COSH, isdouble, U } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { double } from './bignum.js';
 import { Eval } from './eval.js';
 import { isplusone } from './is.js';

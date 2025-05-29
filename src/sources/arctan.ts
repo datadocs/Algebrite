@@ -15,7 +15,7 @@ import {
   U
 } from '../runtime/defs.js';
 import { Find } from '../runtime/find.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { equal } from '../sources/misc.js';
 import { double, rational } from './bignum.js';
 import { denominator } from './denominator.js';
@@ -41,7 +41,7 @@ Returns the inverse tangent of x.
 
 */
 export function Eval_arctan(x: U) {
-    return arctan(Eval(cadr(x)));
+  return arctan(Eval(cadr(x)));
 }
 
 export function arctan(x: U): U {
@@ -65,11 +65,7 @@ export function arctan(x: U): U {
   if (Find(x, symbol(SIN)) && Find(x, symbol(COS))) {
     const p2 = numerator(x);
     const p3 = denominator(x);
-    if (
-      car(p2) === symbol(SIN) &&
-      car(p3) === symbol(COS) &&
-      equal(cadr(p2), cadr(p3))
-    ) {
+    if (car(p2) === symbol(SIN) && car(p3) === symbol(COS) && equal(cadr(p2), cadr(p3))) {
       return cadr(p2);
     }
   }

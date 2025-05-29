@@ -1,13 +1,5 @@
-import {
-  ARCSINH,
-  cadr,
-  car,
-  Constants,
-  isdouble,
-  SINH,
-  U
-} from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { ARCSINH, cadr, car, Constants, isdouble, SINH, U } from '../runtime/defs.js';
+import { symbol } from '../runtime/symbol.js';
 import { double } from './bignum.js';
 import { Eval } from './eval.js';
 import { isZeroAtomOrTensor } from './is.js';
@@ -29,7 +21,7 @@ Returns the inverse hyperbolic sine of x.
 
 */
 export function Eval_arcsinh(x: U) {
-    return arcsinh(Eval(cadr(x)));
+  return arcsinh(Eval(cadr(x)));
 }
 
 function arcsinh(x: U): U {

@@ -8,17 +8,103 @@
  */
 
 import { BigInteger } from 'big-integer';
-import {caaddr, caadr, caar, cadaddr, cadadr, cadar, caddaddr, caddadr, caddar, caddddr, cadddr, caddr, cadr, car, cdaddr, cdadr, cdar, cddaddr, cddar, cdddaddr, cddddr, cdddr, cddr, cdr, CONS, Cons, defs, DOUBLE, Double, isadd, iscons, isdouble, isfactorial, ismultiply, isNumericAtom, ispower, isrational, isstr, issymbol, istensor, NUM, Num, STR, Str, SYM, Sym, TENSOR, Tensor, U, version,} from './runtime/defs.js';
-import {Find} from './runtime/find.js';
-import {init} from './runtime/init.js';
-import {run} from './runtime/run.js';
-import {collectUserSymbols, get_binding, iskeyword, set_binding, symbol, usr_symbol,} from './runtime/symbol.js';
-import {exec, parse} from './runtime/zombocom.js';
-import {approxAll, approxRadicals, approxRationalsOfLogs, testApprox,} from './sources/approxratio.js';
-import {make_hashed_itab} from './sources/integral.js';
-import {iscomplexnumber, iseveninteger, isfloating, isfraction, isimaginarynumber, isimaginaryunit, isinteger, isintegerfactor, isminusone, isminusoneoversqrttwo, isnegative, isnegativenumber, isnegativeterm, isnonnegativeinteger, isnpi, isoneover, isoneoversqrttwo, isplusone, isposint, isquarterturn, issymbolic, isZeroAtomOrTensor,} from './sources/is.js';
+import {
+  caaddr,
+  caadr,
+  caar,
+  cadaddr,
+  cadadr,
+  cadar,
+  caddaddr,
+  caddadr,
+  caddar,
+  caddddr,
+  cadddr,
+  caddr,
+  cadr,
+  car,
+  cdaddr,
+  cdadr,
+  cdar,
+  cddaddr,
+  cddar,
+  cdddaddr,
+  cddddr,
+  cdddr,
+  cddr,
+  cdr,
+  CONS,
+  Cons,
+  defs,
+  DOUBLE,
+  Double,
+  isadd,
+  iscons,
+  isdouble,
+  isfactorial,
+  ismultiply,
+  isNumericAtom,
+  ispower,
+  isrational,
+  isstr,
+  issymbol,
+  istensor,
+  NUM,
+  Num,
+  STR,
+  Str,
+  SYM,
+  Sym,
+  TENSOR,
+  Tensor,
+  U,
+  version
+} from './runtime/defs.js';
+import { Find } from './runtime/find.js';
+import { init } from './runtime/init.js';
+import { run } from './runtime/run.js';
+import {
+  collectUserSymbols,
+  get_binding,
+  iskeyword,
+  set_binding,
+  symbol,
+  usr_symbol
+} from './runtime/symbol.js';
+import { exec, parse } from './runtime/zombocom.js';
+import {
+  approxAll,
+  approxRadicals,
+  approxRationalsOfLogs,
+  testApprox
+} from './sources/approxratio.js';
+import { make_hashed_itab } from './sources/integral.js';
+import {
+  iscomplexnumber,
+  iseveninteger,
+  isfloating,
+  isfraction,
+  isimaginarynumber,
+  isimaginaryunit,
+  isinteger,
+  isintegerfactor,
+  isminusone,
+  isminusoneoversqrttwo,
+  isnegative,
+  isnegativenumber,
+  isnegativeterm,
+  isnonnegativeinteger,
+  isnpi,
+  isoneover,
+  isoneoversqrttwo,
+  isplusone,
+  isposint,
+  isquarterturn,
+  issymbolic,
+  isZeroAtomOrTensor
+} from './sources/is.js';
 import { equal, length } from './sources/misc.js';
-import {scan} from './sources/scan.js';
+import { scan } from './sources/scan.js';
 
 const functions = {
   version,
@@ -109,69 +195,285 @@ const functions = {
   init,
   exec,
   parse,
-  run,
+  run
 };
 
 const builtin_fns = [
-  'abs',         'add',          'adj',          'and',
-  'approxratio', 'arccos',       'arccosh',      'arcsin',
-  'arcsinh',     'arctan',       'arctanh',      'arg',
-  'atomize',     'besselj',      'bessely',      'binding',
-  'binomial',    'ceiling',      'check',        'choose',
-  'circexp',     'clear',        'clearall',     'clearpatterns',
-  'clock',       'coeff',        'cofactor',     'condense',
-  'conj',        'contract',     'cos',          'cosh',
-  'decomp',      'defint',       'deg',          'denominator',
-  'det',         'derivative',   'dim',          'dirac',
-  'divisors',    'do',           'dot',          'draw',
-  'dsolve',      'eigen',        'eigenval',     'eigenvec',
-  'erf',         'erfc',         'eval',         'exp',
-  'expand',      'expcos',       'expsin',       'factor',
-  'factorial',   'factorpoly',   'filter',       'float',
-  'floor',       'for',          'Gamma',        'gcd',
-  'hermite',     'hilbert',      'imag',         'component',
-  'inner',       'integral',     'inv',          'invg',
-  'isinteger',   'isprime',      'laguerre',     'lcm',
-  'leading',     'legendre',     'log',          'mod',
-  'multiply',    'not',          'nroots',       'number',
-  'numerator',   'operator',     'or',           'outer',
-  'pattern',     'patternsinfo', 'polar',        'power',
-  'prime',       'print',        'print2dascii', 'printcomputer',
-  'printlatex',  'printlist',    'printhuman',   'product',
-  'quote',       'quotient',     'rank',         'rationalize',
-  'real',        'rect',         'roots',        'round',
-  'equals',      'shape',        'sgn',          'silentpattern',
-  'simplify',    'sin',          'sinh',         'sqrt',
-  'stop',        'subst',        'sum',          'symbolsinfo',
-  'tan',         'tanh',         'taylor',       'test',
-  'testeq',      'testge',       'testgt',       'testle',
-  'testlt',      'transpose',    'unit',         'zero',
+  'abs',
+  'add',
+  'adj',
+  'and',
+  'approxratio',
+  'arccos',
+  'arccosh',
+  'arcsin',
+  'arcsinh',
+  'arctan',
+  'arctanh',
+  'arg',
+  'atomize',
+  'besselj',
+  'bessely',
+  'binding',
+  'binomial',
+  'ceiling',
+  'check',
+  'choose',
+  'circexp',
+  'clear',
+  'clearall',
+  'clearpatterns',
+  'clock',
+  'coeff',
+  'cofactor',
+  'condense',
+  'conj',
+  'contract',
+  'cos',
+  'cosh',
+  'decomp',
+  'defint',
+  'deg',
+  'denominator',
+  'det',
+  'derivative',
+  'dim',
+  'dirac',
+  'divisors',
+  'do',
+  'dot',
+  'draw',
+  'dsolve',
+  'eigen',
+  'eigenval',
+  'eigenvec',
+  'erf',
+  'erfc',
+  'eval',
+  'exp',
+  'expand',
+  'expcos',
+  'expsin',
+  'factor',
+  'factorial',
+  'factorpoly',
+  'filter',
+  'float',
+  'floor',
+  'for',
+  'Gamma',
+  'gcd',
+  'hermite',
+  'hilbert',
+  'imag',
+  'component',
+  'inner',
+  'integral',
+  'inv',
+  'invg',
+  'isinteger',
+  'isprime',
+  'laguerre',
+  'lcm',
+  'leading',
+  'legendre',
+  'log',
+  'mod',
+  'multiply',
+  'not',
+  'nroots',
+  'number',
+  'numerator',
+  'operator',
+  'or',
+  'outer',
+  'pattern',
+  'patternsinfo',
+  'polar',
+  'power',
+  'prime',
+  'print',
+  'print2dascii',
+  'printcomputer',
+  'printlatex',
+  'printlist',
+  'printhuman',
+  'product',
+  'quote',
+  'quotient',
+  'rank',
+  'rationalize',
+  'real',
+  'rect',
+  'roots',
+  'round',
+  'equals',
+  'shape',
+  'sgn',
+  'silentpattern',
+  'simplify',
+  'sin',
+  'sinh',
+  'sqrt',
+  'stop',
+  'subst',
+  'sum',
+  'symbolsinfo',
+  'tan',
+  'tanh',
+  'taylor',
+  'test',
+  'testeq',
+  'testge',
+  'testgt',
+  'testle',
+  'testlt',
+  'transpose',
+  'unit',
+  'zero'
 ];
 
-type builtInKeys = 'abs'|'add'|'adj'|'and'|
-     'approxratio'|'arccos'|'arccosh'|'arcsin'|'arcsinh'|'arctan'|'arctanh'|
-    'arg'|'atomize'|'besselj'|'bessely'|'binding'|'binomial'|'ceiling'|'check'|
-    'choose'|'circexp'|'clear'|'clearall'|'clearpatterns'|'clock'|'coeff'|
-    'cofactor'|'condense'|'conj'|'contract'|'cos'|'cosh'|'decomp'|'defint'|
-    'deg'|'denominator'|'det'|'derivative'|'dim'|'dirac'|'divisors'|'do'|'dot'|
-    'draw'|'dsolve'|'eigen'|'eigenval'|'eigenvec'|'erf'|'erfc'|'eval'|'exp'|
-    'expand'|'expcos'|'expsin'|'factor'|'factorial'|'factorpoly'|'filter'|
-    'float'|'floor'|'for'|'Gamma'|'gcd'|'hermite'|'hilbert'|'imag'|'component'|
-    'inner'|'integral'|'inv'|'invg'|'isinteger'|'isprime'|'laguerre'|'lcm'|
-    'leading'|'legendre'|'log'|'mod'|'multiply'|'not'|'nroots'|'number'|
-    'numerator'|'operator'|'or'|'outer'|'pattern'|'patternsinfo'|'polar'|
-    'power'|'prime'|'print'|'print2dascii'|'printcomputer'|'printlatex'|
-    'printlist'|'printhuman'|'product'|'quote'|'quotient'|'rank'|'rationalize'|
-    'real'|'rect'|'roots'|'round'|'equals'|'shape'|'sgn'|'silentpattern'|
-    'simplify'|'sin'|'sinh'|'sqrt'|'stop'|'subst'|'sum'|'symbolsinfo'|'tan'|
-    'tanh'|'taylor'|'test'|'testeq'|'testge'|'testgt'|'testle'|'testlt'|
-    'transpose'|'unit'|'zero';
+type builtInKeys =
+  | 'abs'
+  | 'add'
+  | 'adj'
+  | 'and'
+  | 'approxratio'
+  | 'arccos'
+  | 'arccosh'
+  | 'arcsin'
+  | 'arcsinh'
+  | 'arctan'
+  | 'arctanh'
+  | 'arg'
+  | 'atomize'
+  | 'besselj'
+  | 'bessely'
+  | 'binding'
+  | 'binomial'
+  | 'ceiling'
+  | 'check'
+  | 'choose'
+  | 'circexp'
+  | 'clear'
+  | 'clearall'
+  | 'clearpatterns'
+  | 'clock'
+  | 'coeff'
+  | 'cofactor'
+  | 'condense'
+  | 'conj'
+  | 'contract'
+  | 'cos'
+  | 'cosh'
+  | 'decomp'
+  | 'defint'
+  | 'deg'
+  | 'denominator'
+  | 'det'
+  | 'derivative'
+  | 'dim'
+  | 'dirac'
+  | 'divisors'
+  | 'do'
+  | 'dot'
+  | 'draw'
+  | 'dsolve'
+  | 'eigen'
+  | 'eigenval'
+  | 'eigenvec'
+  | 'erf'
+  | 'erfc'
+  | 'eval'
+  | 'exp'
+  | 'expand'
+  | 'expcos'
+  | 'expsin'
+  | 'factor'
+  | 'factorial'
+  | 'factorpoly'
+  | 'filter'
+  | 'float'
+  | 'floor'
+  | 'for'
+  | 'Gamma'
+  | 'gcd'
+  | 'hermite'
+  | 'hilbert'
+  | 'imag'
+  | 'component'
+  | 'inner'
+  | 'integral'
+  | 'inv'
+  | 'invg'
+  | 'isinteger'
+  | 'isprime'
+  | 'laguerre'
+  | 'lcm'
+  | 'leading'
+  | 'legendre'
+  | 'log'
+  | 'mod'
+  | 'multiply'
+  | 'not'
+  | 'nroots'
+  | 'number'
+  | 'numerator'
+  | 'operator'
+  | 'or'
+  | 'outer'
+  | 'pattern'
+  | 'patternsinfo'
+  | 'polar'
+  | 'power'
+  | 'prime'
+  | 'print'
+  | 'print2dascii'
+  | 'printcomputer'
+  | 'printlatex'
+  | 'printlist'
+  | 'printhuman'
+  | 'product'
+  | 'quote'
+  | 'quotient'
+  | 'rank'
+  | 'rationalize'
+  | 'real'
+  | 'rect'
+  | 'roots'
+  | 'round'
+  | 'equals'
+  | 'shape'
+  | 'sgn'
+  | 'silentpattern'
+  | 'simplify'
+  | 'sin'
+  | 'sinh'
+  | 'sqrt'
+  | 'stop'
+  | 'subst'
+  | 'sum'
+  | 'symbolsinfo'
+  | 'tan'
+  | 'tanh'
+  | 'taylor'
+  | 'test'
+  | 'testeq'
+  | 'testge'
+  | 'testgt'
+  | 'testle'
+  | 'testlt'
+  | 'transpose'
+  | 'unit'
+  | 'zero';
 
-type Ux = U|number|string|BigInteger;
+type Ux = U | number | string | BigInteger;
 
-const $: typeof functions&{[key in builtInKeys]: (...args: Ux[]) => U; } =
-    functions as any;
+const $: typeof functions & {
+  [key in builtInKeys]: (...args: Ux[]) => U;
+} = functions as any;
 
-Array.from(builtin_fns).map(fn => ($[fn] = exec.bind(this, fn)));
+Array.from(builtin_fns).map((fn) => ($[fn] = exec.bind(this, fn)));
 
 export default $;
+export { $ };

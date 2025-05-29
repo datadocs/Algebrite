@@ -5,7 +5,7 @@ import { multiply_all } from '../sources/multiply.js';
 import { quickfactor, quickpower } from '../sources/quickfactor.js';
 import { test } from '../test-harness.js';
 
-test('quickfactor', t => {
+test('quickfactor', (t) => {
   for (let i = 2; i < 10001; i++) {
     let base = i;
     const qf = quickfactor(integer(base), integer(1));

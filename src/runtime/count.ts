@@ -1,8 +1,7 @@
 import { equal } from '../sources/misc.js';
 import { car, cdr, iscons, istensor, Sym, U } from './defs.js';
 
-const sum = (arr: number[]): number =>
-  arr.reduce((a: number, b: number) => a + b, 0);
+const sum = (arr: number[]): number => arr.reduce((a: number, b: number) => a + b, 0);
 
 export function count(p: U) {
   let n: number;

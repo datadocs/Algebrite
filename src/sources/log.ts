@@ -9,7 +9,7 @@ import {
   LOG,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { add, subtract } from './add.js';
 import { double } from './bignum.js';
 import { denominator } from './denominator.js';
@@ -41,10 +41,7 @@ export function logarithm(p1: U): U {
   }
 
   if (isnegativenumber(p1)) {
-    return add(
-      logarithm(negate(p1)),
-      multiply(Constants.imaginaryunit, Constants.Pi())
-    );
+    return add(logarithm(negate(p1)), multiply(Constants.imaginaryunit, Constants.Pi()));
   }
 
   if (isdouble(p1)) {

@@ -1,14 +1,6 @@
-import {
-  caddr,
-  cadr,
-  isdouble,
-  isNumericAtom,
-  MOD,
-  Num,
-  U
-} from '../runtime/defs.js';
+import { caddr, cadr, isdouble, isNumericAtom, MOD, Num, U } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { integer, nativeInt } from './bignum.js';
 import { Eval } from './eval.js';
 import { isinteger, isZeroAtomOrTensor } from './is.js';

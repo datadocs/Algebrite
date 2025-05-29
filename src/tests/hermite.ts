@@ -38,5 +38,5 @@ run_test([
   '0',
 
   'hermite(a-b,10)-eval(subst(a-b,x,hermite(x,10)))',
-  '0',
+  '0'
 ]);

@@ -7,7 +7,7 @@ import {
   Num,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { add } from './add.js';
 import { double } from './bignum.js';
 import { Eval } from './eval.js';

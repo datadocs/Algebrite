@@ -211,5 +211,5 @@ run_test([
   'I',
 
   'c·d·inv(a)·inv(c·d·inv(a))',
-  'I',
+  'I'
 ]);

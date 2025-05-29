@@ -1,7 +1,10 @@
 import {
   cadr,
-  car, Constants, COS,
-  COSH, iscons,
+  car,
+  Constants,
+  COS,
+  COSH,
+  iscons,
   SIN,
   SINH,
   TAN,
@@ -9,7 +12,7 @@ import {
   TENSOR,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { exponential } from '../sources/misc.js';
 import { add, subtract } from './add.js';
 import { integer, rational } from './bignum.js';
@@ -54,26 +57,17 @@ function circexp(p1: U): U {
     const p2 = exponential(multiply(Constants.imaginaryunit, p1));
     const p3 = exponential(negate(multiply(Constants.imaginaryunit, p1)));
 
-    return divide(
-      multiply(subtract(p3, p2), Constants.imaginaryunit),
-      add(p2, p3)
-    );
+    return divide(multiply(subtract(p3, p2), Constants.imaginaryunit), add(p2, p3));
   }
 
   if (car(p1) === symbol(COSH)) {
     p1 = cadr(p1);
-    return multiply(
-      add(exponential(p1), exponential(negate(p1))),
-      rational(1, 2)
-    );
+    return multiply(add(exponential(p1), exponential(negate(p1))), rational(1, 2));
   }
 
   if (car(p1) === symbol(SINH)) {
     p1 = cadr(p1);
-    return multiply(
-      subtract(exponential(p1), exponential(negate(p1))),
-      rational(1, 2)
-    );
+    return multiply(subtract(exponential(p1), exponential(negate(p1))), rational(1, 2));
   }
 
   if (car(p1) === symbol(TANH)) {

@@ -215,5 +215,5 @@ run_test([
   '-cos(x)',
 
   'sin(x+8/2*pi)',
-  'sin(x)',
+  'sin(x)'
 ]);

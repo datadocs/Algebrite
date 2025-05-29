@@ -29,5 +29,5 @@ run_test([
   '',
 
   'simplify(inner(H3344,H4455)-contract(H33444455,4,5))',
-  '0',
+  '0'
 ]);

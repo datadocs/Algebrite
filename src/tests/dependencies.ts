@@ -2,14 +2,14 @@ import {
   computeDependenciesFromAlgebra,
   computeResultsAndJavaScriptFromAlgebra,
   findDependenciesInScript,
-  run,
+  run
 } from '../runtime/run.js';
 import { do_clearall } from '../sources/clear.js';
 import { test } from '../test-harness.js';
 
 test.beforeEach(do_clearall);
 
-test('0', t => {
+test('0', (t) => {
   let testResult = findDependenciesInScript('1');
 
   t.is(
@@ -21,7 +21,7 @@ test('0', t => {
   t.is('', testResult[2]);
 });
 
-test('1', t => {
+test('1', (t) => {
   // check that floats in code are expressed with maximum precision -------------------
   const testResult = findDependenciesInScript('a = float(1/3)');
 
@@ -34,7 +34,7 @@ test('1', t => {
   t.is('a = 0.3333333333333333;', testResult[2]);
 });
 
-test('2', t => {
+test('2', (t) => {
   const testResult = findDependenciesInScript('a = float(10^50)');
 
   t.is(
@@ -46,10 +46,8 @@ test('2', t => {
   t.is('a = 1e+50;', testResult[2]);
 });
 
-test('3', t => {
-  const testResult = findDependenciesInScript(
-    'f = x+1\n g = f\n h = g\n f = g'
-  );
+test('3', (t) => {
+  const testResult = findDependenciesInScript('f = x+1\n g = f\n h = g\n f = g');
 
   t.is(
     'All local dependencies:  variable f depends on: x, g, ;  variable g depends on: f, ;  variable h depends on: g, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable f depends on: x, ;  f --> g -->  ... then f again,  variable g depends on: x, ;  g --> f -->  ... then g again,  variable h depends on: x, ;  h --> g --> f -->  ... then g again, ',
@@ -64,49 +62,49 @@ test('3', t => {
   );
 });
 
-test('4', t => {
+test('4', (t) => {
   t.is(
     'All local dependencies:  variable f depends on: x, ;  variable g depends on: f, y, ;  variable h depends on: g, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable f depends on: x, ;  variable g depends on: x, y, ;  variable h depends on: x, y, ; ',
     findDependenciesInScript('f = x+1\n g = f + y\n h = g')[0]
   );
 });
 
-test('5', t => {
+test('5', (t) => {
   t.is(
     'All local dependencies:  variable g depends on: h, x, y, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable g depends on: h, x, y, ; ',
     findDependenciesInScript('g = h(x,y)')[0]
   );
 });
 
-test('6', t => {
+test('6', (t) => {
   t.is(
     "All local dependencies:  variable f depends on: 'x, 'y, k, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable f depends on: 'x, 'y, k, ; ",
     findDependenciesInScript('f(x,y) = k')[0]
   );
 });
 
-test('7', t => {
+test('7', (t) => {
   t.is(
     "All local dependencies:  variable x depends on: z, ;  variable f depends on: 'x, 'y, k, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable x depends on: z, ;  variable f depends on: 'x, 'y, k, ; ",
     findDependenciesInScript('x = z\n f(x,y) = k')[0]
   );
 });
 
-test('8', t => {
+test('8', (t) => {
   t.is(
     'All local dependencies:  variable x depends on: z, ;  variable g depends on: f, x, y, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable x depends on: z, ;  variable g depends on: f, z, y, ; ',
     findDependenciesInScript('x = z\n g = f(x,y)')[0]
   );
 });
 
-test('9', t => {
+test('9', (t) => {
   t.is(
     'All local dependencies:  variable x depends on: y, z, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable x depends on: y, z, ; ',
     findDependenciesInScript('x = 1\n x = y\n x = z')[0]
   );
 });
 
-test('10', t => {
+test('10', (t) => {
   const testResult = findDependenciesInScript('x = y*y');
 
   t.is(
@@ -118,7 +116,7 @@ test('10', t => {
   t.is('x = function (y) { return ( Math.pow(y, 2) ); }', testResult[2]);
 });
 
-test('11', t => {
+test('11', (t) => {
   let testResult = findDependenciesInScript('x = e*e');
 
   t.is(
@@ -150,7 +148,7 @@ test('11', t => {
   t.is('x = -1/2*Math.SQRT2;', testResult[2]);
 });
 
-test('12', t => {
+test('12', (t) => {
   const testResult = findDependenciesInScript('x = 2^(1/2-a)*2^a/10');
 
   t.is(
@@ -162,7 +160,7 @@ test('12', t => {
   t.is('x = 1/10*Math.SQRT2;', testResult[2]);
 });
 
-test('13', t => {
+test('13', (t) => {
   const testResult = findDependenciesInScript(
     'x = rationalize(t*y/(t+y)+2*t^2*y*(2*t+y)^(-2))'
   );
@@ -180,7 +178,7 @@ test('13', t => {
   );
 });
 
-test('14', t => {
+test('14', (t) => {
   const testResult = findDependenciesInScript('x = abs((a+i*b)/(c+i*d))');
 
   t.is(
@@ -196,10 +194,8 @@ test('14', t => {
   );
 });
 
-test('15', t => {
-  const testResult = findDependenciesInScript(
-    'x = sin(1/10)^2 + cos(1/10)^2 + y'
-  );
+test('15', (t) => {
+  const testResult = findDependenciesInScript('x = sin(1/10)^2 + cos(1/10)^2 + y');
 
   t.is(
     'All local dependencies:  variable x depends on: y, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable x depends on: y, ; ',
@@ -210,7 +206,7 @@ test('15', t => {
   t.is('x = function (y) { return ( 1+y ); }', testResult[2]);
 });
 
-test('16', t => {
+test('16', (t) => {
   const testResult = findDependenciesInScript('x = y + cos(1) + sin(1)');
 
   t.is(
@@ -220,13 +216,10 @@ test('16', t => {
 
   t.is('', testResult[1]);
 
-  t.is(
-    'x = function (y) { return ( y+Math.cos(1)+Math.sin(1) ); }',
-    testResult[2]
-  );
+  t.is('x = function (y) { return ( y+Math.cos(1)+Math.sin(1) ); }', testResult[2]);
 });
 
-test('17', t => {
+test('17', (t) => {
   const testResult = findDependenciesInScript('x = a + arccos(b) + arcsin(c)');
 
   t.is(
@@ -242,7 +235,7 @@ test('17', t => {
   );
 });
 
-test('18', t => {
+test('18', (t) => {
   const testResult = findDependenciesInScript('x = sin(1/10)^2 + cos(1/10)^2');
 
   t.is(
@@ -254,7 +247,7 @@ test('18', t => {
   t.is('x = 1;', testResult[2]);
 });
 
-test('19', t => {
+test('19', (t) => {
   const testResult = findDependenciesInScript('a = unit(b) + c');
 
   t.is(
@@ -266,7 +259,7 @@ test('19', t => {
   t.is('a = function (c, b) { return ( c+identity(b) ); }', testResult[2]);
 });
 
-test('20', t => {
+test('20', (t) => {
   const testResult = findDependenciesInScript('f(x) = x * x');
 
   t.is(
@@ -278,7 +271,7 @@ test('20', t => {
   t.is('f = function (x) { return ( Math.pow(x, 2) ); }', testResult[2]);
 });
 
-test('21', t => {
+test('21', (t) => {
   const testResult = findDependenciesInScript('f(x) = x * x + g(y)');
 
   t.is(
@@ -288,13 +281,10 @@ test('21', t => {
 
   t.is('', testResult[1]);
 
-  t.is(
-    'f = function (g, y, x) { return ( g(y)+Math.pow(x, 2) ); }',
-    testResult[2]
-  );
+  t.is('f = function (g, y, x) { return ( g(y)+Math.pow(x, 2) ); }', testResult[2]);
 });
 
-test('22', t => {
+test('22', (t) => {
   const testResult = findDependenciesInScript('y = 2\nf(x) = x * x + g(y)');
 
   t.is(
@@ -304,16 +294,11 @@ test('22', t => {
 
   t.is('', testResult[1]);
 
-  t.is(
-    'y = 2;\nf = function (g, x) { return ( g(2)+Math.pow(x, 2) ); }',
-    testResult[2]
-  );
+  t.is('y = 2;\nf = function (g, x) { return ( g(2)+Math.pow(x, 2) ); }', testResult[2]);
 });
 
-test('23', t => {
-  const testResult = findDependenciesInScript(
-    'g(x) = x + 2\ny = 2\nf(x) = x * x + g(y)'
-  );
+test('23', (t) => {
+  const testResult = findDependenciesInScript('g(x) = x + 2\ny = 2\nf(x) = x * x + g(y)');
 
   t.is(
     "All local dependencies:  variable g depends on: 'x, ;  variable y depends on: ;  variable f depends on: 'x, g, y, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable g depends on: 'x, ;  variable y depends on: ;  variable f depends on: 'x, ; ",
@@ -328,10 +313,8 @@ test('23', t => {
   );
 });
 
-test('24', t => {
-  const testResult = findDependenciesInScript(
-    'g(x) = x + 2\nf(x) = x * x + g(y)'
-  );
+test('24', (t) => {
+  const testResult = findDependenciesInScript('g(x) = x + 2\nf(x) = x * x + g(y)');
 
   t.is(
     "All local dependencies:  variable g depends on: 'x, ;  variable f depends on: 'x, g, y, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable g depends on: 'x, ;  variable f depends on: 'x, y, ; ",
@@ -346,7 +329,7 @@ test('24', t => {
   );
 });
 
-test('25', t => {
+test('25', (t) => {
   /*
   testResult = findDependenciesInScript('g(x) = f(x)\nf(x)=g(x)')
   if testResult[0] == "All local dependencies:  variable g depends on: 'x, f, x, ;  variable f depends on: 'x, g, x, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable g depends on: 'x, ;  g --> f -->  ... then g again,  variable f depends on: 'x, x, ;  f --> g -->  ... then f again, " and
@@ -381,7 +364,7 @@ test('25', t => {
   );
 });
 
-test('26', t => {
+test('26', (t) => {
   const testResult = findDependenciesInScript(
     'piApprox = 2*product(4*k^2/(4*k^2-1),k,1,iterations)'
   );
@@ -404,7 +387,7 @@ test('26', t => {
   );
 });
 
-test('27', t => {
+test('27', (t) => {
   const testResult = findDependenciesInScript('f = roots(a*x^2 + b*x + c, x)');
 
   t.is(
@@ -420,7 +403,7 @@ test('27', t => {
   );
 });
 
-test('28', t => {
+test('28', (t) => {
   const testResult = findDependenciesInScript('f = roots(a*x^2 + b*x + c)');
 
   t.is(
@@ -436,7 +419,7 @@ test('28', t => {
   );
 });
 
-test('29', t => {
+test('29', (t) => {
   const testResult = findDependenciesInScript('f = roots(integral(a*x + b))');
 
   t.is(
@@ -448,10 +431,8 @@ test('29', t => {
   t.is('f = function (a, b) { return ( [0,-2*b/a] ); }', testResult[2]);
 });
 
-test('30', t => {
-  const testResult = findDependenciesInScript(
-    'f = roots(defint(a*x + y,y,0,1))'
-  );
+test('30', (t) => {
+  const testResult = findDependenciesInScript('f = roots(defint(a*x + y,y,0,1))');
 
   t.is(
     'All local dependencies:  variable f depends on: a, ; . Symbols with reassignments: . Symbols in expressions without assignments: . All dependencies recursively:  variable f depends on: a, ; ',
@@ -462,7 +443,7 @@ test('30', t => {
   t.is('f = function (a) { return ( -1/(2*a) ); }', testResult[2]);
 });
 
-test('31', t => {
+test('31', (t) => {
   const testResult = findDependenciesInScript(
     'f = roots(defint(a*x + y + z,y,0,1, z, 0, 1))'
   );
@@ -476,7 +457,7 @@ test('31', t => {
   t.is('f = function (a) { return ( -1/a ); }', testResult[2]);
 });
 
-test('32', t => {
+test('32', (t) => {
   const testResult = findDependenciesInScript('f = defint(2*x - 3*y,x,0,2*y)');
 
   t.is(
@@ -488,7 +469,7 @@ test('32', t => {
   t.is('f = function (y) { return ( -2*Math.pow(y, 2) ); }', testResult[2]);
 });
 
-test('33', t => {
+test('33', (t) => {
   const testResult = findDependenciesInScript(
     'f = defint(12 - x^2 - (y^2)/2,x,0,2,y,0,3)'
   );
@@ -502,7 +483,7 @@ test('33', t => {
   t.is('f = 55;', testResult[2]);
 });
 
-test('34', t => {
+test('34', (t) => {
   // this example checks that functions are not meddled with,
   // in particular that in the function body, the variables
   // bound by the parameters remain "separate" from previous
@@ -518,7 +499,7 @@ test('34', t => {
   t.is('a = 2;\nf = function (a, b) { return ( 1+a+b ); }', testResult[2]);
 });
 
-test('35', t => {
+test('35', (t) => {
   // similar as test above but this time we are not
   // defining a function, so things are a bit different.
   const testResult = findDependenciesInScript('a = 2\nf = a+1');
@@ -532,7 +513,7 @@ test('35', t => {
   t.is('a = 2;\nf = 3;', testResult[2]);
 });
 
-test('36', t => {
+test('36', (t) => {
   // similar as test above but this time we do a
   // trick with the quote to see whether we
   // get confused with the indirection
@@ -551,7 +532,7 @@ test('36', t => {
   );
 });
 
-test('37', t => {
+test('37', (t) => {
   // another tricky case of indirection through quote
   const testResult = findDependenciesInScript('a := b\nf(a) = a+1');
 
@@ -568,7 +549,7 @@ test('37', t => {
   );
 });
 
-test('38', t => {
+test('38', (t) => {
   // reassignment
   const testResult = findDependenciesInScript('b = 1\nb=a+b+c');
 
@@ -581,7 +562,7 @@ test('38', t => {
   t.is('b = function (a, c) { return ( 1+a+c ); }', testResult[2]);
 });
 
-test('39', t => {
+test('39', (t) => {
   // reassignment
   const testResult = findDependenciesInScript('a = a+1');
 
@@ -595,39 +576,37 @@ test('39', t => {
   t.is('Error: Stop: recursive evaluation of symbols: a -> a', testResult[5]);
 });
 
-test('40', t => {
+test('40', (t) => {
   // reassignment
-  const testResult = computeDependenciesFromAlgebra(
-    'pattern(a,b)\nc= d\na=a+1'
-  );
+  const testResult = computeDependenciesFromAlgebra('pattern(a,b)\nc= d\na=a+1');
   t.is(3, testResult.affectsVariables.length);
   t.is(3, testResult.affectedBy.length);
-  t.is(true, testResult.affectsVariables.includes("c"));
-  t.is(true, testResult.affectsVariables.includes("a"));
-  t.is(true, testResult.affectsVariables.includes("PATTERN_DEPENDENCY"));
-  t.is(true, testResult.affectedBy.includes("d"));
-  t.is(true, testResult.affectedBy.includes("a"));
-  t.is(true, testResult.affectedBy.includes("PATTERN_DEPENDENCY"));
+  t.is(true, testResult.affectsVariables.includes('c'));
+  t.is(true, testResult.affectsVariables.includes('a'));
+  t.is(true, testResult.affectsVariables.includes('PATTERN_DEPENDENCY'));
+  t.is(true, testResult.affectedBy.includes('d'));
+  t.is(true, testResult.affectedBy.includes('a'));
+  t.is(true, testResult.affectedBy.includes('PATTERN_DEPENDENCY'));
 });
 
-test('41', t => {
+test('41', (t) => {
   const testResult = computeDependenciesFromAlgebra('PCA(M) = eig(Mᵀ⋅M)');
   t.is(1, testResult.affectsVariables.length);
   t.is(1, testResult.affectedBy.length);
-  t.is(true, testResult.affectsVariables.includes("PCA"));
-  t.is(false, testResult.affectsVariables.includes("PATTERN_DEPENDENCY"));
-  t.is(true, testResult.affectedBy.includes("PATTERN_DEPENDENCY"));
+  t.is(true, testResult.affectsVariables.includes('PCA'));
+  t.is(false, testResult.affectsVariables.includes('PATTERN_DEPENDENCY'));
+  t.is(true, testResult.affectedBy.includes('PATTERN_DEPENDENCY'));
 });
 
-test('42', t => {
+test('42', (t) => {
   const testResult = computeDependenciesFromAlgebra('pattern(a_ᵀ⋅a_, cov(a_))');
   t.is(1, testResult.affectsVariables.length);
   t.is(1, testResult.affectedBy.length);
-  t.is(true, testResult.affectsVariables.includes("PATTERN_DEPENDENCY"));
-  t.is(true, testResult.affectedBy.includes("PATTERN_DEPENDENCY"));
+  t.is(true, testResult.affectsVariables.includes('PATTERN_DEPENDENCY'));
+  t.is(true, testResult.affectedBy.includes('PATTERN_DEPENDENCY'));
 });
 
-test('43', t => {
+test('43', (t) => {
   const testResult = findDependenciesInScript('a = b\nf = a+1');
 
   t.is(
@@ -643,7 +622,7 @@ test('43', t => {
   );
 });
 
-test('44', t => {
+test('44', (t) => {
   const testResult = findDependenciesInScript('PCA(M) = eig(cov(M))');
 
   t.is(
@@ -655,13 +634,13 @@ test('44', t => {
   t.is('PCA = function (M) { return ( eig(cov(M)) ); }', testResult[2]);
 });
 
-test('45', t => {
+test('45', (t) => {
   computeResultsAndJavaScriptFromAlgebra('PCA(M) = eig(Mᵀ⋅M)');
   const testResult = run('symbolsinfo');
   t.is(false, testResult.includes('AVOID_BINDING_TO_EXTERNAL_SCOPE_VALUE'));
 });
 
-test('46', t => {
+test('46', (t) => {
   // this checks error handling in case of pattern and syntax error
   // picked up during scanning.
   computeResultsAndJavaScriptFromAlgebra('pattern(a_ᵀ⋅a_, cov(a_))');
@@ -677,7 +656,7 @@ test('46', t => {
   t.is('PCA', testResult.dependencyInfo.affectsVariables[0]);
 });
 
-test('47', t => {
+test('47', (t) => {
   const testResult = computeResultsAndJavaScriptFromAlgebra('x + x + x');
 
   t.is('', testResult.code);
@@ -689,7 +668,7 @@ test('47', t => {
   t.is(0, testResult.dependencyInfo.affectsVariables.length);
 });
 
-test('48', t => {
+test('48', (t) => {
   computeResultsAndJavaScriptFromAlgebra('x = y + 2');
   const testResult = computeResultsAndJavaScriptFromAlgebra('x + x + x');
 
@@ -702,25 +681,17 @@ test('48', t => {
   t.is(0, testResult.dependencyInfo.affectsVariables.length);
 });
 
-test('49', t => {
+test('49', (t) => {
   const testResult = computeResultsAndJavaScriptFromAlgebra('[[0,1],[1,0]]');
 
-  t.is(
-    '$$\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$$',
-    testResult.latexResult
-  );
+  t.is('$$\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$$', testResult.latexResult);
 
-  t.is(
-    '$$\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$$',
-    testResult.result
-  );
+  t.is('$$\\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$$', testResult.result);
   t.is(0, testResult.dependencyInfo.affectsVariables.length);
 });
 
-test('50', t => {
-  const testResult = computeResultsAndJavaScriptFromAlgebra(
-    'x = [[0,1],[1,0]]'
-  );
+test('50', (t) => {
+  const testResult = computeResultsAndJavaScriptFromAlgebra('x = [[0,1],[1,0]]');
 
   t.is('x = [[0,1],[1,0]];', testResult.code);
 
@@ -729,10 +700,7 @@ test('50', t => {
     testResult.latexResult
   );
 
-  t.is(
-    '$$x = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$$',
-    testResult.result
-  );
+  t.is('$$x = \\begin{bmatrix} 0 & 1 \\\\ 1 & 0 \\end{bmatrix}$$', testResult.result);
 
   t.is(1, testResult.dependencyInfo.affectedBy.length);
   t.is('PATTERN_DEPENDENCY', testResult.dependencyInfo.affectedBy[0]);
@@ -740,7 +708,7 @@ test('50', t => {
   t.is('x', testResult.dependencyInfo.affectsVariables[0]);
 });
 
-test('51', t => {
+test('51', (t) => {
   // a simple array lookup like this is turned into
   // a function, which is slighly silly but
   // it's orthogonal, this works also if instead of
@@ -761,7 +729,7 @@ test('51', t => {
   t.is('x', testResult.dependencyInfo.affectsVariables[0]);
 });
 
-test('52', t => {
+test('52', (t) => {
   const testResult = computeResultsAndJavaScriptFromAlgebra('x = a ⋅ b');
   // TODO is it really needed to wrap it in a function like this?
   t.is('x = function (a, b) { return ( dot(a, b) ); }', testResult.code);
@@ -775,7 +743,7 @@ test('52', t => {
   t.is('x', testResult.dependencyInfo.affectsVariables[0]);
 });
 
-test('53', t => {
+test('53', (t) => {
   // Here we test an actual sequence of invokations form the
   // notebook.
 
@@ -801,7 +769,7 @@ test('53', t => {
   t.is('PATTERN_DEPENDENCY', res.dependencyInfo.affectedBy[1]);
 });
 
-test('54', t => {
+test('54', (t) => {
   // overwriting a pattern, as seen from the notebook
 
   const code1 = 'pattern(a_ + a_, 42 * a_)';
@@ -821,7 +789,7 @@ test('54', t => {
   t.is('PATTERN_DEPENDENCY', res.dependencyInfo.affectedBy[1]);
 });
 
-test('55', t => {
+test('55', (t) => {
   // tests
 
   const res = computeResultsAndJavaScriptFromAlgebra(
@@ -845,17 +813,14 @@ test('55', t => {
   t.is('PATTERN_DEPENDENCY', res.dependencyInfo.affectedBy[1]);
 });
 
-test('56', t => {
+test('56', (t) => {
   // tests
 
   const res = computeResultsAndJavaScriptFromAlgebra(
     'f=floor(x) + ceiling(x) + round(x)'
   );
 
-  t.is(
-    'f = function (x) { return ( ceiling(x)+floor(x)+round(x) ); }',
-    res.code
-  );
+  t.is('f = function (x) { return ( ceiling(x)+floor(x)+round(x) ); }', res.code);
 
   t.is(
     '$$f(x) =  \\lceil {x} \\rceil + \\lfloor {x} \\rfloor +round(x)$$',

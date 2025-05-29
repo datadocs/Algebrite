@@ -10,12 +10,20 @@ import {
   car,
   cdadr,
   cddr,
-  cdr, CONS,
+  cdr,
+  CONS,
   Cons,
-  Constants, DEBUG, defs, DOUBLE, EVAL, INDEX, iscons,
+  Constants,
+  DEBUG,
+  defs,
+  DOUBLE,
+  EVAL,
+  INDEX,
+  iscons,
   isdouble,
   ISINTEGER,
-  isNumericAtom, isrational,
+  isNumericAtom,
+  isrational,
   issymbol,
   istensor,
   LAST,
@@ -35,7 +43,13 @@ import {
 } from '../runtime/defs.js';
 import { check_esc_flag, stop } from '../runtime/run.js';
 import { get_binding, iskeyword, set_binding, symbol } from '../runtime/symbol.js';
-import { convert_rational_to_double, double, integer, nativeInt, rational } from './bignum.js';
+import {
+  convert_rational_to_double,
+  double,
+  integer,
+  nativeInt,
+  rational
+} from './bignum.js';
 import { define_user_function } from './define.js';
 import { det } from './det.js';
 import { divisors } from './divisors.js';
@@ -44,7 +58,12 @@ import { factorpoly } from './factorpoly.js';
 import { hermite } from './hermite.js';
 import { hilbert } from './hilbert.js';
 import { inv, invg } from './inv.js';
-import { isfloating, isinteger, isintegerorintegerfloat, isZeroLikeOrNonZeroLikeOrUndetermined } from './is.js';
+import {
+  isfloating,
+  isinteger,
+  isintegerorintegerfloat,
+  isZeroLikeOrNonZeroLikeOrUndetermined
+} from './is.js';
 import { makeList } from './list.js';
 import { exponential } from './misc.js';
 import { power } from './power.js';
@@ -78,9 +97,7 @@ export function Eval(p1: U): U {
       case CONS:
         return Eval_cons(p1);
       case NUM:
-        return defs.evaluatingAsFloats
-          ? double(convert_rational_to_double(p1))
-          : p1;
+        return defs.evaluatingAsFloats ? double(convert_rational_to_double(p1)) : p1;
       case DOUBLE:
       case STR:
         return p1;
@@ -133,9 +150,8 @@ export function Eval_sym(p1: Sym): U {
     // Note that recursive functions will still work because
     // as mentioned at the top, this method doesn't look
     // up and evaluate function calls.
-    const positionIfSymbolAlreadyBeingEvaluated = defs.chainOfUserSymbolsNotFunctionsBeingEvaluated.indexOf(
-      p1
-    );
+    const positionIfSymbolAlreadyBeingEvaluated =
+      defs.chainOfUserSymbolsNotFunctionsBeingEvaluated.indexOf(p1);
     if (positionIfSymbolAlreadyBeingEvaluated !== -1) {
       let cycleString = '';
       for (
@@ -144,8 +160,7 @@ export function Eval_sym(p1: Sym): U {
         i++
       ) {
         cycleString +=
-          defs.chainOfUserSymbolsNotFunctionsBeingEvaluated[i].printname +
-          ' -> ';
+          defs.chainOfUserSymbolsNotFunctionsBeingEvaluated[i].printname + ' -> ';
       }
       cycleString += p1.printname;
 
@@ -516,7 +531,7 @@ function setq_indexed(p1: U): U {
   let args: U[] = [];
   let p2 = cdadr(p1);
   if (iscons(p2)) {
-    args = ([...p2].map(Eval));
+    args = [...p2].map(Eval);
   }
   const p3 = set_component(lvalue, ...args);
   set_binding(p4, p3);

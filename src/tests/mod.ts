@@ -41,5 +41,5 @@ run_test([
   'Stop: mod function: integer arguments expected',
 
   'mod(15,8.0)',
-  '7',
+  '7'
 ]);

@@ -8,7 +8,7 @@ import {
   SGN,
   U
 } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { absval } from './abs.js';
 import { Eval } from './eval.js';
 import { iscomplexnumber, isnegativeterm } from './is.js';

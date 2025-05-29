@@ -175,5 +175,5 @@ run_test([
   // we know it's a normal
   // multiplication.
   'transpose(A)*transpose(x)',
-  'transpose(A)*transpose(x)',
+  'transpose(A)*transpose(x)'
 ]);

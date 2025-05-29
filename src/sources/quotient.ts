@@ -1,13 +1,5 @@
-import {
-  cadddr,
-  caddr,
-  cadr,
-  Constants,
-  NIL,
-  SYMBOL_X,
-  U
-} from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { cadddr, caddr, cadr, Constants, NIL, SYMBOL_X, U } from '../runtime/defs.js';
+import { symbol } from '../runtime/symbol.js';
 import { add, subtract } from './add.js';
 import { integer } from './bignum.js';
 import { coeff } from './coeff.js';
@@ -51,10 +43,7 @@ export function divpoly(DIVIDEND: U, DIVISOR: U, X: U): U {
     const Q = divide(dividendCs[m], divisorCs[n]);
 
     for (let i = 0; i <= n; i++) {
-      dividendCs[x + i] = subtract(
-        dividendCs[x + i],
-        multiply(divisorCs[i], Q)
-      );
+      dividendCs[x + i] = subtract(dividendCs[x + i], multiply(divisorCs[i], Q));
     }
 
     QUOTIENT = add(QUOTIENT, multiply(Q, power(X, integer(x))));

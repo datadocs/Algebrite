@@ -44,9 +44,7 @@ export function rect(p1: U): U {
 
   if (DEBUG_RECT) {
     console.log(`RECT of ${input}`);
-    console.log(
-      `any clock forms in : ${input} ? ${findPossibleClockForm(input, p1)}`
-    );
+    console.log(`any clock forms in : ${input} ? ${findPossibleClockForm(input, p1)}`);
   }
 
   // if we assume real variables, then the
@@ -79,11 +77,7 @@ export function rect(p1: U): U {
     !isZeroAtomOrTensor(get_binding(symbol(ASSUME_REAL_VARIABLES))) &&
     !findPossibleExponentialForm(p1) && // no exp form?
     !findPossibleClockForm(p1, p1) && // no clock form?
-    !(
-      Find(p1, symbol(SIN)) &&
-      Find(p1, symbol(COS)) &&
-      Find(p1, Constants.imaginaryunit)
-    )
+    !(Find(p1, symbol(SIN)) && Find(p1, symbol(COS)) && Find(p1, Constants.imaginaryunit))
   ) {
     // no polar form?
     if (DEBUG_RECT) {
@@ -123,10 +117,7 @@ export function rect(p1: U): U {
     console.log(` rect - ${input} cosine: ${cosine(arg(p1))}`);
     console.log(` rect - ${input} sine: ${sine(arg(p1))}`);
     console.log(
-      ` rect - ${input} i * sine: ${multiply(
-        Constants.imaginaryunit,
-        sine(arg(p1))
-      )}`
+      ` rect - ${input} i * sine: ${multiply(Constants.imaginaryunit, sine(arg(p1)))}`
     );
     console.log(
       ` rect - ${input} cos + i * sine: ${add(

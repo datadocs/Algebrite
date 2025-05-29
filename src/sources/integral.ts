@@ -389,7 +389,7 @@ const itab: string[] = [
   'f(x^2*exp(a*x+b),exp(a*x+b)*(a^2*x^2-2*a*x+2)/(a^3))',
 
   'f(x^3*exp(a*x),exp(a*x)*x^3/a-3/a*integral(x^2*exp(a*x),x))',
-  'f(x^3*exp(a*x+b),exp(a*x+b)*x^3/a-3/a*integral(x^2*exp(a*x+b),x))',
+  'f(x^3*exp(a*x+b),exp(a*x+b)*x^3/a-3/a*integral(x^2*exp(a*x+b),x))'
 ];
 
 export function Eval_integral(p1: U) {
@@ -504,10 +504,7 @@ function integral_of_sum(F: U, X: U): U {
   F = cdr(F);
   let result = integral(car(F), X);
   if (iscons(F)) {
-    result = F.tail().reduce(
-      (acc: U, b: U) => add(acc, integral(b, X)),
-      result
-    );
+    result = F.tail().reduce((acc: U, b: U) => add(acc, integral(b, X)), result);
   }
   return result;
 }
@@ -540,21 +537,21 @@ function integral_of_form(F: U, X: U): U {
 // The first two values are from the ITALU paper.
 // The others are just arbitrary constants.
 const hashcode_values = {
-  'x': 0.95532,
-  'constexp': 1.43762,
-  'constant': 1.14416593629414332,
-  'constbase': 1.20364122304218824,
-  'sin': 1.73305482518303221,
-  'arcsin': 1.6483368529465804,
-  'cos': 1.058672123686340116,
-  'arccos': 1.8405225918106694,
-  'tan': 1.12249437762925064,
-  'arctan': 1.1297397925394962,
-  'sinh': 1.8176164926060078,
-  'cosh': 1.9404934661708022,
-  'tanh': 1.6421307715103121,
-  'log': 1.47744370135492387,
-  'erf': 1.0825269225702916,
+  x: 0.95532,
+  constexp: 1.43762,
+  constant: 1.14416593629414332,
+  constbase: 1.20364122304218824,
+  sin: 1.73305482518303221,
+  arcsin: 1.6483368529465804,
+  cos: 1.058672123686340116,
+  arccos: 1.8405225918106694,
+  tan: 1.12249437762925064,
+  arctan: 1.1297397925394962,
+  sinh: 1.8176164926060078,
+  cosh: 1.9404934661708022,
+  tanh: 1.6421307715103121,
+  log: 1.47744370135492387,
+  erf: 1.0825269225702916
 };
 
 function italu_hashcode(u: U, x: U): number {
@@ -627,9 +624,9 @@ function hash_multiplication(terms: U, x: U): number {
   let product = 1;
   if (iscons(terms)) {
     [...terms].forEach((term) => {
-    if (Find(term, x)) {
-      product = product * italu_hashcode(term, x);
-    }
+      if (Find(term, x)) {
+        product = product * italu_hashcode(term, x);
+      }
     });
   }
   return product;
@@ -692,10 +689,7 @@ var hashed_itab: { [key: string]: string[] } = {
   '0.977405': ['f(x^(1/2),2/3*x^(3/2))'],
   '0.955320': ['f(x,x^2/2)'],
   '0.912636': ['f(x^2,x^3/3)'],
-  '1.137302': [
-    'f(exp(a*x),1/a*exp(a*x))',
-    'f(a^x,a^x/log(a),or(not(number(a)),a>0))',
-  ],
+  '1.137302': ['f(exp(a*x),1/a*exp(a*x))', 'f(a^x,a^x/log(a),or(not(number(a)),a>0))'],
   '1.326774': ['f(exp(a*x+b),1/a*exp(a*x+b))'],
   '1.080259': ['f(x*exp(a*x^2),exp(a*x^2)/(2*a))'],
   '1.260228': ['f(x*exp(a*x^2+b),exp(a*x^2+b)/(2*a))'],
@@ -704,148 +698,126 @@ var hashed_itab: { [key: string]: string[] } = {
     'f(1/(a+x^2),1/sqrt(a)*arctan(x/sqrt(a)),or(not(number(a)),a>0))',
     'f(1/(a-x^2),1/sqrt(a)*arctanh(x/sqrt(a)))',
     'f(1/(a+b*x^2),1/sqrt(a*b)*arctan(x*sqrt(a*b)/a),or(not(number(a*b)),a*b>0))',
-    'f(1/(a+b*x^2),1/(2*sqrt(-a*b))*log((a+x*sqrt(-a*b))/(a-x*sqrt(-a*b))),or(not(number(a*b)),a*b<0))',
+    'f(1/(a+b*x^2),1/(2*sqrt(-a*b))*log((a+x*sqrt(-a*b))/(a-x*sqrt(-a*b))),or(not(number(a*b)),a*b<0))'
   ],
   '0.697274': [
     'f(1/sqrt(a-x^2),arcsin(x/(sqrt(a))))',
     'f(1/sqrt(a+x^2),log(x+sqrt(a+x^2)))',
-    'f(1/sqrt(x^2+a),log(x+sqrt(x^2+a)))',
+    'f(1/sqrt(x^2+a),log(x+sqrt(x^2+a)))'
   ],
   '0.476307': ['f(1/(a+b*x),1/b*log(a+b*x))'],
   '0.226868': ['f(1/(a+b*x)^2,-1/(b*(a+b*x)))'],
   '2.904531': ['f(1/(a+b*x)^3,-1/(2*b)*1/(a+b*x)^2)'],
   '0.455026': ['f(x/(a+b*x),x/b-a*log(a+b*x)/b/b)'],
   '0.216732': ['f(x/(a+b*x)^2,1/b^2*(log(a+b*x)+a/(a+b*x)))'],
-  '0.434695': [
-    'f(x^2/(a+b*x),1/b^2*(1/2*(a+b*x)^2-2*a*(a+b*x)+a^2*log(a+b*x)))',
-  ],
+  '0.434695': ['f(x^2/(a+b*x),1/b^2*(1/2*(a+b*x)^2-2*a*(a+b*x)+a^2*log(a+b*x)))'],
   '0.207048': ['f(x^2/(a+b*x)^2,1/b^3*(a+b*x-2*a*log(a+b*x)-a^2/(a+b*x)))'],
-  '2.650781': [
-    'f(x^2/(a+b*x)^3,1/b^3*(log(a+b*x)+2*a/(a+b*x)-1/2*a^2/(a+b*x)^2))',
-  ],
+  '2.650781': ['f(x^2/(a+b*x)^3,1/b^3*(log(a+b*x)+2*a/(a+b*x)-1/2*a^2/(a+b*x)^2))'],
   '0.498584': ['f(1/x*1/(a+b*x),-1/a*log((a+b*x)/x))'],
   '0.237479': ['f(1/x*1/(a+b*x)^2,1/a*1/(a+b*x)-1/a^2*log((a+b*x)/x))'],
-  '3.040375': [
-    'f(1/x*1/(a+b*x)^3,1/a^3*(1/2*((2*a+b*x)/(a+b*x))^2+log(x/(a+b*x))))',
-  ],
+  '3.040375': ['f(1/x*1/(a+b*x)^3,1/a^3*(1/2*((2*a+b*x)/(a+b*x))^2+log(x/(a+b*x))))'],
   '0.521902': ['f(1/x^2*1/(a+b*x),-1/(a*x)+b/a^2*log((a+b*x)/x))'],
-  '0.446014': [
-    'f(1/x^3*1/(a+b*x),(2*b*x-a)/(2*a^2*x^2)+b^2/a^3*log(x/(a+b*x)))',
-  ],
-  '0.248586': [
-    'f(1/x^2*1/(a+b*x)^2,-(a+2*b*x)/(a^2*x*(a+b*x))+2*b/a^3*log((a+b*x)/x))',
-  ],
+  '0.446014': ['f(1/x^3*1/(a+b*x),(2*b*x-a)/(2*a^2*x^2)+b^2/a^3*log(x/(a+b*x)))'],
+  '0.248586': ['f(1/x^2*1/(a+b*x)^2,-(a+2*b*x)/(a^2*x*(a+b*x))+2*b/a^3*log((a+b*x)/x))'],
   '0.464469': ['f(x/(a+b*x^2),1/2*1/b*log(a+b*x^2))'],
   '0.443716': ['f(x^2/(a+b*x^2),x/b-a/b*integral(1/(a+b*x^2),x))'],
-  '0.236382': [
-    'f(1/(a+b*x^2)^2,x/(2*a*(a+b*x^2))+1/2*1/a*integral(1/(a+b*x^2),x))',
-  ],
+  '0.236382': ['f(1/(a+b*x^2)^2,x/(2*a*(a+b*x^2))+1/2*1/a*integral(1/(a+b*x^2),x))'],
   '0.508931': ['f(1/x*1/(a+b*x^2),1/2*1/a*log(x^2/(a+b*x^2)))'],
   '0.532733': ['f(1/x^2*1/(a+b*x^2),-1/(a*x)-b/a*integral(1/(a+b*x^2),x))'],
   '0.480638': [
-    'f(1/(a+b*x^3),1/3*1/a*(a/b)^(1/3)*(1/2*log(((a/b)^(1/3)+x)^3/(a+b*x^3))+sqrt(3)*arctan((2*x-(a/b)^(1/3))*(a/b)^(-1/3)/sqrt(3))))',
+    'f(1/(a+b*x^3),1/3*1/a*(a/b)^(1/3)*(1/2*log(((a/b)^(1/3)+x)^3/(a+b*x^3))+sqrt(3)*arctan((2*x-(a/b)^(1/3))*(a/b)^(-1/3)/sqrt(3))))'
   ],
   '0.438648': ['f(x^2/(a+b*x^3),1/3*1/b*log(a+b*x^3))'],
   '0.459164': [
     'f(x/(a+b*x^4),1/2*sqrt(b/a)/b*arctan(x^2*sqrt(b/a)),or(not(number(a*b)),a*b>0))',
-    'f(x/(a+b*x^4),1/4*sqrt(-b/a)/b*log((x^2-sqrt(-a/b))/(x^2+sqrt(-a/b))),or(not(number(a*b)),a*b<0))',
+    'f(x/(a+b*x^4),1/4*sqrt(-b/a)/b*log((x^2-sqrt(-a/b))/(x^2+sqrt(-a/b))),or(not(number(a*b)),a*b<0))'
   ],
   '0.450070': ['f(x^3/(a+b*x^4),1/4*1/b*log(a+b*x^4))'],
   '1.448960': ['f(sqrt(a+b*x),2/3*1/b*sqrt((a+b*x)^3))'],
   '1.384221': ['f(x*sqrt(a+b*x),-2*(2*a-3*b*x)*sqrt((a+b*x)^3)/15/b^2)'],
   '1.322374': [
-    'f(x^2*sqrt(a+b*x),2*(8*a^2-12*a*b*x+15*b^2*x^2)*sqrt((a+b*x)^3)/105/b^3)',
+    'f(x^2*sqrt(a+b*x),2*(8*a^2-12*a*b*x+15*b^2*x^2)*sqrt((a+b*x)^3)/105/b^3)'
   ],
-  '1.516728': [
-    'f(sqrt(a+b*x)/x,2*sqrt(a+b*x)+a*integral(1/x*1/sqrt(a+b*x),x))',
-  ],
-  '1.587665': [
-    'f(sqrt(a+b*x)/x^2,-sqrt(a+b*x)/x+b/2*integral(1/x*1/sqrt(a+b*x),x))',
-  ],
+  '1.516728': ['f(sqrt(a+b*x)/x,2*sqrt(a+b*x)+a*integral(1/x*1/sqrt(a+b*x),x))'],
+  '1.587665': ['f(sqrt(a+b*x)/x^2,-sqrt(a+b*x)/x+b/2*integral(1/x*1/sqrt(a+b*x),x))'],
   '0.690150': ['f(1/sqrt(a+b*x),2*sqrt(a+b*x)/b)'],
   '0.659314': ['f(x/sqrt(a+b*x),-2/3*(2*a-b*x)*sqrt(a+b*x)/b^2)'],
-  '0.629856': [
-    'f(x^2/sqrt(a+b*x),2/15*(8*a^2-4*a*b*x+3*b^2*x^2)*sqrt(a+b*x)/b^3)',
-  ],
+  '0.629856': ['f(x^2/sqrt(a+b*x),2/15*(8*a^2-4*a*b*x+3*b^2*x^2)*sqrt(a+b*x)/b^3)'],
   '0.722428': [
     'f(1/x*1/sqrt(a+b*x),1/sqrt(a)*log((sqrt(a+b*x)-sqrt(a))/(sqrt(a+b*x)+sqrt(a))),or(not(number(a)),a>0))',
-    'f(1/x*1/sqrt(a+b*x),2/sqrt(-a)*arctan(sqrt(-(a+b*x)/a)),or(not(number(a)),a<0))',
+    'f(1/x*1/sqrt(a+b*x),2/sqrt(-a)*arctan(sqrt(-(a+b*x)/a)),or(not(number(a)),a<0))'
   ],
   '0.756216': [
-    'f(1/x^2*1/sqrt(a+b*x),-sqrt(a+b*x)/a/x-1/2*b/a*integral(1/x*1/sqrt(a+b*x),x))',
+    'f(1/x^2*1/sqrt(a+b*x),-sqrt(a+b*x)/a/x-1/2*b/a*integral(1/x*1/sqrt(a+b*x),x))'
   ],
   '1.434156': [
     'f(sqrt(x^2+a),1/2*(x*sqrt(x^2+a)+a*log(x+sqrt(x^2+a))))',
     'f(sqrt(a-x^2),1/2*(x*sqrt(a-x^2)+a*arcsin(x/sqrt(abs(a)))))',
     'f(sqrt(a*x^2+b),x*sqrt(a*x^2+b)/2+b*log(x*sqrt(a)+sqrt(a*x^2+b))/2/sqrt(a),and(number(a),a>0))',
-    'f(sqrt(a*x^2+b),x*sqrt(a*x^2+b)/2+b*arcsin(x*sqrt(-a/b))/2/sqrt(-a),and(number(a),a<0))',
+    'f(sqrt(a*x^2+b),x*sqrt(a*x^2+b)/2+b*arcsin(x*sqrt(-a/b))/2/sqrt(-a),and(number(a),a<0))'
   ],
   '0.729886': [
     'f(1/x*1/sqrt(x^2+a),arcsec(x/sqrt(-a))/sqrt(-a),or(not(number(a)),a<0))',
     'f(1/x*1/sqrt(x^2+a),-1/sqrt(a)*log((sqrt(a)+sqrt(x^2+a))/x),or(not(number(a)),a>0))',
-    'f(1/x*1/sqrt(a-x^2),-1/sqrt(a)*log((sqrt(a)+sqrt(a-x^2))/x),or(not(number(a)),a>0))',
+    'f(1/x*1/sqrt(a-x^2),-1/sqrt(a)*log((sqrt(a)+sqrt(a-x^2))/x),or(not(number(a)),a>0))'
   ],
   '1.501230': [
     'f(sqrt(x^2+a)/x,sqrt(x^2+a)-sqrt(a)*log((sqrt(a)+sqrt(x^2+a))/x),or(not(number(a)),a>0))',
     'f(sqrt(x^2+a)/x,sqrt(x^2+a)-sqrt(-a)*arcsec(x/sqrt(-a)),or(not(number(a)),a<0))',
-    'f(sqrt(a-x^2)/x,sqrt(a-x^2)-sqrt(a)*log((sqrt(a)+sqrt(a-x^2))/x),or(not(number(a)),a>0))',
+    'f(sqrt(a-x^2)/x,sqrt(a-x^2)-sqrt(a)*log((sqrt(a)+sqrt(a-x^2))/x),or(not(number(a)),a>0))'
   ],
   '0.666120': ['f(x/sqrt(x^2+a),sqrt(x^2+a))', 'f(x/sqrt(a-x^2),-sqrt(a-x^2))'],
   '1.370077': [
     'f(x*sqrt(x^2+a),1/3*sqrt((x^2+a)^3))',
-    'f(x*sqrt(a-x^2),-1/3*sqrt((a-x^2)^3))',
+    'f(x*sqrt(a-x^2),-1/3*sqrt((a-x^2)^3))'
   ],
   '1.730087': [
     'f(sqrt(a+x^6+3*a^(1/3)*x^4+3*a^(2/3)*x^2),1/4*(x*sqrt((x^2+a^(1/3))^3)+3/2*a^(1/3)*x*sqrt(x^2+a^(1/3))+3/2*a^(2/3)*log(x+sqrt(x^2+a^(1/3)))))',
-    'f(sqrt(-a+x^6-3*a^(1/3)*x^4+3*a^(2/3)*x^2),1/4*(x*sqrt((x^2-a^(1/3))^3)-3/2*a^(1/3)*x*sqrt(x^2-a^(1/3))+3/2*a^(2/3)*log(x+sqrt(x^2-a^(1/3)))))',
+    'f(sqrt(-a+x^6-3*a^(1/3)*x^4+3*a^(2/3)*x^2),1/4*(x*sqrt((x^2-a^(1/3))^3)-3/2*a^(1/3)*x*sqrt(x^2-a^(1/3))+3/2*a^(2/3)*log(x+sqrt(x^2-a^(1/3)))))'
   ],
   '0.578006': [
-    'f(1/sqrt(a+x^6+3*a^(1/3)*x^4+3*a^(2/3)*x^2),x/a^(1/3)/sqrt(x^2+a^(1/3)))',
+    'f(1/sqrt(a+x^6+3*a^(1/3)*x^4+3*a^(2/3)*x^2),x/a^(1/3)/sqrt(x^2+a^(1/3)))'
   ],
-  '0.552180': [
-    'f(x/sqrt(a+x^6+3*a^(1/3)*x^4+3*a^(2/3)*x^2),-1/sqrt(x^2+a^(1/3)))',
-  ],
-  '1.652787': [
-    'f(x*sqrt(a+x^6+3*a^(1/3)*x^4+3*a^(2/3)*x^2),1/5*sqrt((x^2+a^(1/3))^5))',
-  ],
+  '0.552180': ['f(x/sqrt(a+x^6+3*a^(1/3)*x^4+3*a^(2/3)*x^2),-1/sqrt(x^2+a^(1/3)))'],
+  '1.652787': ['f(x*sqrt(a+x^6+3*a^(1/3)*x^4+3*a^(2/3)*x^2),1/5*sqrt((x^2+a^(1/3))^5))'],
   '1.308862': [
     'f(x^2*sqrt(x^2+a),1/4*x*sqrt((x^2+a)^3)-1/8*a*x*sqrt(x^2+a)-1/8*a^2*log(x+sqrt(x^2+a)))',
-    'f(x^2*sqrt(a-x^2),-x/4*sqrt((a-x^2)^3)+1/8*a*(x*sqrt(a-x^2)+a*arcsin(x/sqrt(a))),or(not(number(a)),a>0))',
+    'f(x^2*sqrt(a-x^2),-x/4*sqrt((a-x^2)^3)+1/8*a*(x*sqrt(a-x^2)+a*arcsin(x/sqrt(a))),or(not(number(a)),a>0))'
   ],
   '1.342944': [
     'f(x^3*sqrt(x^2+a),(1/5*x^2-2/15*a)*sqrt((x^2+a)^3),and(number(a),a>0))',
     'f(x^3*sqrt(x^2+a),sqrt((x^2+a)^5)/5-a*sqrt((x^2+a)^3)/3,and(number(a),a<0))',
     'f(x^3*sqrt(a-x^2),(-1/5*x^2-2/15*a)*sqrt((a-x^2)^3),or(not(number(a)),a>0))',
     'f(sqrt(a-x^2)/x^3,-1/2*sqrt(a-x^2)/x^2+1/2*log((sqrt(a)+sqrt(a-x^2))/x)/sqrt(a),or(not(number(a)),a>0))',
-    'f(sqrt(a-x^2)/x^4,-1/3*sqrt((a-x^2)^3)/a/x^3,or(not(number(a)),a>0))',
+    'f(sqrt(a-x^2)/x^4,-1/3*sqrt((a-x^2)^3)/a/x^3,or(not(number(a)),a>0))'
   ],
   '0.636358': [
     'f(x^2/sqrt(x^2+a),1/2*x*sqrt(x^2+a)-1/2*a*log(x+sqrt(x^2+a)))',
-    'f(x^2/sqrt(a-x^2),-x/2*sqrt(a-x^2)+a/2*arcsin(x/sqrt(a)),or(not(number(a)),a>0))',
+    'f(x^2/sqrt(a-x^2),-x/2*sqrt(a-x^2)+a/2*arcsin(x/sqrt(a)),or(not(number(a)),a>0))'
   ],
   '0.652928': [
     'f(x^3/sqrt(x^2+a),1/3*sqrt((x^2+a)^3)-a*sqrt(x^2+a))',
     'f(1/x^3*1/sqrt(x^2+a),-1/2*sqrt(x^2+a)/a/x^2+1/2*log((sqrt(a)+sqrt(x^2+a))/x)/a^(3/2),or(not(number(a)),a>0))',
-    'f(1/x^3*1/sqrt(x^2-a),1/2*sqrt(x^2-a)/a/x^2+1/2*1/(a^(3/2))*arcsec(x/(a^(1/2))),or(not(number(a)),a>0))',
+    'f(1/x^3*1/sqrt(x^2-a),1/2*sqrt(x^2-a)/a/x^2+1/2*1/(a^(3/2))*arcsec(x/(a^(1/2))),or(not(number(a)),a>0))'
   ],
   '0.764022': [
     'f(1/x^2*1/sqrt(x^2+a),-sqrt(x^2+a)/a/x)',
-    'f(1/x^2*1/sqrt(a-x^2),-sqrt(a-x^2)/a/x,or(not(number(a)),a>0))',
+    'f(1/x^2*1/sqrt(a-x^2),-sqrt(a-x^2)/a/x,or(not(number(a)),a>0))'
   ],
   '1.578940': [
     'f(x^2*sqrt(a+x^6+3*a^(1/3)*x^4+3*a^(2/3)*x^2),1/6*x*sqrt((x^2+a^(1/3))^5)-1/24*a^(1/3)*x*sqrt((x^2+a^(1/3))^3)-1/16*a^(2/3)*x*sqrt(x^2+a^(1/3))-1/16*a*log(x+sqrt(x^2+a^(1/3))),or(not(number(a)),a>0))',
-    'f(x^2*sqrt(-a-3*a^(1/3)*x^4+3*a^(2/3)*x^2+x^6),1/6*x*sqrt((x^2-a^(1/3))^5)+1/24*a^(1/3)*x*sqrt((x^2-a^(1/3))^3)-1/16*a^(2/3)*x*sqrt(x^2-a^(1/3))+1/16*a*log(x+sqrt(x^2-a^(1/3))),or(not(number(a)),a>0))',
+    'f(x^2*sqrt(-a-3*a^(1/3)*x^4+3*a^(2/3)*x^2+x^6),1/6*x*sqrt((x^2-a^(1/3))^5)+1/24*a^(1/3)*x*sqrt((x^2-a^(1/3))^3)-1/16*a^(2/3)*x*sqrt(x^2-a^(1/3))+1/16*a*log(x+sqrt(x^2-a^(1/3))),or(not(number(a)),a>0))'
   ],
   '1.620055': [
     'f(x^3*sqrt(a+x^6+3*a^(1/3)*x^4+3*a^(2/3)*x^2),1/7*sqrt((x^2+a^(1/3))^7)-1/5*a^(1/3)*sqrt((x^2+a^(1/3))^5),or(not(number(a)),a>0))',
-    'f(x^3*sqrt(-a-3*a^(1/3)*x^4+3*a^(2/3)*x^2+x^6),1/7*sqrt((x^2-a^(1/3))^7)+1/5*a^(1/3)*sqrt((x^2-a^(1/3))^5),or(not(number(a)),a>0))',
+    'f(x^3*sqrt(-a-3*a^(1/3)*x^4+3*a^(2/3)*x^2+x^6),1/7*sqrt((x^2-a^(1/3))^7)+1/5*a^(1/3)*sqrt((x^2-a^(1/3))^5),or(not(number(a)),a>0))'
   ],
   '0.332117': [
     'f(1/(x-a)/sqrt(x^2-a^2),-sqrt(x^2-a^2)/a/(x-a))',
-    'f(1/(x+a)/sqrt(x^2-a^2),sqrt(x^2-a^2)/a/(x+a))',
+    'f(1/(x+a)/sqrt(x^2-a^2),sqrt(x^2-a^2)/a/(x+a))'
   ],
   '1.571443': [
-    'f(sqrt(a-x^2)/x^2,-sqrt(a-x^2)/x-arcsin(x/sqrt(a)),or(not(number(a)),a>0))',
+    'f(sqrt(a-x^2)/x^2,-sqrt(a-x^2)/x-arcsin(x/sqrt(a)),or(not(number(a)),a>0))'
   ],
   '1.690994': ['f(sin(a*x),-cos(a*x)/a)'],
   '1.055979': ['f(cos(a*x),sin(a*x)/a)'],
@@ -856,12 +828,12 @@ var hashed_itab: { [key: string]: string[] } = {
   '2.859462': ['f(sin(a*x)^2,x/2-sin(2*a*x)/(4*a))'],
   '2.128050': [
     'f(sin(a*x)^3,-cos(a*x)*(sin(a*x)^2+2)/(3*a))',
-    'f(sin(a*x)^4,3/8*x-sin(2*a*x)/(4*a)+sin(4*a*x)/(32*a))',
+    'f(sin(a*x)^4,3/8*x-sin(2*a*x)/(4*a)+sin(4*a*x)/(32*a))'
   ],
   '1.115091': ['f(cos(a*x)^2,x/2+sin(2*a*x)/(4*a))'],
   '1.081452': [
     'f(cos(a*x)^3,sin(a*x)*(cos(a*x)^2+2)/(3*a))',
-    'f(cos(a*x)^4,3/8*x+sin(2*a*x)/(4*a)+sin(4*a*x)/(32*a))',
+    'f(cos(a*x)^4,3/8*x+sin(2*a*x)/(4*a)+sin(4*a*x)/(32*a))'
   ],
   '0.349716': ['f(1/sin(a*x)^2,-1/(a*tan(a*x)))'],
   '0.896788': ['f(1/cos(a*x)^2,tan(a*x)/a)'],
@@ -872,21 +844,19 @@ var hashed_itab: { [key: string]: string[] } = {
   '0.369293': ['f(cos(a*x)/sin(a*x)^2,-1/(a*sin(a*x)))'],
   '0.560019': ['f(1/(sin(a*x)*cos(a*x)),log(tan(a*x))/a)'],
   '0.530332': ['f(1/(sin(a*x)*cos(a*x)^2),(1/cos(a*x)+log(tan(a*x/2)))/a)'],
-  '0.331177': [
-    'f(1/(sin(a*x)^2*cos(a*x)),(log(tan(pi/4+a*x/2))-1/sin(a*x))/a)',
-  ],
+  '0.331177': ['f(1/(sin(a*x)^2*cos(a*x)),(log(tan(pi/4+a*x/2))-1/sin(a*x))/a)'],
   '0.313621': ['f(1/(sin(a*x)^2*cos(a*x)^2),-2/(a*tan(2*a*x)))'],
   '3.172365': ['f(sin(a+b*x),-cos(a+b*x)/b)'],
   '1.127162': ['f(cos(a+b*x),sin(a+b*x)/b)'],
   '0.352714': [
     'f(1/(b+b*sin(a*x)),-tan(pi/4-a*x/2)/a/b)',
     'f(1/(b-b*sin(a*x)),tan(pi/4+a*x/2)/a/b)',
-    'f(1/(a+b*sin(x)),1/sqrt(b^2-a^2)*log((a*tan(x/2)+b-sqrt(b^2-a^2))/(a*tan(x/2)+b+sqrt(b^2-a^2))),b^2-a^2)',
+    'f(1/(a+b*sin(x)),1/sqrt(b^2-a^2)*log((a*tan(x/2)+b-sqrt(b^2-a^2))/(a*tan(x/2)+b+sqrt(b^2-a^2))),b^2-a^2)'
   ],
   '0.454515': [
     'f(1/(b+b*cos(a*x)),tan(a*x/2)/a/b)',
     'f(1/(b-b*cos(a*x)),-1/tan(a*x/2)/a/b)',
-    'f(1/(a+b*cos(x)),1/sqrt(b^2-a^2)*log((sqrt(b^2-a^2)*tan(x/2)+a+b)/(sqrt(b^2-a^2)*tan(x/2)-a-b)),b^2-a^2)',
+    'f(1/(a+b*cos(x)),1/sqrt(b^2-a^2)*log((sqrt(b^2-a^2)*tan(x/2)+a+b)/(sqrt(b^2-a^2)*tan(x/2)-a-b)),b^2-a^2)'
   ],
   '1.615441': ['f(x*sin(a*x),sin(a*x)/a^2-x*cos(a*x)/a)'],
   '1.543263': ['f(x^2*sin(a*x),2*x*sin(a*x)/a^2-(a^2*x^2-2)*cos(a*x)/a^3)'],
@@ -915,17 +885,15 @@ var hashed_itab: { [key: string]: string[] } = {
   '1.078698': ['f(erf(a*x),x*erf(a*x)+exp(-a^2*x^2)/a/sqrt(pi))'],
   '2.573650': [
     'f(x^2*(1-x^2)^(3/2),(x*sqrt(1-x^2)*(-8*x^4+14*x^2-3)+3*arcsin(x))/48)',
-    'f(x^2*(1-x^2)^(5/2),(x*sqrt(1-x^2)*(48*x^6-136*x^4+118*x^2-15)+15*arcsin(x))/384)',
+    'f(x^2*(1-x^2)^(5/2),(x*sqrt(1-x^2)*(48*x^6-136*x^4+118*x^2-15)+15*arcsin(x))/384)'
   ],
   '2.640666': [
-    'f(x^4*(1-x^2)^(3/2),(-x*sqrt(1-x^2)*(16*x^6-24*x^4+2*x^2+3)+3*arcsin(x))/128)',
+    'f(x^4*(1-x^2)^(3/2),(-x*sqrt(1-x^2)*(16*x^6-24*x^4+2*x^2+3)+3*arcsin(x))/128)'
   ],
   '1.086487': ['f(x*exp(a*x),exp(a*x)*(a*x-1)/(a^2))'],
   '1.267493': ['f(x*exp(a*x+b),exp(a*x+b)*(a*x-1)/(a^2))'],
   '1.037943': ['f(x^2*exp(a*x),exp(a*x)*(a^2*x^2-2*a*x+2)/(a^3))'],
   '1.210862': ['f(x^2*exp(a*x+b),exp(a*x+b)*(a^2*x^2-2*a*x+2)/(a^3))'],
   '1.064970': ['f(x^3*exp(a*x),exp(a*x)*x^3/a-3/a*integral(x^2*exp(a*x),x))'],
-  '1.242392': [
-    'f(x^3*exp(a*x+b),exp(a*x+b)*x^3/a-3/a*integral(x^2*exp(a*x+b),x))',
-  ],
+  '1.242392': ['f(x^3*exp(a*x+b),exp(a*x+b)*x^3/a-3/a*integral(x^2*exp(a*x+b),x))']
 };

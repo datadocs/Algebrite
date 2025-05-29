@@ -11,7 +11,7 @@ import {
   ispower,
   NIL,
   U,
-  noexpand,
+  noexpand
 } from '../runtime/defs.js';
 import { yyexpand } from '../sources/misc.js';
 import { add, subtract } from './add.js';
@@ -19,7 +19,7 @@ import { integer, bignum_factorial, nativeInt } from './bignum.js';
 import { makeList } from './list.js';
 import { multiply } from './multiply.js';
 import { power } from './power.js';
-import {symbol} from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 
 export function factorial(p1: U): U {
   const n = nativeInt(p1);
@@ -65,7 +65,7 @@ function simplifyfactorials_(p1: U): U {
 }
 
 function sfac_product(p1: U) {
-  let terms:U[]=[];
+  let terms: U[] = [];
   if (iscons(p1)) {
     terms = p1.tail();
   }
@@ -82,7 +82,7 @@ function sfac_product(p1: U) {
     }
   }
 
-  let result:U = Constants.one;
+  let result: U = Constants.one;
 
   for (let i = 0; i < terms.length; i++) {
     if (terms[i] === symbol(NIL)) {

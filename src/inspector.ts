@@ -16,7 +16,7 @@ import {
   Str,
   Tensor,
   issymbol,
-  BaseAtom,
+  BaseAtom
 } from './runtime/defs.js';
 import { length } from './sources/misc.js';
 
@@ -45,7 +45,7 @@ class AtomFormatter {
     if (x.k == NUM) {
       return propertyList([
         { name: 'a', value: x.q.a.toString() },
-        { name: 'b', value: x.q.b.toString() },
+        { name: 'b', value: x.q.b.toString() }
       ]);
     } else if (x.k == CONS) {
       const items = iscons(x) ? [...x] : [];
@@ -135,20 +135,19 @@ function propertyList(items: (Atoms | Property)[]): TemplateTag {
     'ol',
     {
       style:
-        'list-style-type:none; padding-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-left: 12px',
-    },
+        'list-style-type:none; padding-left: 0px; margin-top: 0px; margin-bottom: 0px; margin-left: 12px'
+    }
   ];
   items.forEach((x, i) => {
     const name = isProperty(x) ? x.name : `${i}`;
     const nameSpan: TemplateTag = [
       'span',
-      { style: '"color: rgb(136, 19, 145); background-color: #bada55"' },
-      `${name}: `,
+      {
+        style: '"color: rgb(136, 19, 145); background-color: #bada55"'
+      },
+      `${name}: `
     ];
-    const child: TemplateTag = [
-      'object',
-      { object: isProperty(x) ? x.value : x },
-    ];
+    const child: TemplateTag = ['object', { object: isProperty(x) ? x.value : x }];
     ol.push(['li', {}, nameSpan, child]);
   });
   return ol;

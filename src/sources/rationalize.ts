@@ -48,10 +48,7 @@ function yyrationalize(arg: U): U {
   if (iscons(arg)) {
     temp = arg
       .tail()
-      .reduce(
-        (acc: U, term: U) => add(acc, multiply(commonDenominator, term)),
-        temp
-      );
+      .reduce((acc: U, term: U) => add(acc, multiply(commonDenominator, term)), temp);
   }
   // collect common factors
   // divide by common denominator
@@ -62,19 +59,14 @@ function multiply_denominators(p: U): U {
   if (isadd(p)) {
     return p
       .tail()
-      .reduce(
-        (acc: U, el: U) => multiply_denominators_term(el, acc),
-        Constants.one
-      );
+      .reduce((acc: U, el: U) => multiply_denominators_term(el, acc), Constants.one);
   }
   return multiply_denominators_term(p, Constants.one);
 }
 
 function multiply_denominators_term(p: U, p2: U): U {
   if (ismultiply(p)) {
-    return p
-      .tail()
-      .reduce((acc, el) => multiply_denominators_factor(el, acc), p2);
+    return p.tail().reduce((acc, el) => multiply_denominators_factor(el, acc), p2);
   }
 
   return multiply_denominators_factor(p, p2);
@@ -104,7 +96,7 @@ function multiply_denominators_factor(p: U, p2: U): U {
 }
 
 function __rationalize_tensor(p1: U): U {
-  p1 = Eval(p1);  // makes a copy
+  p1 = Eval(p1); // makes a copy
 
   if (!istensor(p1)) {
     // might be zero

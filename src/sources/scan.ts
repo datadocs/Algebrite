@@ -1,6 +1,7 @@
 import { alloc_tensor } from '../runtime/alloc.js';
 import {
-  ADD, Constants,
+  ADD,
+  Constants,
   DEBUG,
   defs,
   dotprod_unicode,
@@ -32,14 +33,19 @@ import {
   transpose_unicode,
   U
 } from '../runtime/defs.js';
-import {isalnumorunderscore, isalpha, isdigit, isspace,} from '../runtime/otherCFunctions.js';
-import {stop} from '../runtime/run.js';
-import {symbol, usr_symbol} from '../runtime/symbol.js';
-import {bignum_scan_float, bignum_scan_integer} from './bignum.js';
-import {equaln} from './is.js';
-import {makeList} from './list.js';
-import {inverse, multiply, negate} from './multiply.js';
-import {check_tensor_dimensions} from './tensor.js';
+import {
+  isalnumorunderscore,
+  isalpha,
+  isdigit,
+  isspace
+} from '../runtime/otherCFunctions.js';
+import { stop } from '../runtime/run.js';
+import { symbol, usr_symbol } from '../runtime/symbol.js';
+import { bignum_scan_float, bignum_scan_integer } from './bignum.js';
+import { equaln } from './is.js';
+import { makeList } from './list.js';
+import { inverse, multiply, negate } from './multiply.js';
+import { check_tensor_dimensions } from './tensor.js';
 
 // This scanner uses the recursive descent method.
 //
@@ -152,9 +158,8 @@ export function scan(s: string): [number, U] {
   defs.expanding = prev_expanding;
 
   if (!assignmentFound) {
-    defs.symbolsInExpressionsWithoutAssignments = defs.symbolsInExpressionsWithoutAssignments.concat(
-      symbolsLeftOfAssignment
-    );
+    defs.symbolsInExpressionsWithoutAssignments =
+      defs.symbolsInExpressionsWithoutAssignments.concat(symbolsLeftOfAssignment);
   }
 
   return [token_str - input_str, expr];
@@ -212,9 +217,8 @@ function scan_stmt(): U {
       // left will also be in the set of the symbols
       // on the right. In that case just remove it from
       // the symbols on the right.
-      const indexOfSymbolLeftOfAssignment = symbolsRightOfAssignment.indexOf(
-        symbolLeftOfAssignment
-      );
+      const indexOfSymbolLeftOfAssignment =
+        symbolsRightOfAssignment.indexOf(symbolLeftOfAssignment);
       if (indexOfSymbolLeftOfAssignment !== -1) {
         symbolsRightOfAssignment.splice(indexOfSymbolLeftOfAssignment, 1);
         defs.symbolsHavingReassignments.push(symbolLeftOfAssignment);
@@ -235,8 +239,7 @@ function scan_stmt(): U {
       if (defs.symbolsDependencies[symbolLeftOfAssignment] == null) {
         defs.symbolsDependencies[symbolLeftOfAssignment] = [];
       }
-      const existingDependencies =
-        defs.symbolsDependencies[symbolLeftOfAssignment];
+      const existingDependencies = defs.symbolsDependencies[symbolLeftOfAssignment];
 
       // copy over the new dependencies to the existing
       // dependencies avoiding repetitions
@@ -478,10 +481,7 @@ function scan_factor(): U {
   //    (instead of subexpressions or parameters of function
   //    definitions or function calls with an explicit function
   //    name), respectively
-  while (
-    token === '[' ||
-    (token === '(' && newline_flag === 0 && !firstFactorIsNumber)
-  ) {
+  while (token === '[' || (token === '(' && newline_flag === 0 && !firstFactorIsNumber)) {
     if (token === '[') {
       result = scan_index(result);
     } else if (token === '(') {
@@ -510,9 +510,7 @@ function scan_factor(): U {
 
 function addSymbolRightOfAssignment(theSymbol: string) {
   if (
-    predefinedSymbolsInGlobalScope_doNotTrackInDependencies.indexOf(
-      theSymbol
-    ) === -1 &&
+    predefinedSymbolsInGlobalScope_doNotTrackInDependencies.indexOf(theSymbol) === -1 &&
     symbolsRightOfAssignment.indexOf(theSymbol) === -1 &&
     symbolsRightOfAssignment.indexOf("'" + theSymbol) === -1 &&
     !skipRootVariableToBeSolved
@@ -536,9 +534,7 @@ function addSymbolRightOfAssignment(theSymbol: string) {
 
 function addSymbolLeftOfAssignment(theSymbol: string) {
   if (
-    predefinedSymbolsInGlobalScope_doNotTrackInDependencies.indexOf(
-      theSymbol
-    ) === -1 &&
+    predefinedSymbolsInGlobalScope_doNotTrackInDependencies.indexOf(theSymbol) === -1 &&
     symbolsLeftOfAssignment.indexOf(theSymbol) === -1 &&
     symbolsLeftOfAssignment.indexOf("'" + theSymbol) === -1 &&
     !skipRootVariableToBeSolved
@@ -568,19 +564,19 @@ function scan_symbol(): U {
   if (meta_mode && typeof token_buf == 'string' && token_buf.length === 1) {
     switch (token_buf[0]) {
       case 'a':
-        result = (symbol(METAA));
+        result = symbol(METAA);
         break;
       case 'b':
-        result = (symbol(METAB));
+        result = symbol(METAB);
         break;
       case 'x':
-        result = (symbol(METAX));
+        result = symbol(METAX);
         break;
       default:
-        result = (usr_symbol(token_buf));
+        result = usr_symbol(token_buf);
     }
   } else {
-    result = (usr_symbol(token_buf));
+    result = usr_symbol(token_buf);
   }
   //console.log "found symbol: " + token_buf
   if (scanningParameters.length === 0) {
@@ -663,10 +659,7 @@ function scan_function_call_with_function_name(): U {
         symbolsRightOfAssignment = symbolsRightOfAssignment.filter(
           (x) =>
             !new RegExp(
-              'roots_' +
-              (functionInvokationsScanningStack.length - 1) +
-              '_' +
-              token_buf
+              'roots_' + (functionInvokationsScanningStack.length - 1) + '_' + token_buf
             ).test(x)
         );
         skipRootVariableToBeSolved = true;
@@ -681,10 +674,7 @@ function scan_function_call_with_function_name(): U {
         symbolsRightOfAssignment = symbolsRightOfAssignment.filter(
           (x) =>
             !new RegExp(
-              'sum_' +
-              (functionInvokationsScanningStack.length - 1) +
-              '_' +
-              token_buf
+              'sum_' + (functionInvokationsScanningStack.length - 1) + '_' + token_buf
             ).test(x)
         );
         skipRootVariableToBeSolved = true;
@@ -699,10 +689,7 @@ function scan_function_call_with_function_name(): U {
         symbolsRightOfAssignment = symbolsRightOfAssignment.filter(
           (x) =>
             !new RegExp(
-              'product_' +
-              (functionInvokationsScanningStack.length - 1) +
-              '_' +
-              token_buf
+              'product_' + (functionInvokationsScanningStack.length - 1) + '_' + token_buf
             ).test(x)
         );
         skipRootVariableToBeSolved = true;
@@ -717,10 +704,7 @@ function scan_function_call_with_function_name(): U {
         symbolsRightOfAssignment = symbolsRightOfAssignment.filter(
           (x) =>
             !new RegExp(
-              'for_' +
-              (functionInvokationsScanningStack.length - 1) +
-              '_' +
-              token_buf
+              'for_' + (functionInvokationsScanningStack.length - 1) + '_' + token_buf
             ).test(x)
         );
         skipRootVariableToBeSolved = true;
@@ -735,10 +719,7 @@ function scan_function_call_with_function_name(): U {
         symbolsRightOfAssignment = symbolsRightOfAssignment.filter(
           (x) =>
             !new RegExp(
-              'defint_' +
-              (functionInvokationsScanningStack.length - 1) +
-              '_' +
-              token_buf
+              'defint_' + (functionInvokationsScanningStack.length - 1) + '_' + token_buf
             ).test(x)
         );
         skipRootVariableToBeSolved = true;
@@ -772,41 +753,31 @@ function scan_function_call_with_function_name(): U {
     if (symbolsRightOfAssignment[i] != null) {
       if (functionName === 'roots') {
         symbolsRightOfAssignment[i] = symbolsRightOfAssignment[i].replace(
-          new RegExp(
-            'roots_' + (functionInvokationsScanningStack.length - 1) + '_'
-          ),
+          new RegExp('roots_' + (functionInvokationsScanningStack.length - 1) + '_'),
           ''
         );
       }
       if (functionName === 'defint') {
         symbolsRightOfAssignment[i] = symbolsRightOfAssignment[i].replace(
-          new RegExp(
-            'defint_' + (functionInvokationsScanningStack.length - 1) + '_'
-          ),
+          new RegExp('defint_' + (functionInvokationsScanningStack.length - 1) + '_'),
           ''
         );
       }
       if (functionName === 'sum') {
         symbolsRightOfAssignment[i] = symbolsRightOfAssignment[i].replace(
-          new RegExp(
-            'sum_' + (functionInvokationsScanningStack.length - 1) + '_'
-          ),
+          new RegExp('sum_' + (functionInvokationsScanningStack.length - 1) + '_'),
           ''
         );
       }
       if (functionName === 'product') {
         symbolsRightOfAssignment[i] = symbolsRightOfAssignment[i].replace(
-          new RegExp(
-            'product_' + (functionInvokationsScanningStack.length - 1) + '_'
-          ),
+          new RegExp('product_' + (functionInvokationsScanningStack.length - 1) + '_'),
           ''
         );
       }
       if (functionName === 'for') {
         symbolsRightOfAssignment[i] = symbolsRightOfAssignment[i].replace(
-          new RegExp(
-            'for_' + (functionInvokationsScanningStack.length - 1) + '_'
-          ),
+          new RegExp('for_' + (functionInvokationsScanningStack.length - 1) + '_'),
           ''
         );
       }
@@ -846,7 +817,7 @@ function scan_function_call_without_function_name(lhs: U): U {
   // at runtime (i.e. we need to evaulate something to find it
   // e.g. it might be inside a tensor, so we'd need to evaluate
   // a tensor element access in that case)
-  const func = makeList(symbol(EVAL), lhs)
+  const func = makeList(symbol(EVAL), lhs);
 
   const fcall: U[] = [func];
 
@@ -869,7 +840,9 @@ function scan_function_call_without_function_name(lhs: U): U {
   get_next_token();
 
   if (DEBUG) {
-    console.log(`-- scan_function_call_without_function_name end: ${fcall[fcall.length-1]}`);
+    console.log(
+      `-- scan_function_call_without_function_name end: ${fcall[fcall.length - 1]}`
+    );
   }
   return makeList(...fcall);
 }

@@ -1,7 +1,16 @@
 import { alloc_tensor } from '../runtime/alloc.js';
-import { caddr, cadr, Constants, DEBUG, defs, isdouble, NIL, U } from '../runtime/defs.js';
+import {
+  caddr,
+  cadr,
+  Constants,
+  DEBUG,
+  defs,
+  isdouble,
+  NIL,
+  U
+} from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { cmp_expr } from '../sources/misc.js';
 import { add } from './add.js';
 import { double } from './bignum.js';
@@ -92,10 +101,7 @@ export function Eval_nroots(p1: U) {
       nroots_a.i = 0.0;
     }
     roots.push(
-      add(
-        double(nroots_a.r),
-        multiply(double(nroots_a.i), Constants.imaginaryunit)
-      )
+      add(double(nroots_a.r), multiply(double(nroots_a.i), Constants.imaginaryunit))
     );
     NROOTS_divpoly(k);
   }
@@ -120,10 +126,8 @@ function monic(n: number) {
   nroots_y.i = nroots_c[n - 1].i;
   const t = nroots_y.r * nroots_y.r + nroots_y.i * nroots_y.i;
   for (let k = 0; k < n - 1; k++) {
-    nroots_c[k].r =
-      (nroots_c[k].r * nroots_y.r + nroots_c[k].i * nroots_y.i) / t;
-    nroots_c[k].i =
-      (nroots_c[k].i * nroots_y.r - nroots_c[k].r * nroots_y.i) / t;
+    nroots_c[k].r = (nroots_c[k].r * nroots_y.r + nroots_c[k].i * nroots_y.i) / t;
+    nroots_c[k].i = (nroots_c[k].i * nroots_y.r - nroots_c[k].r * nroots_y.i) / t;
   }
   nroots_c[n - 1].r = 1.0;
   nroots_c[n - 1].i = 0.0;
@@ -202,10 +206,8 @@ function findroot(n: number) {
       nroots_y.i = (nroots_dx.i * nroots_df.r - nroots_dx.r * nroots_df.i) / t;
 
       // a = b - y * fb
-      nroots_a.r =
-        nroots_b.r - (nroots_y.r * nroots_fb.r - nroots_y.i * nroots_fb.i);
-      nroots_a.i =
-        nroots_b.i - (nroots_y.r * nroots_fb.i + nroots_y.i * nroots_fb.r);
+      nroots_a.r = nroots_b.r - (nroots_y.r * nroots_fb.r - nroots_y.i * nroots_fb.i);
+      nroots_a.i = nroots_b.i - (nroots_y.r * nroots_fb.i + nroots_y.i * nroots_fb.r);
     }
   }
 
@@ -218,10 +220,8 @@ function compute_fa(n: number) {
   nroots_x.i = nroots_a.i;
 
   // fa = c0 + c1 * x
-  nroots_fa.r =
-    nroots_c[0].r + nroots_c[1].r * nroots_x.r - nroots_c[1].i * nroots_x.i;
-  nroots_fa.i =
-    nroots_c[0].i + nroots_c[1].r * nroots_x.i + nroots_c[1].i * nroots_x.r;
+  nroots_fa.r = nroots_c[0].r + nroots_c[1].r * nroots_x.r - nroots_c[1].i * nroots_x.i;
+  nroots_fa.i = nroots_c[0].i + nroots_c[1].r * nroots_x.i + nroots_c[1].i * nroots_x.r;
 
   for (let k = 2; k < n; k++) {
     // x = a * x
@@ -238,10 +238,8 @@ function compute_fa(n: number) {
 // divide the polynomial by x - a
 function NROOTS_divpoly(n: number) {
   for (let k = n - 1; k > 0; k--) {
-    nroots_c[k - 1].r +=
-      nroots_c[k].r * nroots_a.r - nroots_c[k].i * nroots_a.i;
-    nroots_c[k - 1].i +=
-      nroots_c[k].i * nroots_a.r + nroots_c[k].r * nroots_a.i;
+    nroots_c[k - 1].r += nroots_c[k].r * nroots_a.r - nroots_c[k].i * nroots_a.i;
+    nroots_c[k - 1].i += nroots_c[k].i * nroots_a.r + nroots_c[k].r * nroots_a.i;
   }
 
   if (NROOTS_ABS(nroots_c[0]) > NROOTS_DELTA) {

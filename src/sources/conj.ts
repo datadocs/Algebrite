@@ -34,7 +34,5 @@ export function Eval_conj(p1: U) {
 // careful is you pass this one an expression with
 // i (instead of (-1)^(1/2)) then this doesn't work!
 export function conjugate(p1: U): U {
-  return Eval(
-    subst(p1, Constants.imaginaryunit, negate(Constants.imaginaryunit))
-  );
+  return Eval(subst(p1, Constants.imaginaryunit, negate(Constants.imaginaryunit)));
 }

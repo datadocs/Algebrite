@@ -10,5 +10,5 @@ run_test([
   // multiple arguments
 
   'lcm(2,3,4)',
-  '12',
+  '12'
 ]);

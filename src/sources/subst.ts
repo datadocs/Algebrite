@@ -1,16 +1,8 @@
 import { alloc_tensor } from '../runtime/alloc.js';
-import {
-  car,
-  cdr,
-  iscons,
-  istensor,
-  NIL,
-  U,
-  Cons,
-} from '../runtime/defs.js';
+import { car, cdr, iscons, istensor, NIL, U, Cons } from '../runtime/defs.js';
 import { equal } from '../sources/misc.js';
 import { check_tensor_dimensions } from './tensor.js';
-import {symbol} from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 
 /*
   Substitute new expr for old expr in expr.

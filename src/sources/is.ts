@@ -34,7 +34,7 @@ import {
   U
 } from '../runtime/defs.js';
 import { Find } from '../runtime/find.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { equal, length } from '../sources/misc.js';
 import { absValFloat } from './abs.js';
 import { integer, nativeInt } from './bignum.js';
@@ -174,9 +174,7 @@ export function isZeroLikeOrNonZeroLikeOrUndetermined(
   return null;
 }
 
-export function isnegativenumber(
-  p: BaseAtom
-): p is (Num | Double) & { __ts_sign: -1 } {
+export function isnegativenumber(p: BaseAtom): p is (Num | Double) & { __ts_sign: -1 } {
   switch (p.k) {
     case NUM:
       if (MSIGN((p as Num).q.a) === -1) {
@@ -192,9 +190,7 @@ export function isnegativenumber(
   return false;
 }
 
-export function ispositivenumber(
-  p: BaseAtom
-): p is (Num | Double) & { __ts_sign: 1 } {
+export function ispositivenumber(p: BaseAtom): p is (Num | Double) & { __ts_sign: 1 } {
   switch (p.k) {
     case NUM:
       if (MSIGN((p as Num).q.a) === 1) {
@@ -210,9 +206,11 @@ export function ispositivenumber(
   return false;
 }
 
-export function isplustwo(
-  p: BaseAtom
-): p is (Num | Double) & { __ts_sign: 1; __ts_integer: true; __ts_special: 2 } {
+export function isplustwo(p: BaseAtom): p is (Num | Double) & {
+  __ts_sign: 1;
+  __ts_integer: true;
+  __ts_special: 2;
+} {
   switch (p.k) {
     case NUM:
       if (MEQUAL((p as Num).q.a, 2) && MEQUAL((p as Num).q.b, 1)) {
@@ -228,9 +226,11 @@ export function isplustwo(
   return false;
 }
 
-export function isplusone(
-  p: BaseAtom
-): p is (Num | Double) & { __ts_sign: 1; __ts_integer: true; __ts_special: 1 } {
+export function isplusone(p: BaseAtom): p is (Num | Double) & {
+  __ts_sign: 1;
+  __ts_integer: true;
+  __ts_special: 1;
+} {
   switch (p.k) {
     case NUM:
       if (MEQUAL((p as Num).q.a, 1) && MEQUAL((p as Num).q.b, 1)) {
@@ -246,9 +246,7 @@ export function isplusone(
   return false;
 }
 
-export function isminusone(
-  p: BaseAtom
-): p is (Num | Double) & {
+export function isminusone(p: BaseAtom): p is (Num | Double) & {
   __ts_sign: -1;
   __ts_integer: true;
   __ts_special: -1;
@@ -268,9 +266,7 @@ export function isminusone(
   return false;
 }
 
-export function isone(
-  p: BaseAtom
-): p is (Num | Double) & {
+export function isone(p: BaseAtom): p is (Num | Double) & {
   __ts_sign: -1 | 1;
   __ts_integer: true;
   __ts_special: 1 | -1;
@@ -300,9 +296,7 @@ export function isnonnegativeinteger(
   return isrational(p) && MEQUAL(p.q.b, 1) && MSIGN(p.q.a) === 1;
 }
 
-export function isposint(
-  p: BaseAtom
-): p is Num & { __ts_integer: true; __ts_sign: 1 } {
+export function isposint(p: BaseAtom): p is Num & { __ts_integer: true; __ts_sign: 1 } {
   return isinteger(p) && MSIGN(p.q.a) === 1;
 }
 
@@ -425,20 +419,14 @@ export function isnegativeterm(p: BaseAtom): boolean {
 }
 
 function hasNegativeRationalExponent(p: BaseAtom): boolean {
-  if (
-    ispower(p) &&
-    isrational(car(cdr(cdr(p)))) &&
-    isnegativenumber(car(cdr(p)))
-  ) {
+  if (ispower(p) && isrational(car(cdr(cdr(p)))) && isnegativenumber(car(cdr(p)))) {
     if (DEBUG_IS) {
       console.log(`hasNegativeRationalExponent: ${p} has imaginary component`);
     }
     return true;
   } else {
     if (DEBUG_IS) {
-      console.log(
-        `hasNegativeRationalExponent: ${p} has NO imaginary component`
-      );
+      console.log(`hasNegativeRationalExponent: ${p} has NO imaginary component`);
     }
     return false;
   }
@@ -533,9 +521,7 @@ export function issymbolic(p: U): boolean {
 
 // i.e. 2, 2^3, etc.
 export function isintegerfactor(p: U): boolean {
-  return (
-    isinteger(p) || (ispower(p) && isinteger(cadr(p)) && isinteger(caddr(p)))
-  );
+  return isinteger(p) || (ispower(p) && isinteger(cadr(p)) && isinteger(caddr(p)));
 }
 
 export function isNumberOneOverSomething(p: U): boolean {
@@ -592,20 +578,14 @@ export function isoneoversqrttwo(p: BaseAtom): boolean {
 // p == -1/sqrt(2) ?
 export function isminusoneoversqrttwo(p: BaseAtom): boolean {
   return (
-    ismultiply(p) &&
-    equaln(cadr(p), -1) &&
-    isoneoversqrttwo(caddr(p)) &&
-    length(p) === 3
+    ismultiply(p) && equaln(cadr(p), -1) && isoneoversqrttwo(caddr(p)) && length(p) === 3
   );
 }
 
 // Check if the value is sqrt(3)/2
 export function isSqrtThreeOverTwo(p: BaseAtom): boolean {
   return (
-    ismultiply(p) &&
-    isoneovertwo(cadr(p)) &&
-    isSqrtThree(caddr(p)) &&
-    length(p) === 3
+    ismultiply(p) && isoneovertwo(cadr(p)) && isSqrtThree(caddr(p)) && length(p) === 3
   );
 }
 

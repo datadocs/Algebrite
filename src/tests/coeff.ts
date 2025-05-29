@@ -23,5 +23,5 @@ run_test([
   'c',
 
   'coeff(a*t^3+b*t^2+c*t+d,t,0)',
-  'd',
+  'd'
 ]);

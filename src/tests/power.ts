@@ -292,5 +292,5 @@ run_test([
   'i*exp(A)',
 
   'exp(A-i*4*pi)',
-  'exp(A)',
+  'exp(A)'
 ]);

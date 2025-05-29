@@ -1,5 +1,5 @@
 import { car, cdr, Constants, NIL, TAYLOR, U } from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 import { add, subtract } from './add.js';
 import { integer, nativeInt } from './bignum.js';
 import { derivative } from './derivative.js';

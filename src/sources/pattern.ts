@@ -1,13 +1,4 @@
-import {
-  car,
-  cdr,
-  DEBUG,
-  defs,
-  iscons,
-  NIL,
-  PATTERN, Str,
-  U
-} from '../runtime/defs.js';
+import { car, cdr, DEBUG, defs, iscons, NIL, PATTERN, Str, U } from '../runtime/defs.js';
 import { stop } from '../runtime/run.js';
 import { symbol } from '../runtime/symbol.js';
 import { equal } from '../sources/misc.js';
@@ -62,9 +53,7 @@ export function Eval_pattern(p1: U) {
     console.log(`pattern stringkey: ${stringKey}`);
   }
 
-  const patternPosition = defs.userSimplificationsInStringForm.indexOf(
-    stringKey
-  );
+  const patternPosition = defs.userSimplificationsInStringForm.indexOf(stringKey);
   // if pattern is not there yet, add it, otherwise replace it
   if (patternPosition === -1) {
     //console.log "adding pattern because it doesn't exist: " + cdr(p1)

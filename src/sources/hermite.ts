@@ -1,11 +1,5 @@
-import {
-  Constants,
-  HERMITE,
-  issymbol,
-  SECRETX,
-  U
-} from '../runtime/defs.js';
-import { symbol } from "../runtime/symbol.js";
+import { Constants, HERMITE, issymbol, SECRETX, U } from '../runtime/defs.js';
+import { symbol } from '../runtime/symbol.js';
 import { subtract } from './add.js';
 import { integer, nativeInt } from './bignum.js';
 import { Eval } from './eval.js';
@@ -47,10 +41,7 @@ function yyhermite2(n: number, p1: U) {
   for (let i = 0; i < n; i++) {
     const Y0: U = Y1;
     Y1 = temp;
-    temp = multiply(
-      subtract(multiply(p1, Y1), multiply(integer(i), Y0)),
-      integer(2)
-    );
+    temp = multiply(subtract(multiply(p1, Y1), multiply(integer(i), Y0)), integer(2));
   }
   return temp;
 }

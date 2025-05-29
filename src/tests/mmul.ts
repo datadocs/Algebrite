@@ -3,7 +3,7 @@ import { mdiv, mmod, mmul } from '../sources/mmul.js';
 import { test } from '../test-harness.js';
 
 function make_test(f: Function, expected: (i: number, j: number) => number) {
-  test(f.name, t => {
+  test(f.name, (t) => {
     for (let i = -100; i <= 100; i++) {
       for (let j = -1000; j <= 100; j++) {
         const a = mint(i);

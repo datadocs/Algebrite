@@ -3,7 +3,7 @@ import { madd, msub } from '../sources/madd.js';
 import { test } from '../test-harness.js';
 
 let i = 0;
-test('madd', t => {
+test('madd', (t) => {
   for (i = -100; i < 100; i++) {
     for (let j = -100; j < 100; j++) {
       const a = mint(i);
@@ -14,7 +14,7 @@ test('madd', t => {
   }
 });
 
-test('msub', t => {
+test('msub', (t) => {
   for (i = -100; i <= 100; i++) {
     for (let j = -100; j <= 100; j++) {
       const a = mint(i);

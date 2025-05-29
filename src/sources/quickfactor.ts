@@ -5,7 +5,7 @@ import { factor_small_number } from './factor.js';
 import { isZeroAtomOrTensor } from './is.js';
 import { makeList } from './list.js';
 import { multiply, multiply_all } from './multiply.js';
-import {symbol} from "../runtime/symbol.js";
+import { symbol } from '../runtime/symbol.js';
 
 //-----------------------------------------------------------------------------
 //
