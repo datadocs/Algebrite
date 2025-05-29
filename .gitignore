@@ -1,6 +1,10 @@
+dist
+
 node_modules
 bazel-out
 .idea
 
-**/.DS_Store
+.DS_Store
+._*
 
+*.log
