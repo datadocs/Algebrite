@@ -1,5 +1,5 @@
-import { index_function, set_component } from '.';
-import { alloc_tensor } from '../runtime/alloc';
+import { index_function, set_component } from './index.js';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   breakpoint,
   caadr,
@@ -32,25 +32,25 @@ import {
   Tensor,
   TESTEQ,
   U
-} from '../runtime/defs';
-import { check_esc_flag, stop } from '../runtime/run';
-import { get_binding, iskeyword, set_binding, symbol } from '../runtime/symbol';
-import { convert_rational_to_double, double, integer, nativeInt, rational } from './bignum';
-import { define_user_function } from './define';
-import { det } from './det';
-import { divisors } from './divisors';
-import { factorial } from './factorial';
-import { factorpoly } from './factorpoly';
-import { hermite } from './hermite';
-import { hilbert } from './hilbert';
-import { inv, invg } from './inv';
-import { isfloating, isinteger, isintegerorintegerfloat, isZeroLikeOrNonZeroLikeOrUndetermined } from './is';
-import { makeList } from './list';
-import { exponential } from './misc';
-import { power } from './power';
-import { subst } from './subst';
-import { check_tensor_dimensions, Eval_tensor } from './tensor';
-import { Eval_user_function } from './userfunc';
+} from '../runtime/defs.js';
+import { check_esc_flag, stop } from '../runtime/run.js';
+import { get_binding, iskeyword, set_binding, symbol } from '../runtime/symbol.js';
+import { convert_rational_to_double, double, integer, nativeInt, rational } from './bignum.js';
+import { define_user_function } from './define.js';
+import { det } from './det.js';
+import { divisors } from './divisors.js';
+import { factorial } from './factorial.js';
+import { factorpoly } from './factorpoly.js';
+import { hermite } from './hermite.js';
+import { hilbert } from './hilbert.js';
+import { inv, invg } from './inv.js';
+import { isfloating, isinteger, isintegerorintegerfloat, isZeroLikeOrNonZeroLikeOrUndetermined } from './is.js';
+import { makeList } from './list.js';
+import { exponential } from './misc.js';
+import { power } from './power.js';
+import { subst } from './subst.js';
+import { check_tensor_dimensions, Eval_tensor } from './tensor.js';
+import { Eval_user_function } from './userfunc.js';
 
 export function evaluate_integer(p: U): number {
   return nativeInt(Eval(p));

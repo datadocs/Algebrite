@@ -1,6 +1,6 @@
-import { car, cdr, Constants, iscons, U } from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { multiply } from './multiply';
+import { car, cdr, Constants, iscons, U } from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { multiply } from './multiply.js';
 
 /*
  Partition a term

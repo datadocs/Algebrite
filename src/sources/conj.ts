@@ -1,10 +1,10 @@
-import { cadr, Constants, U } from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { clockform } from './clock';
-import { Eval } from './eval';
-import { negate } from './multiply';
-import { polar } from './polar';
-import { subst } from './subst';
+import { cadr, Constants, U } from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { clockform } from './clock.js';
+import { Eval } from './eval.js';
+import { negate } from './multiply.js';
+import { polar } from './polar.js';
+import { subst } from './subst.js';
 
 /* conj =====================================================================
 

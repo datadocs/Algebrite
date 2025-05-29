@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   car,
   cdr,
@@ -14,18 +14,18 @@ import {
   Sym,
   Tensor,
   U,
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { equal } from '../sources/misc';
-import { subtract } from './add';
-import { adj } from './adj';
-import { det } from './det';
-import { inner } from './inner';
-import { isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { divide, multiply } from './multiply';
-import { is_square_matrix } from './tensor';
-import {symbol} from "../runtime/symbol";
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { equal } from '../sources/misc.js';
+import { subtract } from './add.js';
+import { adj } from './adj.js';
+import { det } from './det.js';
+import { inner } from './inner.js';
+import { isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { divide, multiply } from './multiply.js';
+import { is_square_matrix } from './tensor.js';
+import {symbol} from "../runtime/symbol.js";
 
 //-----------------------------------------------------------------------------
 //

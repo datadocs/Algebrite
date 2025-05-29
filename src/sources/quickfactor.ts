@@ -1,11 +1,11 @@
-import { Num, POWER, U } from '../runtime/defs';
-import { subtract } from './add';
-import { bignum_power_number, bignum_truncate, nativeInt } from './bignum';
-import { factor_small_number } from './factor';
-import { isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { multiply, multiply_all } from './multiply';
-import {symbol} from "../runtime/symbol";
+import { Num, POWER, U } from '../runtime/defs.js';
+import { subtract } from './add.js';
+import { bignum_power_number, bignum_truncate, nativeInt } from './bignum.js';
+import { factor_small_number } from './factor.js';
+import { isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { multiply, multiply_all } from './multiply.js';
+import {symbol} from "../runtime/symbol.js";
 
 //-----------------------------------------------------------------------------
 //

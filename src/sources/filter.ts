@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   car,
   cdr,
@@ -8,10 +8,10 @@ import {
   istensor,
   Tensor,
   U
-} from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { add } from './add';
-import { Eval } from './eval';
+} from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { add } from './add.js';
+import { Eval } from './eval.js';
 
 /*
 Remove terms that involve a given symbol or expression. For example...

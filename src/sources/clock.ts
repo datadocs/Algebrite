@@ -1,10 +1,10 @@
-import { cadr, Constants, POWER, U } from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { abs } from './abs';
-import { arg } from './arg';
-import { Eval } from './eval';
-import { makeList } from './list';
-import { divide, multiply } from './multiply';
+import { cadr, Constants, POWER, U } from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { abs } from './abs.js';
+import { arg } from './arg.js';
+import { Eval } from './eval.js';
+import { makeList } from './list.js';
+import { divide, multiply } from './multiply.js';
 
 /*
  Convert complex z to clock form

@@ -1,7 +1,7 @@
-import { cadr, MAXPRIMETAB, primetab, U } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { integer, nativeInt } from './bignum';
-import { Eval } from './eval';
+import { cadr, MAXPRIMETAB, primetab, U } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { integer, nativeInt } from './bignum.js';
+import { Eval } from './eval.js';
 
 //-----------------------------------------------------------------------------
 //

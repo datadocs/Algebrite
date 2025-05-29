@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   APPROXRATIO,
   cadr,
@@ -9,12 +9,12 @@ import {
   iscons,
   istensor,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { integer, rational } from './bignum';
-import { zzfloat } from './float';
-import { makeList } from './list';
-import { check_tensor_dimensions } from './tensor';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { integer, rational } from './bignum.js';
+import { zzfloat } from './float.js';
+import { makeList } from './list.js';
+import { check_tensor_dimensions } from './tensor.js';
 
 /*
  Guesses a rational for each float in the passed expression

@@ -6,13 +6,13 @@ import {
   COSH,
   isdouble,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { double } from './bignum';
-import { Eval } from './eval';
-import { isplusone } from './is';
-import { makeList } from './list';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { double } from './bignum.js';
+import { Eval } from './eval.js';
+import { isplusone } from './is.js';
+import { makeList } from './list.js';
 
 /* arccosh =====================================================================
 

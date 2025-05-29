@@ -1,4 +1,4 @@
-import { run_test } from '../test-harness';
+import { run_test } from '../test-harness.js';
 
 run_test([
   // 0 and 1 are not prime numbers

@@ -1,9 +1,9 @@
-import { alloc_tensor } from '../runtime/alloc';
-import { cadr, U } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { cofactor } from './cofactor';
-import { Eval } from './eval';
-import { is_square_matrix } from './tensor';
+import { alloc_tensor } from '../runtime/alloc.js';
+import { cadr, U } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { cofactor } from './cofactor.js';
+import { Eval } from './eval.js';
+import { is_square_matrix } from './tensor.js';
 
 /* adj =====================================================================
 

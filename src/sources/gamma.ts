@@ -9,16 +9,16 @@ import {
   MEQUAL,
   Num,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { add } from './add';
-import { rational } from './bignum';
-import { Eval } from './eval';
-import { isnegativeterm } from './is';
-import { makeList } from './list';
-import { divide, multiply, negate } from './multiply';
-import { power } from './power';
-import { sine } from './sin';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { add } from './add.js';
+import { rational } from './bignum.js';
+import { Eval } from './eval.js';
+import { isnegativeterm } from './is.js';
+import { makeList } from './list.js';
+import { divide, multiply, negate } from './multiply.js';
+import { power } from './power.js';
+import { sine } from './sin.js';
 
 //-----------------------------------------------------------------------------
 //

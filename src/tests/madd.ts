@@ -1,6 +1,6 @@
-import { mint } from '../sources/bignum';
-import { madd, msub } from '../sources/madd';
-import { test } from '../test-harness';
+import { mint } from '../sources/bignum.js';
+import { madd, msub } from '../sources/madd.js';
+import { test } from '../test-harness.js';
 
 let i = 0;
 test('madd', t => {

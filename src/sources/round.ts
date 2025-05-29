@@ -5,13 +5,13 @@ import {
   isNumericAtom,
   ROUND,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { double, integer } from './bignum';
-import { Eval } from './eval';
-import { yyfloat } from './float';
-import { isinteger } from './is';
-import { makeList } from './list';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { double, integer } from './bignum.js';
+import { Eval } from './eval.js';
+import { yyfloat } from './float.js';
+import { isinteger } from './is.js';
+import { makeList } from './list.js';
 
 export function Eval_round(p1: U) {
   return yround(Eval(cadr(p1)));

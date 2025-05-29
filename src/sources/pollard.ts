@@ -1,15 +1,15 @@
 import bigInt from 'big-integer';
-import {Constants, defs, MEQUAL, MULTIPLY, Num, POWER, primetab, U,} from '../runtime/defs';
-import {mcmp} from '../runtime/mcmp';
-import {stop} from '../runtime/run';
-import {symbol} from '../runtime/symbol';
-import {mint, setSignTo} from './bignum';
-import {equaln} from './is';
-import { makeList } from './list';
-import {madd, msub} from './madd';
-import {mgcd} from './mgcd';
-import {mdiv, mdivrem, mmod, mmul} from './mmul';
-import {mprime} from './mprime';
+import {Constants, defs, MEQUAL, MULTIPLY, Num, POWER, primetab, U,} from '../runtime/defs.js';
+import {mcmp} from '../runtime/mcmp.js';
+import {stop} from '../runtime/run.js';
+import {symbol} from '../runtime/symbol.js';
+import {mint, setSignTo} from './bignum.js';
+import {equaln} from './is.js';
+import { makeList } from './list.js';
+import {madd, msub} from './madd.js';
+import {mgcd} from './mgcd.js';
+import {mdiv, mdivrem, mmod, mmul} from './mmul.js';
+import {mprime} from './mprime.js';
 
 // Factor using the Pollard rho method
 

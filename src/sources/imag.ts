@@ -1,10 +1,10 @@
-import { cadr, Constants, U } from '../runtime/defs';
-import { subtract } from './add';
-import { integer } from './bignum';
-import { conjugate } from './conj';
-import { Eval } from './eval';
-import { divide } from './multiply';
-import { rect } from './rect';
+import { cadr, Constants, U } from '../runtime/defs.js';
+import { subtract } from './add.js';
+import { integer } from './bignum.js';
+import { conjugate } from './conj.js';
+import { Eval } from './eval.js';
+import { divide } from './multiply.js';
+import { rect } from './rect.js';
 
 /*
  Returns the coefficient of the imaginary part of complex z

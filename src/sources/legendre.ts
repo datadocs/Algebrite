@@ -11,19 +11,19 @@ import {
   SECRETX,
   SIN,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { square } from '../sources/misc';
-import { subtract } from './add';
-import { integer, nativeInt, rational } from './bignum';
-import { cosine } from './cos';
-import { derivative } from './derivative';
-import { Eval } from './eval';
-import { makeList } from './list';
-import { divide, multiply, negate } from './multiply';
-import { power } from './power';
-import { sine } from './sin';
-import { subst } from './subst';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { square } from '../sources/misc.js';
+import { subtract } from './add.js';
+import { integer, nativeInt, rational } from './bignum.js';
+import { cosine } from './cos.js';
+import { derivative } from './derivative.js';
+import { Eval } from './eval.js';
+import { makeList } from './list.js';
+import { divide, multiply, negate } from './multiply.js';
+import { power } from './power.js';
+import { sine } from './sin.js';
+import { subst } from './subst.js';
 
 /*
  Legendre function

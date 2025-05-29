@@ -6,14 +6,14 @@ import {
   isNumericAtom,
   Num,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { add } from './add';
-import { double } from './bignum';
-import { Eval } from './eval';
-import { isinteger, isnegativenumber } from './is';
-import { makeList } from './list';
-import { mdiv } from './mmul';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { add } from './add.js';
+import { double } from './bignum.js';
+import { Eval } from './eval.js';
+import { isinteger, isnegativenumber } from './is.js';
+import { makeList } from './list.js';
+import { mdiv } from './mmul.js';
 
 export function Eval_floor(p1: U) {
   return yfloor(Eval(cadr(p1)));

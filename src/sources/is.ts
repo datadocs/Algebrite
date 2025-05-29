@@ -32,16 +32,16 @@ import {
   SYMBOL_Z,
   Tensor,
   U
-} from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { symbol } from "../runtime/symbol";
-import { equal, length } from '../sources/misc';
-import { absValFloat } from './abs';
-import { integer, nativeInt } from './bignum';
-import { Eval_predicate } from './eval';
-import { zzfloat } from './float';
-import { guess } from './guess';
-import { multiply } from './multiply';
+} from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { symbol } from "../runtime/symbol.js";
+import { equal, length } from '../sources/misc.js';
+import { absValFloat } from './abs.js';
+import { integer, nativeInt } from './bignum.js';
+import { Eval_predicate } from './eval.js';
+import { zzfloat } from './float.js';
+import { guess } from './guess.js';
+import { multiply } from './multiply.js';
 
 const DEBUG_IS = false;
 

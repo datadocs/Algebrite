@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   breakpoint,
   Constants,
@@ -11,19 +11,19 @@ import {
   Sym,
   Tensor,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { equal, lessp } from '../sources/misc';
-import { add } from './add';
-import { nativeInt } from './bignum';
-import { derivative } from './derivative';
-import { Eval } from './eval';
-import { inner } from './inner';
-import { inv } from './inv';
-import { isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { multiply } from './multiply';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { equal, lessp } from '../sources/misc.js';
+import { add } from './add.js';
+import { nativeInt } from './bignum.js';
+import { derivative } from './derivative.js';
+import { Eval } from './eval.js';
+import { inner } from './inner.js';
+import { inv } from './inv.js';
+import { isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { multiply } from './multiply.js';
 
 //(docs are generated from top-level comments, keep an eye on the formatting!)
 

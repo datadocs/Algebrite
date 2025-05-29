@@ -13,37 +13,37 @@ import {
   PI,
   Tensor,
   U
-} from '../runtime/defs';
+} from '../runtime/defs.js';
 import {
   Find,
   findPossibleClockForm,
   findPossibleExponentialForm
-} from '../runtime/find';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { exponential } from '../sources/misc';
-import { add } from './add';
-import { integer, rational } from './bignum';
-import { conjugate } from './conj';
-import { denominator } from './denominator';
-import { Eval } from './eval';
-import { zzfloat } from './float';
-import { imag } from './imag';
-import { inner } from './inner';
+} from '../runtime/find.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { exponential } from '../sources/misc.js';
+import { add } from './add.js';
+import { integer, rational } from './bignum.js';
+import { conjugate } from './conj.js';
+import { denominator } from './denominator.js';
+import { Eval } from './eval.js';
+import { zzfloat } from './float.js';
+import { imag } from './imag.js';
+import { inner } from './inner.js';
 import {
   equaln,
   isnegativenumber,
   isnegativeterm,
   ispositivenumber,
   isZeroAtomOrTensor
-} from './is';
-import { makeList } from './list';
-import { divide, multiply, negate } from './multiply';
-import { numerator } from './numerator';
-import { power } from './power';
-import { real } from './real';
-import { rect } from './rect';
-import { simplify, simplify_trig } from './simplify';
+} from './is.js';
+import { makeList } from './list.js';
+import { divide, multiply, negate } from './multiply.js';
+import { numerator } from './numerator.js';
+import { power } from './power.js';
+import { real } from './real.js';
+import { rect } from './rect.js';
+import { simplify, simplify_trig } from './simplify.js';
 
 //(docs are generated from top-level comments, keep an eye on the formatting!)
 

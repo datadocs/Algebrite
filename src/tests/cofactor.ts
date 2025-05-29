@@ -1,4 +1,4 @@
-import { run_test } from '../test-harness';
+import { run_test } from '../test-harness.js';
 
 run_test([
   'cofactor([[1,2],[3,4]],1,1)',

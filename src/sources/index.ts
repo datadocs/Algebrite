@@ -1,8 +1,8 @@
-import { alloc_tensor } from '../runtime/alloc';
-import { istensor, Tensor, U } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { nativeInt } from './bignum';
-import { check_tensor_dimensions } from './tensor';
+import { alloc_tensor } from '../runtime/alloc.js';
+import { istensor, Tensor, U } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { nativeInt } from './bignum.js';
+import { check_tensor_dimensions } from './tensor.js';
 
 // n is the total number of things on the stack. The first thing on the stack
 // is the object to be indexed, followed by the indices themselves.

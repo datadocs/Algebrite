@@ -6,12 +6,12 @@ import {
   isdouble,
   SINH,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { double } from './bignum';
-import { Eval } from './eval';
-import { isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { double } from './bignum.js';
+import { Eval } from './eval.js';
+import { isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
 
 //            exp(x) - exp(-x)
 //  sinh(x) = ----------------

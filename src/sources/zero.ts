@@ -1,6 +1,6 @@
-import { alloc_tensor } from '../runtime/alloc';
-import { Constants, iscons, MAXDIM, U } from '../runtime/defs';
-import { evaluate_integer } from './eval';
+import { alloc_tensor } from '../runtime/alloc.js';
+import { Constants, iscons, MAXDIM, U } from '../runtime/defs.js';
+import { evaluate_integer } from './eval.js';
 
 export function Eval_zero(p1: U) {
   const k: number[] = Array(MAXDIM).fill(0);

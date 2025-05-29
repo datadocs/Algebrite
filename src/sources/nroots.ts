@@ -1,18 +1,18 @@
-import { alloc_tensor } from '../runtime/alloc';
-import { caddr, cadr, Constants, DEBUG, defs, isdouble, NIL, U } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { cmp_expr } from '../sources/misc';
-import { add } from './add';
-import { double } from './bignum';
-import { coeff } from './coeff';
-import { Eval } from './eval';
-import { yyfloat } from './float';
-import { guess } from './guess';
-import { imag } from './imag';
-import { ispolyexpandedform } from './is';
-import { multiply } from './multiply';
-import { real } from './real';
+import { alloc_tensor } from '../runtime/alloc.js';
+import { caddr, cadr, Constants, DEBUG, defs, isdouble, NIL, U } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { cmp_expr } from '../sources/misc.js';
+import { add } from './add.js';
+import { double } from './bignum.js';
+import { coeff } from './coeff.js';
+import { Eval } from './eval.js';
+import { yyfloat } from './float.js';
+import { guess } from './guess.js';
+import { imag } from './imag.js';
+import { ispolyexpandedform } from './is.js';
+import { multiply } from './multiply.js';
+import { real } from './real.js';
 
 // find the roots of a polynomial numerically
 const NROOTS_YMAX = 101;

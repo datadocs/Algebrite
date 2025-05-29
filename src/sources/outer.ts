@@ -1,9 +1,9 @@
-import { alloc_tensor } from '../runtime/alloc';
-import { car, cdr, iscons, istensor, MAXDIM, Tensor, U } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { Eval } from './eval';
-import { multiply } from './multiply';
-import { scalar_times_tensor, tensor_times_scalar } from './tensor';
+import { alloc_tensor } from '../runtime/alloc.js';
+import { car, cdr, iscons, istensor, MAXDIM, Tensor, U } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { Eval } from './eval.js';
+import { multiply } from './multiply.js';
+import { scalar_times_tensor, tensor_times_scalar } from './tensor.js';
 
 // Outer product of tensors
 export function Eval_outer(p1: U) {

@@ -4,14 +4,14 @@ import {
   issymbol,
   SECRETX,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { subtract } from './add';
-import { integer, nativeInt } from './bignum';
-import { Eval } from './eval';
-import { makeList } from './list';
-import { multiply } from './multiply';
-import { subst } from './subst';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { subtract } from './add.js';
+import { integer, nativeInt } from './bignum.js';
+import { Eval } from './eval.js';
+import { makeList } from './list.js';
+import { multiply } from './multiply.js';
+import { subst } from './subst.js';
 
 //-----------------------------------------------------------------------------
 //

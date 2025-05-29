@@ -1,4 +1,4 @@
-import { run_shardable_test, run_test } from '../test-harness';
+import { run_shardable_test, run_test } from '../test-harness.js';
 
 run_shardable_test([
   'roots(x)',

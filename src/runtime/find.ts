@@ -1,5 +1,5 @@
-import { equaln, isimaginaryunit, isinteger } from '../sources/is';
-import { equal } from '../sources/misc';
+import { equaln, isimaginaryunit, isinteger } from '../sources/is.js';
+import { equal } from '../sources/misc.js';
 import {
   caddr,
   cadr,
@@ -9,8 +9,8 @@ import {
   ispower,
   istensor,
   U,
-} from './defs';
-import {symbol} from "./symbol";
+} from './defs.js';
+import {symbol} from "./symbol.js";
 
 // returns true if expr p contains expr q, otherwise returns false
 export function Find(p: U, q: U): boolean {

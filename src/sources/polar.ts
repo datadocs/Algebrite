@@ -1,9 +1,9 @@
-import { cadr, Constants, evalPolar, U } from '../runtime/defs';
-import { exponential } from '../sources/misc';
-import { abs } from './abs';
-import { arg } from './arg';
-import { Eval } from './eval';
-import { multiply } from './multiply';
+import { cadr, Constants, evalPolar, U } from '../runtime/defs.js';
+import { exponential } from '../sources/misc.js';
+import { abs } from './abs.js';
+import { arg } from './arg.js';
+import { Eval } from './eval.js';
+import { multiply } from './multiply.js';
 
 /*
 Convert complex z to polar form

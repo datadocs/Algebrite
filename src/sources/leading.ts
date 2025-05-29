@@ -1,11 +1,11 @@
-import { caddr, cadr, NIL, U } from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { degree } from './degree';
-import { Eval } from './eval';
-import { filter } from './filter';
-import { guess } from './guess';
-import { divide } from './multiply';
-import { power } from './power';
+import { caddr, cadr, NIL, U } from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { degree } from './degree.js';
+import { Eval } from './eval.js';
+import { filter } from './filter.js';
+import { guess } from './guess.js';
+import { divide } from './multiply.js';
+import { power } from './power.js';
 
 /*
  Return the leading coefficient of a polynomial.

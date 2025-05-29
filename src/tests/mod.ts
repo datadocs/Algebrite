@@ -1,4 +1,4 @@
-import { run_test } from '../test-harness';
+import { run_test } from '../test-harness.js';
 
 run_test([
   'mod(2.0,3.0)',

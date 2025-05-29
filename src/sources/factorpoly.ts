@@ -1,21 +1,21 @@
-import { lcm } from './lcm';
-import { Constants, DEBUG, defs, issymbol, noexpand, U } from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { stop } from '../runtime/run';
-import { equal } from '../sources/misc';
-import { add, subtract } from './add';
-import { integer, rational } from './bignum';
-import { coeff } from './coeff';
-import { yycondense } from './condense';
-import { conjugate } from './conj';
-import { denominator } from './denominator';
-import { ydivisors } from './divisors';
+import { lcm } from './lcm.js';
+import { Constants, DEBUG, defs, issymbol, noexpand, U } from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { stop } from '../runtime/run.js';
+import { equal } from '../sources/misc.js';
+import { add, subtract } from './add.js';
+import { integer, rational } from './bignum.js';
+import { coeff } from './coeff.js';
+import { yycondense } from './condense.js';
+import { conjugate } from './conj.js';
+import { denominator } from './denominator.js';
+import { ydivisors } from './divisors.js';
 import {
   isfloating,
   isnegativeterm,
   ispolyexpandedform,
   isZeroAtomOrTensor,
-} from './is';
+} from './is.js';
 import {
   divide,
   multiply,
@@ -23,11 +23,11 @@ import {
   negate,
   negate_noexpand,
   reciprocate,
-} from './multiply';
-import { power } from './power';
-import { print_list } from './print';
-import { divpoly } from './quotient';
-import { rect } from './rect';
+} from './multiply.js';
+import { power } from './power.js';
+import { print_list } from './print.js';
+import { divpoly } from './quotient.js';
+import { rect } from './rect.js';
 
 // Factor a polynomial
 

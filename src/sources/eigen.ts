@@ -9,15 +9,15 @@ import {
   NIL,
   Tensor,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { set_binding, symbol, usr_symbol } from '../runtime/symbol';
-import { double } from './bignum';
-import { Eval } from './eval';
-import { yyfloat } from './float';
-import { makeList } from './list';
-import { print_str } from './print';
-import { copy_tensor } from './tensor';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { set_binding, symbol, usr_symbol } from '../runtime/symbol.js';
+import { double } from './bignum.js';
+import { Eval } from './eval.js';
+import { yyfloat } from './float.js';
+import { makeList } from './list.js';
+import { print_str } from './print.js';
+import { copy_tensor } from './tensor.js';
 
 type EIGENOP = typeof EIGEN | typeof EIGENVAL | typeof EIGENVEC;
 

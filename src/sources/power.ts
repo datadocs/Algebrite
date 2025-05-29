@@ -28,24 +28,24 @@ import {
   POWER,
   SIN,
   U
-} from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { get_binding, symbol } from '../runtime/symbol';
-import { equal, exponential, length, sign } from '../sources/misc';
-import { abs } from './abs';
-import { add, subtract } from './add';
-import { arg } from './arg';
+} from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { get_binding, symbol } from '../runtime/symbol.js';
+import { equal, exponential, length, sign } from '../sources/misc.js';
+import { abs } from './abs.js';
+import { add, subtract } from './add.js';
+import { arg } from './arg.js';
 import {
   compare_numbers,
   double,
   integer,
   nativeDouble, nativeInt, rational
-} from './bignum';
-import { conjugate } from './conj';
-import { cosine } from './cos';
-import { dpow } from './dpow';
-import { Eval } from './eval';
-import { factorial } from './factorial';
+} from './bignum.js';
+import { conjugate } from './conj.js';
+import { cosine } from './cos.js';
+import { dpow } from './dpow.js';
+import { Eval } from './eval.js';
+import { factorial } from './factorial.js';
 import {
   iscomplexnumber,
   iscomplexnumberdouble,
@@ -58,13 +58,13 @@ import {
   ispositivenumber,
   isquarterturn,
   isZeroAtomOrTensor
-} from './is';
-import { makeList } from './list';
-import { divide, multiply, negate } from './multiply';
-import { qpow } from './qpow';
-import { rect } from './rect';
-import { sine } from './sin';
-import { power_tensor } from './tensor';
+} from './is.js';
+import { makeList } from './list.js';
+import { divide, multiply, negate } from './multiply.js';
+import { qpow } from './qpow.js';
+import { rect } from './rect.js';
+import { sine } from './sin.js';
+import { power_tensor } from './tensor.js';
 
 /* Power function
 

@@ -7,12 +7,12 @@ import {
   NIL,
   PATTERN, Str,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from '../runtime/symbol';
-import { equal } from '../sources/misc';
-import { makeList } from './list';
-import { print_list } from './print';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from '../runtime/symbol.js';
+import { equal } from '../sources/misc.js';
+import { makeList } from './list.js';
+import { print_list } from './print.js';
 
 /*
   Add a pattern i.e. a substitution rule.

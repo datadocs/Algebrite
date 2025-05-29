@@ -10,18 +10,18 @@ import {
   NUM,
   PI,
   U
-} from '../runtime/defs';
-import { jn } from '../runtime/otherCFunctions';
-import { symbol } from "../runtime/symbol";
-import { subtract } from './add';
-import { double, integer, nativeInt, rational } from './bignum';
-import { cosine } from './cos';
-import { Eval } from './eval';
-import { isnegativeterm, isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { divide, multiply, negate } from './multiply';
-import { power } from './power';
-import { sine } from './sin';
+} from '../runtime/defs.js';
+import { jn } from '../runtime/otherCFunctions.js';
+import { symbol } from "../runtime/symbol.js";
+import { subtract } from './add.js';
+import { double, integer, nativeInt, rational } from './bignum.js';
+import { cosine } from './cos.js';
+import { Eval } from './eval.js';
+import { isnegativeterm, isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { divide, multiply, negate } from './multiply.js';
+import { power } from './power.js';
+import { sine } from './sin.js';
 
 /* besselj =====================================================================
 

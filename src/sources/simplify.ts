@@ -1,5 +1,5 @@
-import { alloc_tensor } from '../runtime/alloc';
-import { count, countOccurrencesOfSymbol } from '../runtime/count';
+import { alloc_tensor } from '../runtime/alloc.js';
+import { count, countOccurrencesOfSymbol } from '../runtime/count.js';
 import {
   ADD,
   caddr,
@@ -34,17 +34,17 @@ import {
   Tensor,
   TRANSPOSE,
   U,
-} from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { stop } from '../runtime/run';
-import { get_binding, symbol } from '../runtime/symbol';
-import { add, add_all } from './add';
-import { integer, nativeDouble, rational } from './bignum';
-import { clockform } from './clock';
-import { Condense, yycondense } from './condense';
-import { Eval } from './eval';
-import { yyfloat } from './float';
-import { inner } from './inner';
+} from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { stop } from '../runtime/run.js';
+import { get_binding, symbol } from '../runtime/symbol.js';
+import { add, add_all } from './add.js';
+import { integer, nativeDouble, rational } from './bignum.js';
+import { clockform } from './clock.js';
+import { Condense, yycondense } from './condense.js';
+import { Eval } from './eval.js';
+import { yyfloat } from './float.js';
+import { inner } from './inner.js';
 import {
   equalq,
   isfraction,
@@ -52,30 +52,30 @@ import {
   isminusone,
   isnegativenumber, isone,
   isZeroAtomOrTensor,
-} from './is';
-import { makeList } from './list';
-import { equal, length } from './misc';
+} from './is.js';
+import { makeList } from './list.js';
+import { equal, length } from './misc.js';
 import {
   divide,
   inverse,
   multiply,
   multiply_noexpand,
   negate
-} from './multiply';
-import { polar } from './polar';
-import { power } from './power';
-import { rationalize } from './rationalize';
-import { real } from './real';
-import { rect } from './rect';
-import { roots } from './roots';
-import { simfac } from './simfac';
-import { check_tensor_dimensions } from './tensor';
-import { transform } from './transform';
-import { transpose } from './transpose';
-import { denominator } from "./denominator";
-import { areunivarpolysfactoredorexpandedform, gcd } from "./gcd";
-import { factor } from "./factor";
-import { numerator } from "./numerator";
+} from './multiply.js';
+import { polar } from './polar.js';
+import { power } from './power.js';
+import { rationalize } from './rationalize.js';
+import { real } from './real.js';
+import { rect } from './rect.js';
+import { roots } from './roots.js';
+import { simfac } from './simfac.js';
+import { check_tensor_dimensions } from './tensor.js';
+import { transform } from './transform.js';
+import { transpose } from './transpose.js';
+import { denominator } from "./denominator.js";
+import { areunivarpolysfactoredorexpandedform, gcd } from "./gcd.js";
+import { factor } from "./factor.js";
+import { numerator } from "./numerator.js";
 
 export function Eval_simplify(p1: U) {
   const arg = runUserDefinedSimplifications(cadr(p1));

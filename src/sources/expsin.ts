@@ -1,9 +1,9 @@
-import { cadr, Constants, U } from '../runtime/defs';
-import { exponential } from '../sources/misc';
-import { subtract } from './add';
-import { rational } from './bignum';
-import { Eval } from './eval';
-import { divide, multiply, negate } from './multiply';
+import { cadr, Constants, U } from '../runtime/defs.js';
+import { exponential } from '../sources/misc.js';
+import { subtract } from './add.js';
+import { rational } from './bignum.js';
+import { Eval } from './eval.js';
+import { divide, multiply, negate } from './multiply.js';
 
 // Do the exponential sine function.
 export function Eval_expsin(p1: U) {

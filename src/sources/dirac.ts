@@ -8,13 +8,13 @@ import {
   isrational,
   MZERO,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { Eval } from './eval';
-import { isnegativeterm } from './is';
-import { makeList } from './list';
-import { mmul } from './mmul';
-import { negate } from './multiply';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { Eval } from './eval.js';
+import { isnegativeterm } from './is.js';
+import { makeList } from './list.js';
+import { mmul } from './mmul.js';
+import { negate } from './multiply.js';
 
 //-----------------------------------------------------------------------------
 //

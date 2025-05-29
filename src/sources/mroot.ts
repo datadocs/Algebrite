@@ -1,8 +1,8 @@
 import bigInt from 'big-integer';
-import { mcmp } from '../runtime/mcmp';
-import { stop } from '../runtime/run';
-import { mint } from './bignum';
-import { mpow } from './mpow';
+import { mcmp } from '../runtime/mcmp.js';
+import { stop } from '../runtime/run.js';
+import { mint } from './bignum.js';
+import { mpow } from './mpow.js';
 
 //-----------------------------------------------------------------------------
 //

@@ -1,5 +1,5 @@
-import { cadr, iscons, SYM, U } from '../runtime/defs';
-import { get_binding } from '../runtime/symbol';
+import { cadr, iscons, SYM, U } from '../runtime/defs.js';
+import { get_binding } from '../runtime/symbol.js';
 
 // now this might be a little confusing, so a
 // clarification is in order.

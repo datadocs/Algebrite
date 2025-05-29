@@ -1,4 +1,4 @@
-import { isadd, ismultiply, U } from '../runtime/defs';
+import { isadd, ismultiply, U } from '../runtime/defs.js';
 
 // Push expression factors onto the stack. For example...
 //

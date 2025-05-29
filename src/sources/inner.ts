@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   breakpoint,
   car,
@@ -17,16 +17,16 @@ import {
   SYMBOL_IDENTITY_MATRIX,
   Tensor,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { add, subtract } from './add';
-import { Eval } from './eval';
-import { inv } from './inv';
-import { isnegativeterm, isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { multiply, negate } from './multiply';
-import { scalar_times_tensor, tensor_times_scalar } from './tensor';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { add, subtract } from './add.js';
+import { Eval } from './eval.js';
+import { inv } from './inv.js';
+import { isnegativeterm, isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { multiply, negate } from './multiply.js';
+import { scalar_times_tensor, tensor_times_scalar } from './tensor.js';
 
 /* dot =====================================================================
 

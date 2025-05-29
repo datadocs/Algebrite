@@ -14,18 +14,18 @@ import {
   Sign,
   Tensor,
   U,
-} from '../runtime/defs';
-import { mcmp } from '../runtime/mcmp';
-import { doubleToReasonableString } from '../runtime/otherCFunctions';
-import { stop } from '../runtime/run';
-import { isfraction, isinteger, isZeroAtomOrTensor } from './is';
-import { mgcd } from './mgcd';
-import { mdiv, mmul } from './mmul';
-import { mpow } from './mpow';
-import { negate } from './multiply';
-import { qadd } from './qadd';
-import { qdiv } from './qdiv';
-import { qmul } from './qmul';
+} from '../runtime/defs.js';
+import { mcmp } from '../runtime/mcmp.js';
+import { doubleToReasonableString } from '../runtime/otherCFunctions.js';
+import { stop } from '../runtime/run.js';
+import { isfraction, isinteger, isZeroAtomOrTensor } from './is.js';
+import { mgcd } from './mgcd.js';
+import { mdiv, mmul } from './mmul.js';
+import { mpow } from './mpow.js';
+import { negate } from './multiply.js';
+import { qadd } from './qadd.js';
+import { qdiv } from './qdiv.js';
+import { qmul } from './qmul.js';
 
 //double convert_rational_to_double(U *)
 //double convert_bignum_to_double(unsigned int *)

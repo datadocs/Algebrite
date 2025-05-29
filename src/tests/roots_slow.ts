@@ -1,4 +1,4 @@
-import { run_test } from '../test-harness';
+import { run_test } from '../test-harness.js';
 
 // DOES use cubic formula
 // the actual format of this solution might change, the important thing

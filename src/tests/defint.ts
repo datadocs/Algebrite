@@ -1,4 +1,4 @@
-import { run_test } from '../test-harness';
+import { run_test } from '../test-harness.js';
 
 run_test([
   'defint(x^2,y,0,sqrt(1-x^2),x,-1,1)',

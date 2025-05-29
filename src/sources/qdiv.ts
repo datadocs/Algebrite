@@ -1,8 +1,8 @@
-import { Constants, MZERO, Num } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { makeSignSameAs } from './bignum';
-import { mgcd } from './mgcd';
-import { mdiv, mmul } from './mmul';
+import { Constants, MZERO, Num } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { makeSignSameAs } from './bignum.js';
+import { mgcd } from './mgcd.js';
+import { mdiv, mmul } from './mmul.js';
 
 //  Divide rational numbers
 //

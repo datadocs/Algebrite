@@ -1,2 +1,2 @@
-import Algebrite from '../index';
+import Algebrite from '../index.js';
 globalThis.Algebrite = Algebrite;

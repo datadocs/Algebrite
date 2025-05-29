@@ -1,8 +1,8 @@
-import { cadr, car, cddr, cdr, iscons, U } from '../runtime/defs';
-import { subtract } from './add';
-import { Eval } from './eval';
-import { integral } from './integral';
-import { subst } from './subst';
+import { cadr, car, cddr, cdr, iscons, U } from '../runtime/defs.js';
+import { subtract } from './add.js';
+import { Eval } from './eval.js';
+import { integral } from './integral.js';
+import { subst } from './subst.js';
 
 /* defint =====================================================================
 

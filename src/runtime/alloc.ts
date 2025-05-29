@@ -1,5 +1,5 @@
-import { check_tensor_dimensions } from '../sources/tensor';
-import { Constants, Tensor } from './defs';
+import { check_tensor_dimensions } from '../sources/tensor.js';
+import { Constants, Tensor } from './defs.js';
 
 export function alloc_tensor(nelem: number) {
   const p = new Tensor();

@@ -1,5 +1,5 @@
-import { gcd } from './gcd';
-import { alloc_tensor } from '../runtime/alloc';
+import { gcd } from './gcd.js';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   caddr,
   cadr,
@@ -12,14 +12,14 @@ import {
   ispower,
   isNumericAtom,
   U,
-} from '../runtime/defs';
-import { cmp_expr, sign } from '../sources/misc';
-import { add } from './add';
-import { integer, nativeInt } from './bignum';
-import { factor_small_number } from './factor';
-import { isplusone } from './is';
-import { inverse, multiply } from './multiply';
-import { power } from './power';
+} from '../runtime/defs.js';
+import { cmp_expr, sign } from '../sources/misc.js';
+import { add } from './add.js';
+import { integer, nativeInt } from './bignum.js';
+import { factor_small_number } from './factor.js';
+import { isplusone } from './is.js';
+import { inverse, multiply } from './multiply.js';
+import { power } from './power.js';
 
 //-----------------------------------------------------------------------------
 //

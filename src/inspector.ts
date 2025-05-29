@@ -17,8 +17,8 @@ import {
   Tensor,
   issymbol,
   BaseAtom,
-} from './runtime/defs';
-import { length } from './sources/misc';
+} from './runtime/defs.js';
+import { length } from './sources/misc.js';
 
 class AtomFormatter {
   header(object: unknown) {

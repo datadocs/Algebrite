@@ -6,14 +6,14 @@ import {
   isdouble,
   TAN,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { double, integer, nativeInt, rational } from './bignum';
-import { Eval } from './eval';
-import { isnegative } from './is';
-import { makeList } from './list';
-import { divide, multiply, negate } from './multiply';
-import { power } from './power';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { double, integer, nativeInt, rational } from './bignum.js';
+import { Eval } from './eval.js';
+import { isnegative } from './is.js';
+import { makeList } from './list.js';
+import { divide, multiply, negate } from './multiply.js';
+import { power } from './power.js';
 
 // Tangent function of numerical and symbolic arguments
 export function Eval_tan(p1: U) {

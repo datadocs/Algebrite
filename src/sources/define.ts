@@ -9,11 +9,11 @@ import {
   issymbol,
   NIL,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { set_binding, symbol } from '../runtime/symbol';
-import { Eval } from './eval';
-import { makeList } from './list';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { set_binding, symbol } from '../runtime/symbol.js';
+import { Eval } from './eval.js';
+import { makeList } from './list.js';
 
 // Store a function definition
 //

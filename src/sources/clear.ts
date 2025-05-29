@@ -1,9 +1,9 @@
-import { car, cdr, defs, iscons, NIL, SYM, U } from '../runtime/defs';
-import { defn } from '../runtime/init';
-import { clear_term } from '../runtime/otherCFunctions';
-import { run, stop } from '../runtime/run';
-import { clear_symbol, clear_symbols, symbol } from '../runtime/symbol';
-import { do_clearPatterns } from './pattern';
+import { car, cdr, defs, iscons, NIL, SYM, U } from '../runtime/defs.js';
+import { defn } from '../runtime/init.js';
+import { clear_term } from '../runtime/otherCFunctions.js';
+import { run, stop } from '../runtime/run.js';
+import { clear_symbol, clear_symbols, symbol } from '../runtime/symbol.js';
+import { do_clearPatterns } from './pattern.js';
 
 /* clearall =====================================================================
 

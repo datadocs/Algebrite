@@ -14,13 +14,13 @@ import {
   issymbol,
   PI,
   U
-} from '../runtime/defs';
-import { get_binding, symbol } from '../runtime/symbol';
-import { add, subtract } from './add';
-import { arctan } from './arctan';
-import { denominator } from './denominator';
-import { Eval } from './eval';
-import { imag } from './imag';
+} from '../runtime/defs.js';
+import { get_binding, symbol } from '../runtime/symbol.js';
+import { add, subtract } from './add.js';
+import { arctan } from './arctan.js';
+import { denominator } from './denominator.js';
+import { Eval } from './eval.js';
+import { imag } from './imag.js';
 import {
   equaln,
   isnegative,
@@ -28,12 +28,12 @@ import {
   isoneovertwo,
   ispositivenumber,
   isZeroAtomOrTensor
-} from './is';
-import { makeList } from './list';
-import { divide, multiply, negate } from './multiply';
-import { numerator } from './numerator';
-import { real } from './real';
-import { rect } from './rect';
+} from './is.js';
+import { makeList } from './list.js';
+import { divide, multiply, negate } from './multiply.js';
+import { numerator } from './numerator.js';
+import { real } from './real.js';
+import { rect } from './rect.js';
 
 /* arg =====================================================================
 

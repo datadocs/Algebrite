@@ -1,17 +1,17 @@
-import { bake } from '../sources/bake';
+import { bake } from '../sources/bake.js';
 import {
   do_clearall,
-} from '../sources/clear';
-import { Eval } from '../sources/eval';
-import { isimaginaryunit, isZeroAtomOrTensor } from '../sources/is';
+} from '../sources/clear.js';
+import { Eval } from '../sources/eval.js';
+import { isimaginaryunit, isZeroAtomOrTensor } from '../sources/is.js';
 import {
   collectLatexStringFromReturnValue,
   print_expr,
-} from '../sources/print';
-import { print2dascii } from '../sources/print2d';
-import { scan } from '../sources/scan';
-import { simplifyForCodeGeneration } from '../sources/simplify';
-import { subst } from '../sources/subst';
+} from '../sources/print.js';
+import { print2dascii } from '../sources/print2d.js';
+import { scan } from '../sources/scan.js';
+import { simplifyForCodeGeneration } from '../sources/simplify.js';
+import { subst } from '../sources/subst.js';
 import {
   AUTOEXPAND,
   BAKE,
@@ -34,15 +34,15 @@ import {
   SYMBOL_J,
   transpose_unicode,
   U,
-} from './defs';
-import { init } from './init';
+} from './defs.js';
+import { init } from './init.js';
 import {
   clearRenamedVariablesToAvoidBindingToExternalScope,
   collectUserSymbols,
   get_binding,
   set_binding, symbol,
   usr_symbol,
-} from './symbol';
+} from './symbol.js';
 
 //jmp_buf stop_return, draw_stop_return
 

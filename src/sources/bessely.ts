@@ -5,15 +5,15 @@ import {
   Constants,
   isdouble,
   U
-} from '../runtime/defs';
-import { yn } from '../runtime/otherCFunctions';
-import { symbol } from "../runtime/symbol";
-import { double, nativeInt } from './bignum';
-import { Eval } from './eval';
-import { isnegativeterm } from './is';
-import { makeList } from './list';
-import { multiply, negate } from './multiply';
-import { power } from './power';
+} from '../runtime/defs.js';
+import { yn } from '../runtime/otherCFunctions.js';
+import { symbol } from "../runtime/symbol.js";
+import { double, nativeInt } from './bignum.js';
+import { Eval } from './eval.js';
+import { isnegativeterm } from './is.js';
+import { makeList } from './list.js';
+import { multiply, negate } from './multiply.js';
+import { power } from './power.js';
 
 /* bessely =====================================================================
 

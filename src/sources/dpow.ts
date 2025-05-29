@@ -1,8 +1,8 @@
-import { Constants } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { add } from './add';
-import { double } from './bignum';
-import { multiply } from './multiply';
+import { Constants } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { add } from './add.js';
+import { double } from './bignum.js';
+import { multiply } from './multiply.js';
 
 // power function for double precision floating point
 export function dpow(base: number, expo: number) {

@@ -1,9 +1,9 @@
-import { caddr, cadr, Constants, isNumericAtom, U } from '../runtime/defs';
-import { lessp } from '../sources/misc';
-import { subtract } from './add';
-import { Eval } from './eval';
-import { factorial } from './factorial';
-import { divide } from './multiply';
+import { caddr, cadr, Constants, isNumericAtom, U } from '../runtime/defs.js';
+import { lessp } from '../sources/misc.js';
+import { subtract } from './add.js';
+import { Eval } from './eval.js';
+import { factorial } from './factorial.js';
+import { divide } from './multiply.js';
 
 //  Binomial coefficient
 //

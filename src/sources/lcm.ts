@@ -1,7 +1,7 @@
-import { car, cdr, defs, doexpand, iscons, U } from '../runtime/defs';
-import { Eval } from './eval';
-import { gcd } from './gcd';
-import { divide, inverse } from './multiply';
+import { car, cdr, defs, doexpand, iscons, U } from '../runtime/defs.js';
+import { Eval } from './eval.js';
+import { gcd } from './gcd.js';
+import { divide, inverse } from './multiply.js';
 
 // Find the least common multiple of two expressions.
 export function Eval_lcm(p1: U) {

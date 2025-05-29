@@ -7,12 +7,12 @@ import {
   ispower,
   NIL,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { equal, lessp } from '../sources/misc';
-import { Eval } from './eval';
-import { guess } from './guess';
-import { isZeroAtomOrTensor } from './is';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { equal, lessp } from '../sources/misc.js';
+import { Eval } from './eval.js';
+import { guess } from './guess.js';
+import { isZeroAtomOrTensor } from './is.js';
 
 /* deg =====================================================================
 

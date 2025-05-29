@@ -1,4 +1,4 @@
-import { run_test } from './test-harness';
+import { run_test } from './test-harness.js';
 
 // quick and dirty way to run a few tests
 

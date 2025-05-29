@@ -12,10 +12,10 @@ import {
   PI,
   POWER,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { double, integer, nativeInt, rational } from './bignum';
-import { Eval } from './eval';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { double, integer, nativeInt, rational } from './bignum.js';
+import { Eval } from './eval.js';
 import {
   equaln,
   equalq,
@@ -23,9 +23,9 @@ import {
   isMinusSqrtThreeOverTwo,
   isoneoversqrttwo,
   isSqrtThreeOverTwo
-} from './is';
-import { makeList } from './list';
-import { multiply } from './multiply';
+} from './is.js';
+import { makeList } from './list.js';
+import { multiply } from './multiply.js';
 
 /* arccos =====================================================================
 

@@ -20,16 +20,16 @@ import {
   SYMBOL_X_UNDERSCORE,
   U,
   noexpand,
-} from '../runtime/defs';
-import { get_binding, set_binding, symbol } from '../runtime/symbol';
-import { subtract } from './add';
-import { polyform } from './bake';
-import { decomp } from './decomp';
-import { Eval } from './eval';
-import { isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { scan_meta } from './scan';
-import { subst } from './subst';
+} from '../runtime/defs.js';
+import { get_binding, set_binding, symbol } from '../runtime/symbol.js';
+import { subtract } from './add.js';
+import { polyform } from './bake.js';
+import { decomp } from './decomp.js';
+import { Eval } from './eval.js';
+import { isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { scan_meta } from './scan.js';
+import { subst } from './subst.js';
 
 /*
 Transform an expression using a pattern. The

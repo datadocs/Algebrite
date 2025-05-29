@@ -81,13 +81,13 @@ import {
   TESTLE,
   TESTLT, U,
   UNIT
-} from '../runtime/defs';
-import { get_binding, get_printname, set_binding, symbol } from '../runtime/symbol';
-import { lessp } from '../sources/misc';
-import { absval } from './abs';
-import { mp_denominator, mp_numerator, print_number } from './bignum';
-import { denominator } from './denominator';
-import { Eval } from './eval';
+} from '../runtime/defs.js';
+import { get_binding, get_printname, set_binding, symbol } from '../runtime/symbol.js';
+import { lessp } from '../sources/misc.js';
+import { absval } from './abs.js';
+import { mp_denominator, mp_numerator, print_number } from './bignum.js';
+import { denominator } from './denominator.js';
+import { Eval } from './eval.js';
 import {
   equaln,
   isfraction,
@@ -98,11 +98,11 @@ import {
   isoneovertwo,
   isplusone,
   isplustwo
-} from './is';
-import { multiply, negate } from './multiply';
-import { numerator } from './numerator';
-import { print2dascii } from './print2d';
-import { scan } from './scan';
+} from './is.js';
+import { multiply, negate } from './multiply.js';
+import { numerator } from './numerator.js';
+import { print2dascii } from './print2d.js';
+import { scan } from './scan.js';
 
 const power_str = '^';
 

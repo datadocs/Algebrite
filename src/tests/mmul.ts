@@ -1,6 +1,6 @@
-import { mint } from '../sources/bignum';
-import { mdiv, mmod, mmul } from '../sources/mmul';
-import { test } from '../test-harness';
+import { mint } from '../sources/bignum.js';
+import { mdiv, mmod, mmul } from '../sources/mmul.js';
+import { test } from '../test-harness.js';
 
 function make_test(f: Function, expected: (i: number, j: number) => number) {
   test(f.name, t => {

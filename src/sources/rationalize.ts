@@ -9,14 +9,14 @@ import {
   ispower,
   istensor,
   U
-} from '../runtime/defs';
-import { add } from './add';
-import { Condense } from './condense';
-import { Eval } from './eval';
-import { gcd } from './gcd';
-import { isnegativenumber } from './is';
-import { divide, inverse, multiply } from './multiply';
-import { check_tensor_dimensions } from './tensor';
+} from '../runtime/defs.js';
+import { add } from './add.js';
+import { Condense } from './condense.js';
+import { Eval } from './eval.js';
+import { gcd } from './gcd.js';
+import { isnegativenumber } from './is.js';
+import { divide, inverse, multiply } from './multiply.js';
+import { check_tensor_dimensions } from './tensor.js';
 
 export function Eval_rationalize(p1: U) {
   return rationalize(Eval(cadr(p1)));

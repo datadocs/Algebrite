@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   BaseAtom,
   car,
@@ -14,13 +14,13 @@ import {
   NIL,
   Sign,
   U
-} from '../runtime/defs';
-import { strcmp } from '../runtime/otherCFunctions';
-import { get_printname, symbol } from '../runtime/symbol';
-import { compare_numbers, integer } from './bignum';
-import { Eval } from './eval';
-import { power } from './power';
-import { compare_tensors } from './tensor';
+} from '../runtime/defs.js';
+import { strcmp } from '../runtime/otherCFunctions.js';
+import { get_printname, symbol } from '../runtime/symbol.js';
+import { compare_numbers, integer } from './bignum.js';
+import { Eval } from './eval.js';
+import { power } from './power.js';
+import { compare_tensors } from './tensor.js';
 
 // both ints
 export function zero_matrix(i: number, j: number) {

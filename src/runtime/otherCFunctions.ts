@@ -1,9 +1,9 @@
-import { nativeInt } from '../sources/bignum';
-import { isZeroAtomOrTensor } from '../sources/is';
-import { makeList } from '../sources/list';
-import { defs, FORCE_FIXED_PRINTOUT, iscons, MAX_FIXED_PRINTOUT_DIGITS, PRINTMODE_LATEX, Sign, U } from './defs';
-import { stop } from './run';
-import { get_binding, symbol } from './symbol';
+import { nativeInt } from '../sources/bignum.js';
+import { isZeroAtomOrTensor } from '../sources/is.js';
+import { makeList } from '../sources/list.js';
+import { defs, FORCE_FIXED_PRINTOUT, iscons, MAX_FIXED_PRINTOUT_DIGITS, PRINTMODE_LATEX, Sign, U } from './defs.js';
+import { stop } from './run.js';
+import { get_binding, symbol } from './symbol.js';
 
 export function strcmp(str1: string, str2: string): Sign {
   if (str1 === str2) {

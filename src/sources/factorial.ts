@@ -12,14 +12,14 @@ import {
   NIL,
   U,
   noexpand,
-} from '../runtime/defs';
-import { yyexpand } from '../sources/misc';
-import { add, subtract } from './add';
-import { integer, bignum_factorial, nativeInt } from './bignum';
-import { makeList } from './list';
-import { multiply } from './multiply';
-import { power } from './power';
-import {symbol} from "../runtime/symbol";
+} from '../runtime/defs.js';
+import { yyexpand } from '../sources/misc.js';
+import { add, subtract } from './add.js';
+import { integer, bignum_factorial, nativeInt } from './bignum.js';
+import { makeList } from './list.js';
+import { multiply } from './multiply.js';
+import { power } from './power.js';
+import {symbol} from "../runtime/symbol.js";
 
 export function factorial(p1: U): U {
   const n = nativeInt(p1);

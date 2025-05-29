@@ -9,12 +9,12 @@ import {
   ispower,
   isrational,
   U
-} from '../runtime/defs';
-import { mp_numerator } from './bignum';
-import { Eval } from './eval';
-import { isnegativeterm, isplusone } from './is';
-import { multiply_all } from './multiply';
-import { rationalize } from './rationalize';
+} from '../runtime/defs.js';
+import { mp_numerator } from './bignum.js';
+import { Eval } from './eval.js';
+import { isnegativeterm, isplusone } from './is.js';
+import { multiply_all } from './multiply.js';
+import { rationalize } from './rationalize.js';
 
 export function Eval_numerator(p1: U) {
   return numerator(Eval(cadr(p1)));

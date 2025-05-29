@@ -1,9 +1,9 @@
-import { HILBERT, U } from '../runtime/defs';
-import { zero_matrix } from '../sources/misc';
-import { integer, nativeInt } from './bignum';
-import { makeList } from './list';
-import { inverse } from './multiply';
-import {symbol} from "../runtime/symbol";
+import { HILBERT, U } from '../runtime/defs.js';
+import { zero_matrix } from '../sources/misc.js';
+import { integer, nativeInt } from './bignum.js';
+import { makeList } from './list.js';
+import { inverse } from './multiply.js';
+import {symbol} from "../runtime/symbol.js";
 
 //-----------------------------------------------------------------------------
 //

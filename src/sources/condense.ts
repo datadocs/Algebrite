@@ -1,9 +1,9 @@
-import { cadr, Constants, isadd, noexpand, U } from '../runtime/defs';
-import { yyexpand } from '../sources/misc';
-import { add } from './add';
-import { Eval } from './eval';
-import { gcd } from './gcd';
-import { divide, inverse, multiply_noexpand } from './multiply';
+import { cadr, Constants, isadd, noexpand, U } from '../runtime/defs.js';
+import { yyexpand } from '../sources/misc.js';
+import { add } from './add.js';
+import { Eval } from './eval.js';
+import { gcd } from './gcd.js';
+import { divide, inverse, multiply_noexpand } from './multiply.js';
 
 // Condense an expression by factoring common terms.
 

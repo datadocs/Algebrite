@@ -7,15 +7,15 @@ import {
   NIL,
   SYMBOL_X,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { equal } from '../sources/misc';
-import { subtract } from './add';
-import { Eval } from './eval';
-import { filter } from './filter';
-import { divide } from './multiply';
-import { power } from './power';
-import { subst } from './subst';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { equal } from '../sources/misc.js';
+import { subtract } from './add.js';
+import { Eval } from './eval.js';
+import { filter } from './filter.js';
+import { divide } from './multiply.js';
+import { power } from './power.js';
+import { subst } from './subst.js';
 
 /* coeff =====================================================================
 

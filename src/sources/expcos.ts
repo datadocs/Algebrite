@@ -1,9 +1,9 @@
-import { cadr, Constants, U } from '../runtime/defs';
-import { exponential } from '../sources/misc';
-import { add } from './add';
-import { rational } from './bignum';
-import { Eval } from './eval';
-import { multiply, negate } from './multiply';
+import { cadr, Constants, U } from '../runtime/defs.js';
+import { exponential } from '../sources/misc.js';
+import { add } from './add.js';
+import { rational } from './bignum.js';
+import { Eval } from './eval.js';
+import { multiply, negate } from './multiply.js';
 
 // Do the exponential cosine function.
 export function Eval_expcos(p1: U) {

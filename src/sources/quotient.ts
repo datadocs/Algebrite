@@ -6,14 +6,14 @@ import {
   NIL,
   SYMBOL_X,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { add, subtract } from './add';
-import { integer } from './bignum';
-import { coeff } from './coeff';
-import { Eval } from './eval';
-import { divide, multiply } from './multiply';
-import { power } from './power';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { add, subtract } from './add.js';
+import { integer } from './bignum.js';
+import { coeff } from './coeff.js';
+import { Eval } from './eval.js';
+import { divide, multiply } from './multiply.js';
+import { power } from './power.js';
 
 // Divide polynomials
 export function Eval_quotient(p1: U) {

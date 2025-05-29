@@ -1,10 +1,10 @@
-import {check_stack, top_level_eval} from './run';
-import {double, integer} from '../sources/bignum';
-import {makeList} from '../sources/list';
-import {scan} from '../sources/scan';
-import {defs, NIL, reset_after_error, U} from './defs';
-import {init} from './init';
-import {get_binding, symbol, usr_symbol} from './symbol';
+import {check_stack, top_level_eval} from './run.js';
+import {double, integer} from '../sources/bignum.js';
+import {makeList} from '../sources/list.js';
+import {scan} from '../sources/scan.js';
+import {defs, NIL, reset_after_error, U} from './defs.js';
+import {init} from './init.js';
+import {get_binding, symbol, usr_symbol} from './symbol.js';
 
 if (!defs.inited) {
   defs.inited = true;

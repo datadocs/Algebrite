@@ -12,13 +12,13 @@ import {
   SYMBOL_D,
   Tensor,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { get_binding, symbol } from '../runtime/symbol';
-import { Eval_derivative } from './derivative';
-import { Eval, evalList } from './eval';
-import { makeList } from './list';
-import { check_tensor_dimensions, copy_tensor } from './tensor';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { get_binding, symbol } from '../runtime/symbol.js';
+import { Eval_derivative } from './derivative.js';
+import { Eval, evalList } from './eval.js';
+import { makeList } from './list.js';
+import { check_tensor_dimensions, copy_tensor } from './tensor.js';
 
 // Evaluate a user defined function
 

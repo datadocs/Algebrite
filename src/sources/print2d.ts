@@ -33,13 +33,13 @@ import {
   Sym,
   Tensor,
   U,
-} from '../runtime/defs';
-import { doubleToReasonableString } from '../runtime/otherCFunctions';
-import {get_printname, symbol} from '../runtime/symbol';
-import { absval } from './abs';
-import { mp_denominator, mp_numerator } from './bignum';
-import { isfraction, isminusone, isnegativenumber, isplusone } from './is';
-import { printline } from './print';
+} from '../runtime/defs.js';
+import { doubleToReasonableString } from '../runtime/otherCFunctions.js';
+import {get_printname, symbol} from '../runtime/symbol.js';
+import { absval } from './abs.js';
+import { mp_denominator, mp_numerator } from './bignum.js';
+import { isfraction, isminusone, isnegativenumber, isplusone } from './is.js';
+import { printline } from './print.js';
 
 /*
 

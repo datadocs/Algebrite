@@ -5,14 +5,14 @@ import {
   Sign,
   Tensor,
   U,
-} from '../runtime/defs';
-import { equal } from '../sources/misc';
-import { add } from './add';
-import { integer } from './bignum';
-import { makeList } from './list';
-import { divide, multiply, negate } from './multiply';
-import { is_square_matrix } from './tensor';
-import {symbol} from "../runtime/symbol";
+} from '../runtime/defs.js';
+import { equal } from '../sources/misc.js';
+import { add } from './add.js';
+import { integer } from './bignum.js';
+import { makeList } from './list.js';
+import { divide, multiply, negate } from './multiply.js';
+import { is_square_matrix } from './tensor.js';
+import {symbol} from "../runtime/symbol.js";
 
 /* det =====================================================================
 

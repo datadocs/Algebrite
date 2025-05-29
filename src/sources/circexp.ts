@@ -8,16 +8,16 @@ import {
   TANH,
   TENSOR,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { exponential } from '../sources/misc';
-import { add, subtract } from './add';
-import { integer, rational } from './bignum';
-import { Eval } from './eval';
-import { expcos } from './expcos';
-import { expsin } from './expsin';
-import { divide, multiply, negate } from './multiply';
-import { copy_tensor } from './tensor';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { exponential } from '../sources/misc.js';
+import { add, subtract } from './add.js';
+import { integer, rational } from './bignum.js';
+import { Eval } from './eval.js';
+import { expcos } from './expcos.js';
+import { expsin } from './expsin.js';
+import { divide, multiply, negate } from './multiply.js';
+import { copy_tensor } from './tensor.js';
 
 /* circexp =====================================================================
 

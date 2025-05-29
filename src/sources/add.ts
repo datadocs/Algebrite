@@ -15,17 +15,17 @@ import {
   Num,
   Sign,
   U
-} from '../runtime/defs';
-import { check_esc_flag } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { add_numbers } from './bignum';
-import { Eval } from './eval';
-import { isZeroAtom, isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { cmp_expr, equal } from './misc';
-import { multiply, negate } from './multiply';
-import { print_list } from './print';
-import { tensor_plus_tensor } from './tensor';
+} from '../runtime/defs.js';
+import { check_esc_flag } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { add_numbers } from './bignum.js';
+import { Eval } from './eval.js';
+import { isZeroAtom, isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { cmp_expr, equal } from './misc.js';
+import { multiply, negate } from './multiply.js';
+import { print_list } from './print.js';
+import { tensor_plus_tensor } from './tensor.js';
 
 /*
  Symbolic addition

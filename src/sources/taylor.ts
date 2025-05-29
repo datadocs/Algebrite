@@ -1,15 +1,15 @@
-import { car, cdr, Constants, NIL, TAYLOR, U } from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { add, subtract } from './add';
-import { integer, nativeInt } from './bignum';
-import { derivative } from './derivative';
-import { Eval } from './eval';
-import { factorial } from './factorial';
-import { guess } from './guess';
-import { isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { divide, multiply } from './multiply';
-import { subst } from './subst';
+import { car, cdr, Constants, NIL, TAYLOR, U } from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { add, subtract } from './add.js';
+import { integer, nativeInt } from './bignum.js';
+import { derivative } from './derivative.js';
+import { Eval } from './eval.js';
+import { factorial } from './factorial.js';
+import { guess } from './guess.js';
+import { isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { divide, multiply } from './multiply.js';
+import { subst } from './subst.js';
 
 /*
 Taylor expansion of a function

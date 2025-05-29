@@ -19,23 +19,23 @@ import {
   SQRT,
   Sym,
   U
-} from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { stop } from '../runtime/run';
-import { symbol } from '../runtime/symbol';
-import { equal } from '../sources/misc';
-import { add } from './add';
-import { double, nativeInt } from './bignum';
-import { derivative } from './derivative';
-import { Eval } from './eval';
-import { guess } from './guess';
-import { equalq, isminusone, isminusoneovertwo, isoneovertwo } from './is';
-import { makeList } from './list';
-import { multiply } from './multiply';
-import { partition } from './partition';
-import { scan_meta } from './scan';
-import { simplify } from './simplify';
-import { transform } from './transform';
+} from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from '../runtime/symbol.js';
+import { equal } from '../sources/misc.js';
+import { add } from './add.js';
+import { double, nativeInt } from './bignum.js';
+import { derivative } from './derivative.js';
+import { Eval } from './eval.js';
+import { guess } from './guess.js';
+import { equalq, isminusone, isminusoneovertwo, isoneovertwo } from './is.js';
+import { makeList } from './list.js';
+import { multiply } from './multiply.js';
+import { partition } from './partition.js';
+import { scan_meta } from './scan.js';
+import { simplify } from './simplify.js';
+import { transform } from './transform.js';
 
 /*
  Table of integrals

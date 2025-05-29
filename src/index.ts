@@ -8,17 +8,17 @@
  */
 
 import { BigInteger } from 'big-integer';
-import {caaddr, caadr, caar, cadaddr, cadadr, cadar, caddaddr, caddadr, caddar, caddddr, cadddr, caddr, cadr, car, cdaddr, cdadr, cdar, cddaddr, cddar, cdddaddr, cddddr, cdddr, cddr, cdr, CONS, Cons, defs, DOUBLE, Double, isadd, iscons, isdouble, isfactorial, ismultiply, isNumericAtom, ispower, isrational, isstr, issymbol, istensor, NUM, Num, STR, Str, SYM, Sym, TENSOR, Tensor, U, version,} from './runtime/defs';
-import {Find} from './runtime/find';
-import {init} from './runtime/init';
-import {run} from './runtime/run';
-import {collectUserSymbols, get_binding, iskeyword, set_binding, symbol, usr_symbol,} from './runtime/symbol';
-import {exec, parse} from './runtime/zombocom';
-import {approxAll, approxRadicals, approxRationalsOfLogs, testApprox,} from './sources/approxratio';
-import {make_hashed_itab} from './sources/integral';
-import {iscomplexnumber, iseveninteger, isfloating, isfraction, isimaginarynumber, isimaginaryunit, isinteger, isintegerfactor, isminusone, isminusoneoversqrttwo, isnegative, isnegativenumber, isnegativeterm, isnonnegativeinteger, isnpi, isoneover, isoneoversqrttwo, isplusone, isposint, isquarterturn, issymbolic, isZeroAtomOrTensor,} from './sources/is';
-import { equal, length } from './sources/misc';
-import {scan} from './sources/scan';
+import {caaddr, caadr, caar, cadaddr, cadadr, cadar, caddaddr, caddadr, caddar, caddddr, cadddr, caddr, cadr, car, cdaddr, cdadr, cdar, cddaddr, cddar, cdddaddr, cddddr, cdddr, cddr, cdr, CONS, Cons, defs, DOUBLE, Double, isadd, iscons, isdouble, isfactorial, ismultiply, isNumericAtom, ispower, isrational, isstr, issymbol, istensor, NUM, Num, STR, Str, SYM, Sym, TENSOR, Tensor, U, version,} from './runtime/defs.js';
+import {Find} from './runtime/find.js';
+import {init} from './runtime/init.js';
+import {run} from './runtime/run.js';
+import {collectUserSymbols, get_binding, iskeyword, set_binding, symbol, usr_symbol,} from './runtime/symbol.js';
+import {exec, parse} from './runtime/zombocom.js';
+import {approxAll, approxRadicals, approxRationalsOfLogs, testApprox,} from './sources/approxratio.js';
+import {make_hashed_itab} from './sources/integral.js';
+import {iscomplexnumber, iseveninteger, isfloating, isfraction, isimaginarynumber, isimaginaryunit, isinteger, isintegerfactor, isminusone, isminusoneoversqrttwo, isnegative, isnegativenumber, isnegativeterm, isnonnegativeinteger, isnpi, isoneover, isoneoversqrttwo, isplusone, isposint, isquarterturn, issymbolic, isZeroAtomOrTensor,} from './sources/is.js';
+import { equal, length } from './sources/misc.js';
+import {scan} from './sources/scan.js';
 
 const functions = {
   version,

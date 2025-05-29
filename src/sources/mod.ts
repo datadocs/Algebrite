@@ -6,14 +6,14 @@ import {
   MOD,
   Num,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { integer, nativeInt } from './bignum';
-import { Eval } from './eval';
-import { isinteger, isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { mmod } from './mmul';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { integer, nativeInt } from './bignum.js';
+import { Eval } from './eval.js';
+import { isinteger, isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { mmod } from './mmul.js';
 
 export function Eval_mod(p1: U) {
   const arg1 = Eval(cadr(p1));

@@ -13,17 +13,17 @@ import {
   SIN,
   TAN,
   U
-} from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { symbol } from "../runtime/symbol";
-import { equal } from '../sources/misc';
-import { double, rational } from './bignum';
-import { denominator } from './denominator';
-import { Eval } from './eval';
-import { equaln, equalq, isnegative, isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { multiply, negate } from './multiply';
-import { numerator } from './numerator';
+} from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { symbol } from "../runtime/symbol.js";
+import { equal } from '../sources/misc.js';
+import { double, rational } from './bignum.js';
+import { denominator } from './denominator.js';
+import { Eval } from './eval.js';
+import { equaln, equalq, isnegative, isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { multiply, negate } from './multiply.js';
+import { numerator } from './numerator.js';
 
 /* arctan =====================================================================
 

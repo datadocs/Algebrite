@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   ADD, Constants,
   DEBUG,
@@ -31,15 +31,15 @@ import {
   TRANSPOSE,
   transpose_unicode,
   U
-} from '../runtime/defs';
-import {isalnumorunderscore, isalpha, isdigit, isspace,} from '../runtime/otherCFunctions';
-import {stop} from '../runtime/run';
-import {symbol, usr_symbol} from '../runtime/symbol';
-import {bignum_scan_float, bignum_scan_integer} from './bignum';
-import {equaln} from './is';
-import {makeList} from './list';
-import {inverse, multiply, negate} from './multiply';
-import {check_tensor_dimensions} from './tensor';
+} from '../runtime/defs.js';
+import {isalnumorunderscore, isalpha, isdigit, isspace,} from '../runtime/otherCFunctions.js';
+import {stop} from '../runtime/run.js';
+import {symbol, usr_symbol} from '../runtime/symbol.js';
+import {bignum_scan_float, bignum_scan_integer} from './bignum.js';
+import {equaln} from './is.js';
+import {makeList} from './list.js';
+import {inverse, multiply, negate} from './multiply.js';
+import {check_tensor_dimensions} from './tensor.js';
 
 // This scanner uses the recursive descent method.
 //

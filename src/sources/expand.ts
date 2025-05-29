@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   caddr,
   cadr,
@@ -11,27 +11,27 @@ import {
   NIL,
   Tensor,
   U
-} from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { symbol } from "../runtime/symbol";
-import { equal } from '../sources/misc';
-import { add, subtract } from './add';
-import { integer, nativeInt } from './bignum';
-import { degree } from './degree';
-import { denominator } from './denominator';
-import { Eval } from './eval';
-import { factorpoly } from './factorpoly';
-import { factors } from './factors';
-import { filter } from './filter';
-import { guess } from './guess';
-import { inner } from './inner';
-import { inv } from './inv';
-import { isone, ispolyexpandedform, isZeroAtomOrTensor } from './is';
-import { divide, multiply, multiply_all, reciprocate } from './multiply';
-import { numerator } from './numerator';
-import { power } from './power';
-import { divpoly } from './quotient';
-import { copy_tensor } from './tensor';
+} from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { symbol } from "../runtime/symbol.js";
+import { equal } from '../sources/misc.js';
+import { add, subtract } from './add.js';
+import { integer, nativeInt } from './bignum.js';
+import { degree } from './degree.js';
+import { denominator } from './denominator.js';
+import { Eval } from './eval.js';
+import { factorpoly } from './factorpoly.js';
+import { factors } from './factors.js';
+import { filter } from './filter.js';
+import { guess } from './guess.js';
+import { inner } from './inner.js';
+import { inv } from './inv.js';
+import { isone, ispolyexpandedform, isZeroAtomOrTensor } from './is.js';
+import { divide, multiply, multiply_all, reciprocate } from './multiply.js';
+import { numerator } from './numerator.js';
+import { power } from './power.js';
+import { divpoly } from './quotient.js';
+import { copy_tensor } from './tensor.js';
 
 // Partial fraction expansion
 //

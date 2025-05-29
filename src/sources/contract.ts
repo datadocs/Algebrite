@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   cadddr,
   caddr,
@@ -8,13 +8,13 @@ import {
   istensor,
   NIL,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { add } from './add';
-import { integer, nativeInt } from './bignum';
-import { Eval } from './eval';
-import { isZeroAtomOrTensor } from './is';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { add } from './add.js';
+import { integer, nativeInt } from './bignum.js';
+import { Eval } from './eval.js';
+import { isZeroAtomOrTensor } from './is.js';
 
 /* contract =====================================================================
 

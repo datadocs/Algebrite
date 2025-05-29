@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   cadddr,
   caddr,
@@ -21,17 +21,17 @@ import {
   SYMBOL_IDENTITY_MATRIX,
   TRANSPOSE,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { equal } from '../sources/misc';
-import { add } from './add';
-import { integer, nativeInt } from './bignum';
-import { Eval } from './eval';
-import { inner } from './inner';
-import { isplusone, isplustwo, isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { multiply } from './multiply';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { equal } from '../sources/misc.js';
+import { add } from './add.js';
+import { integer, nativeInt } from './bignum.js';
+import { Eval } from './eval.js';
+import { inner } from './inner.js';
+import { isplusone, isplustwo, isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { multiply } from './multiply.js';
 
 // Transpose tensor indices
 export function Eval_transpose(p1: U) {

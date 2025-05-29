@@ -3,9 +3,9 @@ import {
   computeResultsAndJavaScriptFromAlgebra,
   findDependenciesInScript,
   run,
-} from '../runtime/run';
-import { do_clearall } from '../sources/clear';
-import { test } from '../test-harness';
+} from '../runtime/run.js';
+import { do_clearall } from '../sources/clear.js';
+import { test } from '../test-harness.js';
 
 test.beforeEach(do_clearall);
 

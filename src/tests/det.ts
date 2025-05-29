@@ -1,4 +1,4 @@
-import { run_shardable_test, } from '../test-harness';
+import { run_shardable_test, } from '../test-harness.js';
 
 run_shardable_test([
   "det([[2,-(2),3],[1,-(1),-(2)],[-(3),1,5]])",

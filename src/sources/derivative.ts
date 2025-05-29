@@ -37,33 +37,33 @@ import {
   TAN,
   TANH,
   U
-} from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { equal, exponential, length, lessp } from '../sources/misc';
-import { add, add_all, subtract } from './add';
-import { besselj } from './besselj';
-import { bessely } from './bessely';
-import { integer, nativeInt, rational } from './bignum';
-import { cosine } from './cos';
-import { ycosh } from './cosh';
-import { dirac } from './dirac';
-import { Eval } from './eval';
-import { guess } from './guess';
-import { hermite } from './hermite';
-import { integral } from './integral';
-import { isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { logarithm } from './log';
-import { divide, inverse, multiply, multiply_all, negate } from './multiply';
-import { power } from './power';
-import { sgn } from './sgn';
-import { simplify } from './simplify';
-import { sine } from './sin';
-import { ysinh } from './sinh';
-import { subst } from './subst';
-import { d_scalar_tensor, d_tensor_scalar, d_tensor_tensor } from './tensor';
+} from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { equal, exponential, length, lessp } from '../sources/misc.js';
+import { add, add_all, subtract } from './add.js';
+import { besselj } from './besselj.js';
+import { bessely } from './bessely.js';
+import { integer, nativeInt, rational } from './bignum.js';
+import { cosine } from './cos.js';
+import { ycosh } from './cosh.js';
+import { dirac } from './dirac.js';
+import { Eval } from './eval.js';
+import { guess } from './guess.js';
+import { hermite } from './hermite.js';
+import { integral } from './integral.js';
+import { isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { logarithm } from './log.js';
+import { divide, inverse, multiply, multiply_all, negate } from './multiply.js';
+import { power } from './power.js';
+import { sgn } from './sgn.js';
+import { simplify } from './simplify.js';
+import { sine } from './sin.js';
+import { ysinh } from './sinh.js';
+import { subst } from './subst.js';
+import { d_scalar_tensor, d_tensor_scalar, d_tensor_tensor } from './tensor.js';
 
 // derivative
 

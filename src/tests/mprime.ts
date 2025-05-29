@@ -1,7 +1,7 @@
-import { primetab } from '../runtime/defs';
-import { mint } from '../sources/bignum';
-import { mprime } from '../sources/mprime';
-import { test } from '../test-harness';
+import { primetab } from '../runtime/defs.js';
+import { mint } from '../sources/bignum.js';
+import { mprime } from '../sources/mprime.js';
+import { test } from '../test-harness.js';
 
 let i = 0;
 let k = 0;

@@ -9,16 +9,16 @@ import {
   iscons,
   isdouble,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { add, subtract } from './add';
-import { double, integer, nativeInt, rational } from './bignum';
-import { Eval } from './eval';
-import { isnegative, isnpi } from './is';
-import { makeList } from './list';
-import { divide, multiply, negate } from './multiply';
-import { power } from './power';
-import { sine } from './sin';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { add, subtract } from './add.js';
+import { double, integer, nativeInt, rational } from './bignum.js';
+import { Eval } from './eval.js';
+import { isnegative, isnpi } from './is.js';
+import { makeList } from './list.js';
+import { divide, multiply, negate } from './multiply.js';
+import { power } from './power.js';
+import { sine } from './sin.js';
 
 /* cos =====================================================================
 

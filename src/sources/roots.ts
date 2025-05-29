@@ -1,4 +1,4 @@
-import { alloc_tensor } from '../runtime/alloc';
+import { alloc_tensor } from '../runtime/alloc.js';
 import {
   caddr,
   cadr,
@@ -14,21 +14,21 @@ import {
   Tensor,
   TESTEQ,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { cmp_expr, sort } from '../sources/misc';
-import { absValFloat } from './abs';
-import { add, add_all, subtract } from './add';
-import { integer, rational } from './bignum';
-import { coeff } from './coeff';
-import { Eval } from './eval';
-import { factorpoly } from './factorpoly';
-import { guess } from './guess';
-import { iscomplexnumber, ispolyexpandedform, isposint, isZeroAtomOrTensor } from './is';
-import { divide, multiply, negate } from './multiply';
-import { power } from './power';
-import { simplify } from './simplify';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { cmp_expr, sort } from '../sources/misc.js';
+import { absValFloat } from './abs.js';
+import { add, add_all, subtract } from './add.js';
+import { integer, rational } from './bignum.js';
+import { coeff } from './coeff.js';
+import { Eval } from './eval.js';
+import { factorpoly } from './factorpoly.js';
+import { guess } from './guess.js';
+import { iscomplexnumber, ispolyexpandedform, isposint, isZeroAtomOrTensor } from './is.js';
+import { divide, multiply, negate } from './multiply.js';
+import { power } from './power.js';
+import { simplify } from './simplify.js';
 
 const log = {
   debug: (str: string) => {

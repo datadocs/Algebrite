@@ -1,4 +1,4 @@
-import { countOccurrencesOfSymbol } from '../runtime/count';
+import { countOccurrencesOfSymbol } from '../runtime/count.js';
 import {
   ADD,
   cadr,
@@ -13,13 +13,13 @@ import {
   PI,
   POWER,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { bignum_float, double } from './bignum';
-import { Eval } from './eval';
-import { makeList } from './list';
-import { copy_tensor } from './tensor';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { bignum_float, double } from './bignum.js';
+import { Eval } from './eval.js';
+import { makeList } from './list.js';
+import { copy_tensor } from './tensor.js';
 
 export function Eval_float(p1: U) {
   return evalFloats(() => {

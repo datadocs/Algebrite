@@ -8,16 +8,16 @@ import {
   ispower,
   LOG,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { add, subtract } from './add';
-import { double } from './bignum';
-import { denominator } from './denominator';
-import { Eval } from './eval';
-import { equaln, isfraction, isnegativenumber } from './is';
-import { makeList } from './list';
-import { multiply, negate } from './multiply';
-import { numerator } from './numerator';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { add, subtract } from './add.js';
+import { double } from './bignum.js';
+import { denominator } from './denominator.js';
+import { Eval } from './eval.js';
+import { equaln, isfraction, isnegativenumber } from './is.js';
+import { makeList } from './list.js';
+import { multiply, negate } from './multiply.js';
+import { numerator } from './numerator.js';
 
 // Natural logarithm.
 //

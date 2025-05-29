@@ -8,14 +8,14 @@ import {
   NIL,
   SECRETX,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { add, subtract } from './add';
-import { integer, nativeInt } from './bignum';
-import { Eval } from './eval';
-import { makeList } from './list';
-import { divide, multiply } from './multiply';
-import { subst } from './subst';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { add, subtract } from './add.js';
+import { integer, nativeInt } from './bignum.js';
+import { Eval } from './eval.js';
+import { makeList } from './list.js';
+import { divide, multiply } from './multiply.js';
+import { subst } from './subst.js';
 
 /*
  Laguerre function

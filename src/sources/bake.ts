@@ -15,12 +15,12 @@ import {
   SYMBOL_Y,
   SYMBOL_Z,
   U,
-} from '../runtime/defs';
-import { integer } from './bignum';
-import { coeff } from './coeff';
-import { equaln, ispolyexpandedform, isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import {symbol} from "../runtime/symbol";
+} from '../runtime/defs.js';
+import { integer } from './bignum.js';
+import { coeff } from './coeff.js';
+import { equaln, ispolyexpandedform, isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import {symbol} from "../runtime/symbol.js";
 
 export function bake(p1: U): U {
   return doexpand(_bake, p1);

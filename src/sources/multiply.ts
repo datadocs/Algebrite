@@ -27,18 +27,18 @@ import {
   OPERATOR,
   POWER,
   U
-} from '../runtime/defs';
-import { append } from '../runtime/otherCFunctions';
-import { stop } from '../runtime/run';
-import { symbol } from '../runtime/symbol';
-import { cmp_expr } from '../sources/misc';
-import { add, subtract } from './add';
-import { divide_numbers, invert_number, mp_denominator, mp_numerator, multiply_numbers, negate_number } from './bignum';
-import { Eval } from './eval';
-import { equaln, isfraction, isinteger, isminusone, isnegativenumber, isplusone, isZeroAtom } from './is';
-import { makeList } from './list';
-import { power } from './power';
-import { scalar_times_tensor, tensor_times_scalar } from './tensor';
+} from '../runtime/defs.js';
+import { append } from '../runtime/otherCFunctions.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from '../runtime/symbol.js';
+import { cmp_expr } from '../sources/misc.js';
+import { add, subtract } from './add.js';
+import { divide_numbers, invert_number, mp_denominator, mp_numerator, multiply_numbers, negate_number } from './bignum.js';
+import { Eval } from './eval.js';
+import { equaln, isfraction, isinteger, isminusone, isnegativenumber, isplusone, isZeroAtom } from './is.js';
+import { makeList } from './list.js';
+import { power } from './power.js';
+import { scalar_times_tensor, tensor_times_scalar } from './tensor.js';
 
 // Symbolic multiplication
 

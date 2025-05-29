@@ -1,6 +1,6 @@
-import { mint } from '../sources/bignum';
-import { mpow } from '../sources/mpow';
-import { test } from '../test-harness';
+import { mint } from '../sources/bignum.js';
+import { mpow } from '../sources/mpow.js';
+import { test } from '../test-harness.js';
 
 // small numbers
 for (let i = -10; i < 10; i++) {

@@ -5,9 +5,9 @@ import {
   SYMBOL_Y,
   SYMBOL_Z,
   U,
-} from '../runtime/defs';
-import { Find } from '../runtime/find';
-import {symbol} from "../runtime/symbol";
+} from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import {symbol} from "../runtime/symbol.js";
 
 // Guess which symbol to use for derivative, integral, etc.
 export function guess(p: U): U {

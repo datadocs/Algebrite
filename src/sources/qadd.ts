@@ -1,8 +1,8 @@
-import { Constants, Double, MZERO, Num } from '../runtime/defs';
-import { makeSignSameAs } from './bignum';
-import { madd } from './madd';
-import { mgcd } from './mgcd';
-import { mdiv, mmul } from './mmul';
+import { Constants, Double, MZERO, Num } from '../runtime/defs.js';
+import { makeSignSameAs } from './bignum.js';
+import { madd } from './madd.js';
+import { mgcd } from './mgcd.js';
+import { mdiv, mmul } from './mmul.js';
 
 //  Add rational numbers
 //

@@ -1,8 +1,8 @@
 import process from 'process';
 import fs from 'fs';
-import { defs } from './runtime/defs';
-import { run } from './runtime/run';
-import { init } from './runtime/init';
+import { defs } from './runtime/defs.js';
+import { run } from './runtime/run.js';
+import { init } from './runtime/init.js';
 
 if (!defs.inited) {
   init();

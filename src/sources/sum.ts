@@ -6,12 +6,12 @@ import {
   Constants,
   issymbol,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { get_binding, set_binding } from '../runtime/symbol';
-import { add } from './add';
-import { integer, nativeInt } from './bignum';
-import { Eval, evaluate_integer } from './eval';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { get_binding, set_binding } from '../runtime/symbol.js';
+import { add } from './add.js';
+import { integer, nativeInt } from './bignum.js';
+import { Eval, evaluate_integer } from './eval.js';
 
 // 'sum' function
 

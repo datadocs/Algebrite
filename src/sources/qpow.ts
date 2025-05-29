@@ -1,7 +1,7 @@
 import bigInt from 'big-integer';
-import { Constants, Num, POWER, U } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { add, subtract } from './add';
+import { Constants, Num, POWER, U } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { add, subtract } from './add.js';
 import {
   integer,
   bignum_truncate,
@@ -11,7 +11,7 @@ import {
   mp_denominator,
   mp_numerator,
   nativeInt,
-} from './bignum';
+} from './bignum.js';
 import {
   isinteger,
   isminusone,
@@ -19,13 +19,13 @@ import {
   isoneovertwo,
   isplusone,
   isZeroAtomOrTensor,
-} from './is';
-import { makeList } from './list';
-import { mpow } from './mpow';
-import { mroot } from './mroot';
-import { multiply, negate } from './multiply';
-import { quickfactor } from './quickfactor';
-import {symbol} from "../runtime/symbol";
+} from './is.js';
+import { makeList } from './list.js';
+import { mpow } from './mpow.js';
+import { mroot } from './mroot.js';
+import { multiply, negate } from './multiply.js';
+import { quickfactor } from './quickfactor.js';
+import {symbol} from "../runtime/symbol.js";
 
 // Rational power function
 export function qpow(base: Num, expo: Num): U {

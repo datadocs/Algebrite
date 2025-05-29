@@ -1,10 +1,10 @@
-import { cadddr, caddr, cadr, Tensor, U } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { nativeInt } from './bignum';
-import { determinant } from './det';
-import { Eval, evaluate_integer } from './eval';
-import { negate } from './multiply';
-import { is_square_matrix } from './tensor';
+import { cadddr, caddr, cadr, Tensor, U } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { nativeInt } from './bignum.js';
+import { determinant } from './det.js';
+import { Eval, evaluate_integer } from './eval.js';
+import { negate } from './multiply.js';
+import { is_square_matrix } from './tensor.js';
 
 /* cofactor =====================================================================
 

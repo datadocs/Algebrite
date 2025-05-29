@@ -1,11 +1,11 @@
-import { cadr, Constants, ERF, isdouble, U } from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { double } from './bignum';
-import { erfc } from './erfc';
-import { Eval } from './eval';
-import { isnegativeterm, isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { negate } from './multiply';
+import { cadr, Constants, ERF, isdouble, U } from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { double } from './bignum.js';
+import { erfc } from './erfc.js';
+import { Eval } from './eval.js';
+import { isnegativeterm, isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { negate } from './multiply.js';
 
 /* erf =====================================================================
 

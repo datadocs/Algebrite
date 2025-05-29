@@ -7,15 +7,15 @@ import {
   DEBUG, isadd,
   iscons,
   ismultiply, NIL, U
-} from '../runtime/defs';
-import { Find } from '../runtime/find';
-import { symbol } from '../runtime/symbol';
-import { equal } from '../sources/misc';
-import { add_all } from './add';
-import { Eval } from './eval';
-import { guess } from './guess';
-import { makeList } from './list';
-import { multiply_all, negate } from './multiply';
+} from '../runtime/defs.js';
+import { Find } from '../runtime/find.js';
+import { symbol } from '../runtime/symbol.js';
+import { equal } from '../sources/misc.js';
+import { add_all } from './add.js';
+import { Eval } from './eval.js';
+import { guess } from './guess.js';
+import { makeList } from './list.js';
+import { multiply_all, negate } from './multiply.js';
 
 // this function extract parts subtrees from a tree.
 // It is used in two

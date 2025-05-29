@@ -1,4 +1,4 @@
-import { ava_run, run_test, test } from '../test-harness';
+import { ava_run, run_test, test } from '../test-harness.js';
 
 run_test([
   '1.0',

@@ -1,9 +1,9 @@
-import { MSIGN, MZERO, Sign } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { mint, setSignTo } from '../sources/bignum';
-import { mgcd } from '../sources/mgcd';
-import { mmod } from '../sources/mmul';
-import { test } from '../test-harness';
+import { MSIGN, MZERO, Sign } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { mint, setSignTo } from '../sources/bignum.js';
+import { mgcd } from '../sources/mgcd.js';
+import { mmod } from '../sources/mmul.js';
+import { test } from '../test-harness.js';
 
 for (let i = 1; i < 100; i++) {
   const a = mint(i);

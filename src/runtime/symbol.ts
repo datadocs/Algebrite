@@ -1,6 +1,6 @@
-import { countsize } from './count';
-import { BaseAtom, car, cdr, Cons, iscons, issymbol, istensor, NIL, Str, Sym, SYM, U } from './defs';
-import { stop } from './run';
+import { countsize } from './count.js';
+import { BaseAtom, car, cdr, Cons, iscons, issymbol, istensor, NIL, Str, Sym, SYM, U } from './defs.js';
+import { stop } from './run.js';
 
 // The symbol table is a simple array of struct U.
 

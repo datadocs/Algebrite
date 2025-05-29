@@ -1,5 +1,5 @@
 import bigInt from 'big-integer';
-import { Sign } from './defs';
+import { Sign } from './defs.js';
 // Bignum compare
 //  returns
 //  -1    a < b

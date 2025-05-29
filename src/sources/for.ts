@@ -6,11 +6,11 @@ import {
   issymbol,
   NIL,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { get_binding, set_binding, symbol } from '../runtime/symbol';
-import { integer, nativeInt } from './bignum';
-import { Eval, evaluate_integer } from './eval';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { get_binding, set_binding, symbol } from '../runtime/symbol.js';
+import { integer, nativeInt } from './bignum.js';
+import { Eval, evaluate_integer } from './eval.js';
 
 // 'for' function
 

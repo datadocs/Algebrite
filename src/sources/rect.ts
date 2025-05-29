@@ -9,22 +9,22 @@ import {
   SIN,
   U,
   YYRECT
-} from '../runtime/defs';
+} from '../runtime/defs.js';
 import {
   Find,
   findPossibleClockForm,
   findPossibleExponentialForm
-} from '../runtime/find';
-import { get_binding, symbol } from '../runtime/symbol';
-import { abs } from './abs';
-import { add } from './add';
-import { arg } from './arg';
-import { cosine } from './cos';
-import { Eval } from './eval';
-import { isimaginaryunit, isZeroAtomOrTensor } from './is';
-import { makeList } from './list';
-import { multiply } from './multiply';
-import { sine } from './sin';
+} from '../runtime/find.js';
+import { get_binding, symbol } from '../runtime/symbol.js';
+import { abs } from './abs.js';
+import { add } from './add.js';
+import { arg } from './arg.js';
+import { cosine } from './cos.js';
+import { Eval } from './eval.js';
+import { isimaginaryunit, isZeroAtomOrTensor } from './is.js';
+import { makeList } from './list.js';
+import { multiply } from './multiply.js';
+import { sine } from './sin.js';
 
 /*
 Convert complex z to rectangular form

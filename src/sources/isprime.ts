@@ -1,7 +1,7 @@
-import { cadr, Constants, U } from '../runtime/defs';
-import { Eval } from './eval';
-import { isnonnegativeinteger } from './is';
-import { mprime } from './mprime';
+import { cadr, Constants, U } from '../runtime/defs.js';
+import { Eval } from './eval.js';
+import { isnonnegativeinteger } from './is.js';
+import { mprime } from './mprime.js';
 
 export function Eval_isprime(p1: U) {
   return isprime(Eval(cadr(p1)));

@@ -10,16 +10,16 @@ import {
   Num,
   primetab,
   U
-} from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { symbol } from "../runtime/symbol";
-import { integer } from './bignum';
-import { Eval } from './eval';
-import { factorpoly } from './factorpoly';
-import { guess } from './guess';
-import { isinteger } from './is';
-import { multiply_all_noexpand } from './multiply';
-import { factor_number } from './pollard';
+} from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { symbol } from "../runtime/symbol.js";
+import { integer } from './bignum.js';
+import { Eval } from './eval.js';
+import { factorpoly } from './factorpoly.js';
+import { guess } from './guess.js';
+import { isinteger } from './is.js';
+import { multiply_all_noexpand } from './multiply.js';
+import { factor_number } from './pollard.js';
 
 // factor a polynomial or integer
 export function Eval_factor(p1: U) {

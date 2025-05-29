@@ -12,16 +12,16 @@ import {
   NUM,
   Sign,
   U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { subtract } from './add';
-import { Eval } from './eval';
-import { yyfloat } from './float';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { subtract } from './add.js';
+import { Eval } from './eval.js';
+import { yyfloat } from './float.js';
 import {
   isZeroAtomOrTensor,
   isZeroLikeOrNonZeroLikeOrUndetermined
-} from './is';
-import { simplify } from './simplify';
+} from './is.js';
+import { simplify } from './simplify.js';
 
 // If the number of args is odd then the last arg is the default result.
 // Works like a switch statement. Could also be used for piecewise

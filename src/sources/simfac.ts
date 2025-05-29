@@ -8,14 +8,14 @@ import {
   isfactorial,
   ismultiply,
   ispower, U
-} from '../runtime/defs';
-import { symbol } from "../runtime/symbol";
-import { equal } from '../sources/misc';
-import { add, add_all, subtract } from './add';
-import { Eval } from './eval';
-import { factorial } from './factorial';
-import { equaln, isminusone, isplusone } from './is';
-import { multiply_all_noexpand, reciprocate } from './multiply';
+} from '../runtime/defs.js';
+import { symbol } from "../runtime/symbol.js";
+import { equal } from '../sources/misc.js';
+import { add, add_all, subtract } from './add.js';
+import { Eval } from './eval.js';
+import { factorial } from './factorial.js';
+import { equaln, isminusone, isplusone } from './is.js';
+import { multiply_all_noexpand, reciprocate } from './multiply.js';
 
 /*
  Simplify factorials

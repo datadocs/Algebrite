@@ -1,7 +1,7 @@
-import { mint } from '../sources/bignum';
-import { mpow } from '../sources/mpow';
-import { mroot } from '../sources/mroot';
-import { test } from '../test-harness';
+import { mint } from '../sources/bignum.js';
+import { mpow } from '../sources/mpow.js';
+import { mroot } from '../sources/mroot.js';
+import { test } from '../test-harness.js';
 
 // small numbers
 for (let i = 0; i < 10; i++) {

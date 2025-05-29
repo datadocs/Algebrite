@@ -1,9 +1,9 @@
-import { equal } from '../sources/misc';
-import { defs, primetab, U } from '../runtime/defs';
-import { integer } from '../sources/bignum';
-import { multiply_all } from '../sources/multiply';
-import { quickfactor, quickpower } from '../sources/quickfactor';
-import { test } from '../test-harness';
+import { equal } from '../sources/misc.js';
+import { defs, primetab, U } from '../runtime/defs.js';
+import { integer } from '../sources/bignum.js';
+import { multiply_all } from '../sources/multiply.js';
+import { quickfactor, quickpower } from '../sources/quickfactor.js';
+import { test } from '../test-harness.js';
 
 test('quickfactor', t => {
   for (let i = 2; i < 10001; i++) {

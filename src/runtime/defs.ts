@@ -1,6 +1,6 @@
 import bigInt from 'big-integer';
-import {collectLatexStringFromReturnValue, print_expr,} from '../sources/print';
-import {symbol} from './symbol';
+import {collectLatexStringFromReturnValue, print_expr,} from '../sources/print.js';
+import {symbol} from './symbol.js';
 
 export function breakpoint() {}
 

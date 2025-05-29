@@ -11,17 +11,17 @@ import {
   isNumericAtom,
   ispower,
   isrational, MULTIPLY, U
-} from '../runtime/defs';
-import { symbol } from '../runtime/symbol';
-import { equal, length, lessp } from '../sources/misc';
-import { subtract } from './add';
-import { gcd_numbers } from './bignum';
-import { Eval } from './eval';
-import { factorpoly } from './factorpoly';
-import { isnegativenumber, isunivarpolyfactoredorexpandedform } from './is';
-import { makeList } from './list';
-import { divide, multiply } from './multiply';
-import { power } from './power';
+} from '../runtime/defs.js';
+import { symbol } from '../runtime/symbol.js';
+import { equal, length, lessp } from '../sources/misc.js';
+import { subtract } from './add.js';
+import { gcd_numbers } from './bignum.js';
+import { Eval } from './eval.js';
+import { factorpoly } from './factorpoly.js';
+import { isnegativenumber, isunivarpolyfactoredorexpandedform } from './is.js';
+import { makeList } from './list.js';
+import { divide, multiply } from './multiply.js';
+import { power } from './power.js';
 
 // Greatest common denominator
 // can also be run on polynomials, however

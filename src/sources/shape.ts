@@ -1,9 +1,9 @@
-import { alloc_tensor } from '../runtime/alloc';
-import { cadr, Constants, istensor, U } from '../runtime/defs';
-import { stop } from '../runtime/run';
-import { integer } from './bignum';
-import { Eval } from './eval';
-import { isZeroAtomOrTensor } from './is';
+import { alloc_tensor } from '../runtime/alloc.js';
+import { cadr, Constants, istensor, U } from '../runtime/defs.js';
+import { stop } from '../runtime/run.js';
+import { integer } from './bignum.js';
+import { Eval } from './eval.js';
+import { isZeroAtomOrTensor } from './is.js';
 
 // shape of tensor
 export function Eval_shape(p1: U) {

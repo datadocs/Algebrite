@@ -1,7 +1,7 @@
-import { Constants, MZERO, Num } from '../runtime/defs';
-import { makeSignSameAs } from './bignum';
-import { mgcd } from './mgcd';
-import { mdiv, mmul } from './mmul';
+import { Constants, MZERO, Num } from '../runtime/defs.js';
+import { makeSignSameAs } from './bignum.js';
+import { mgcd } from './mgcd.js';
+import { mdiv, mmul } from './mmul.js';
 
 //  Multiply rational numbers
 //
