@@ -1,0 +1,56 @@
+name: CI/Publish Packages
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      publish_packages:
+        type: boolean
+        default: false
+        description: "Publish packages to Github registry"
+
+jobs:
+  build:
+    permissions:
+      packages: write
+      id-token: write
+    runs-on: ubuntu-22.04
+    if: ${{
+      (github.event_name == 'workflow_dispatch' ||
+      (github.event_name != 'pull_request' || github.event.action != 'synchronize'))}}
+    name: Build Datadocs app by using Node.js LTS
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Setup Node.js LTS
+        uses: actions/setup-node@v4
+        with:
+          node-version: "lts/*"
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn install --no-immutable
+
+      - name: Build the package
+        run: yarn run gen && yarn run build && yarn run min
+
+      - name: Pack the package
+        run: yarn pack
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: packages
+          path: package.tgz
+          if-no-files-found: error
+          compression-level: 9
+
+      - name: Publish the package
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.publish_packages == true }}
+        run: yarn npm publish --access public --provenance

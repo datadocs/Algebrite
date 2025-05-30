@@ -1,16 +1,38 @@
 {
-  "name": "algebrite",
+  "name": "@datadocs/algebrite",
   "//": "also change the version in the Algebrite variable at the top of defs file",
   "version": "2.0.1",
   "description": "Computer Algebra System in TypeScript",
   "main": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "module": "dist/index.js",
+  "type": "commonjs",
+  "types": "src/index.ts",
+  "module": "dist/esm/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./src/index.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/index.js"
+    },
+    "./*": {
+      "types": "./src/*.ts",
+      "import": "./dist/esm/*.js",
+      "require": "./dist/*.js"
+    }
+  },
+  "files": [
+    "src",
+    "dist",
+    "!src/tests",
+    "!dist/tests",
+    "!dist/esm/tests"
+  ],
   "directories": {
     "test": "tests"
   },
   "scripts": {
-    "build": "tsc",
+    "clean": "rimraf dist",
+    "build": "tsc -b tsconfig.json tsconfig.esm.json",
     "gen": "node scripts/gen-version-ts.mjs",
     "min": "esbuild dist/index.js --minify --bundle --outfile=dist/algebrite.bundle-for-browser-min.js",
     "format": "prettier --write src"
@@ -42,6 +64,7 @@
   "devDependencies": {
     "esbuild": "^0.25.5",
     "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
     "typescript": "^5.8.3"
   },
   "packageManager": "yarn@4.9.1"

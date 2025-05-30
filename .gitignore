@@ -8,6 +8,7 @@ bazel-out
 ._*
 
 *.log
+*.tgz
 
 .pnp.*
 .yarn/*
