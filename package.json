@@ -1,21 +1,21 @@
 {
   "name": "@datadocs/algebrite",
   "//": "also change the version in the Algebrite variable at the top of defs file",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Computer Algebra System in TypeScript",
   "main": "dist/index.js",
   "type": "commonjs",
-  "types": "src/index.ts",
+  "types": "dist/esm/index.d.ts",
   "module": "dist/esm/index.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./src/index.ts",
+      "types": "./dist/esm/index.d.ts",
       "import": "./dist/esm/index.js",
       "require": "./dist/index.js"
     },
     "./*": {
-      "types": "./src/*.ts",
+      "types": "./dist/esm/*.d.ts",
       "import": "./dist/esm/*.js",
       "require": "./dist/*.js"
     }
